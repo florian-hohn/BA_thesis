@@ -1,7 +1,7 @@
 import numpy
 import skmultiflow.prototype
     
-class rslvq_adadelta(skmultiflow.prototype.robust_soft_learning_vector_quantization):
+class RSLVQAdadelta(skmultiflow.prototype.robust_soft_learning_vector_quantization):
     """Inherits from the scikit-multiflow framework implementation 
     of the rslvq algortihm and modifies it to an implementation where the decition is done with the adadelta"""
 
