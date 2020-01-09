@@ -23,6 +23,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BA_thesis_code.py" />
+    <Compile Include="rslvq_adadelta.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="rslvq_sgd.py">
       <SubType>Code</SubType>
     </Compile>
