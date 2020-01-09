@@ -26,6 +26,9 @@
     <Compile Include="RSLVQAdadelta.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="RSLVQRmsprop.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="RSLVQSgd.py">
       <SubType>Code</SubType>
     </Compile>
