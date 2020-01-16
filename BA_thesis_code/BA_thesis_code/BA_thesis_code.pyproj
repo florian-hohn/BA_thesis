@@ -23,18 +23,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BAThesisCode.py" />
-    <Compile Include="RSLVQAdadelta.py">
+    <Compile Include="Algorithms\RSLVQAdadelta.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="RSLVQRmsprop.py">
+    <Compile Include="Algorithms\RSLVQRmsprop.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="RSLVQSgd.py">
+    <Compile Include="Algorithms\RSLVQSgd.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="CondaEnv|CondaEnv|Anaconda2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Algorithms\" />
+    <Folder Include="realData\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
