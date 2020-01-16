@@ -22,14 +22,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="algorithms\RSLVQadamORnadam.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="algorithms\RSLVQall.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BAThesisCode.py" />
-    <Compile Include="Algorithms\RSLVQAdadelta.py">
+    <Compile Include="algorithms\RSLVQAdadelta.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Algorithms\RSLVQRmsprop.py">
+    <Compile Include="algorithms\RSLVQRmsprop.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Algorithms\RSLVQSgd.py">
+    <Compile Include="algorithms\RSLVQSgd.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -37,7 +43,7 @@
     <InterpreterReference Include="CondaEnv|CondaEnv|Anaconda2" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Algorithms\" />
+    <Folder Include="algorithms\" />
     <Folder Include="realData\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

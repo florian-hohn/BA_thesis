@@ -1,6 +1,6 @@
 import numpy
 import pandas as pd
-from skmultiflow.prototype import robust_soft_learning_vector_quantization
+from skmultiflow.prototype.robust_soft_learning_vector_quantization import RobustSoftLearningVectorQuantization as RSLVQ
 from skmultiflow.data.file_stream import FileStream
 from skmultiflow.data.data_stream import DataStream
 
