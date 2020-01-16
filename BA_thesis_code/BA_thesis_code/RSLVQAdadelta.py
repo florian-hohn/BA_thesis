@@ -6,7 +6,6 @@ class RSLVQAdadelta(skmultiflow.prototype.robust_soft_learning_vector_quantizati
     of the rslvq algortihm and modifies it to an implementation where the decition is done with the adadelta"""
 
     def _optimize(self, X, y, random_state):
-        if(self.gradient_descent=='Adadelta'):
             """Implementation of Adadelta"""
             n_data, n_dim = X.shape
             nb_prototypes = self.c_w_.size

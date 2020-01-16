@@ -7,8 +7,7 @@ class RSLVQSgd(skmultiflow.prototype.robust_soft_learning_vector_quantization):
     of the rslvq algortihm and modifies it to an implementation where the decition is done with the sgd"""
 
     def _optimize(self, X, y, random_state):
-        if(self.gradient_descent=='SGD'):
-            """Implementation of Stochastical Gradient Descent"""
+        """Implementation of Stochastical Gradient Descent"""
             n_data, n_dim = X.shape5 
             nb_prototypes = self.c_w_.size
             prototypes = self.w_.reshape(nb_prototypes, n_dim)
