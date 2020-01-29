@@ -1,0 +1,5 @@
+[0] Config.pm:304> INFO - This is Biber 2.13
+[0] Config.pm:307> INFO - Logfile is 'thesis.blg'
+[38] biber-MSWIN64:315> INFO - === 
+[486] Utils.pm:316> ERROR - Cannot find 'thesis.bcf'!
+[486] Biber.pm:114> INFO - ERRORS: 1
