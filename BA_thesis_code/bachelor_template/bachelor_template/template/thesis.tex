@@ -27,6 +27,9 @@
 \usepackage{longtable}  
 \usepackage{setspace}
 \usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{acro}
 \usepackage[style=numeric]{biblatex}
 \addbibresource{bib_file.bib}
 \bibliography{bib_file}
@@ -186,8 +189,6 @@ TODO
 \newpage
 \chapter*{Note of thanks}
 
-
-
 %%%%%%%%%%%%%%%%%%%
 %% Table of Contents
 %%%%%%%%%%%%%%%%%%%
@@ -203,6 +204,38 @@ TODO
 
 \chapter{Introduction}\label{ch:intro}
 
+The following chapter will give the reader a short explanation what inspired the work for this thesis, what its prupose is 
+and what it wishes to achiev, as well as an explanation how this work is structured, to give the reader a better oriantation 
+for how to navigate this work.
+
+\section{Inspiration for this Thesis} 
+
+\section{Purpose of this Thesis} 
+
+\section{Outline of the Thesis} 
+
+In the second Chapter of this thesis will give a short overview over the basics of Machine Learning that are relavant for
+the understanding of the premise for the thesis. It will give also a short describtion about what is special about Data stream 
+in Machine learning algorithms and what is importend to take into account when working with them.
+It will also give a short introduction about the criterias with which the comparision of the different implementations 
+of the Algorithm take place and why these criteria are used for  comparision.
+In the last part of the first chapter will be the framework introduced that was used for implementation and comparision.
+
+The next chapter will then continue to give a deeper look into the deeper parts of the subsection of Machine learning 
+and the Algorithm that is the basis for the different variation of implementation for the Algorithms.
+It will also give a short introduction about the version that this algorithm was based on, as this is importend to later understand
+the varietions and differences in the other implementations.
+In the last part of that chapter will then explain the differnet methods and the implementations of the varieants in greater detail.
+
+The fourth chapter will then list and describe the used synthetic and real world streaming data sets that where used to 
+perform the experiments.
+Furthermore will be describe how the experiments where conductet and with wich methods the results where controlled.
+
+Following this, the next chapter will be dedicated for the result evaluation what what we informations where hoefully gained
+from conducting these experiments for the comparision of thes implementations.
+
+The last chapter will summarys all the work that was done and give a final evaluation to the algorithms.
+
 \chapter{Basics}
 The Goal of this Chapter is to give the Reader a basic understanding of how Machine Learning Algorithm work. 
 Furthermore, it will describe what the difference is between unsupervised und supervised learning. 
@@ -212,7 +245,7 @@ Modified versions of the Algorithms that will be compared in this work, works an
 After this is done there will be also a short description on what Streaming Data is and on the framework that is used to 
 realise the implementation of the Experiments.
 
-Finally there will be a explanation on how the criteria for the comparission of the Algorithms where choosen and how 
+Finally there will be a explanation on how the criteria for the comparision of the Algorithms where choosen and how 
 theses criteria work.
 
 \section{Machine Learning}
@@ -244,7 +277,7 @@ strategy.
 \end{figure}
 
 Only the Supervised Learning strategy will be explained in more detail on the following pages, as the focus of this 
-thesis lays in the comparission of several different implementations of classification algortihms that are based on 
+thesis lays in the comparision of several different implementations of classification algortihms that are based on 
 Supervised Learning.
  
 
@@ -384,21 +417,157 @@ Also, the data may be evolving, so our models have to adapt when there are chang
 
 \subsection{Challenges with Streaming Data}
 
+\cite{ConceptDrift}
+
 \section{Framework}
+The following section will shortly introduce the python based scikit-multiflow framework, with which the the comperssion 
+of the different implementations of the RSLVQ algorithm where done.
 
-\subsection{SCIKIT Multiflow}
+\subsection{SCIKIT-Multiflow}
+Scikit-multiflow is a framework that is inspired by the Massive Online Analysis (MOA), the most popular open source framework for machine learning on data streams,
+and MEKA, an open source implementation of methods for multi labeling. Scikit-multiflow is also inpired by scikit-learn, the most 
+popular framework for machine learning in Python. Following the Scikit philosophy, scikit-multiflow is an open source machine-
+learning framework for multi-output/multi-label and stream data. 
 
-\section{Criteria for the Comparission}
+The Scikit-multiflow does not provide a graphical user interface like the MOA framework that it was inspired by. 
+On the other hand can it be used within Jupyter notebooks, a popular interface in the data scientist community that is based 
+on python. 
+It is mainly a library that contains stream generators, learning methods, change detectors and evaluation methods for 
+Machien learning algorithms on streaming data. 
+Scilit-multiflow lays a special focus on its design, so that it is user friendly to new user and familiar for more 
+experienced ones.\cite{skmultiflow}
+
+It achieves this by having a simple workflow that can be easily describe in 4 steps:
+
+\begin{enumerate}
+  \item Create a stream: \\
+        A stream can be generate by use of either one of the predefiend Stream generators or by importing a Stream from a file.
+  \item Instantiate a classifier: \\
+        In this step the user has to choose by which type of algorithm the classifikation process should be accomplished.
+  \item Setup the evaluator: \\
+        Next the user has to choose if the evaluation process should be done presequential or by Hold-out method.
+  Prequential-evaluation or interleaved-testthen-train evaluation, is a popular performance 
+  evaluation method for the stream setting only, where tests are performed on new data before using it to train the model.
+  Hold-out evaluation is a popular performance evaluation method for batch and stream settings, where tests are performed 
+  in a separate test set. \cite{skmultiflow}
+  \item Run the evaluation: \\
+        The evaluator will perform the following subtask in this final step,
+  first, it will check if there are still samples in the stream and then it will pass the next sample to the classifier,
+  which will either test the sample with the \verb|predict()| method or it willl update the classefier with the \verb|partial_fit()|
+  method of the clasifier.
+\end{enumerate}
+  
+To give better understanding how this exactly works, \ref{lst:scikit} will provide a small example where a synthetic waveform gets 
+generated with the WaveformGenerator. This generator will create a synthetic stream that generates default samples with
+21 numeric attributes and 3 target values, based on a random differentiation of some base waveforms.
+For the classifier is the Hoeffding Tree choosen with default parameters.
+After this we chose a prequential evaluator with the following parameters: 
+\begin{itemize}
+  \item \verb|show_plot| = true, this will generate us a dynamic plot that will update as the classifier is trained.
+  \item \verb|pretrain_size| = 200, this parameter sets the number of samples that is used for the first training set.
+  \item \verb|max_sample| = 20000, this parameter set the maximum number of samples that should be used.
+\end{itemize}
+In the last step we then call evaluator method, that will then update the results and the plot.
+It is to note that at the time this thesis was written, the accuracy score stand for the performance 
+in the framework.  \cite{skmultiflow}
+
+\begin{lstlisting}[label=lst:scikit,
+  language=python,
+  firstnumber=1,
+  caption=Simple example of the scikit-multiflow workflow]			   
+
+  """1. Create a stream""" 
+  stream = WaveformGenerator()
+  stream.prepare_for_use()
+  
+  """2. Instantiate the HoeffdingTree classifier"""
+  ht = HoeffdingTree()
+  
+  """3. Setup the evaluator"""
+  evaluator = EvaluatePrequential(show_plot=True,
+                                  pretrain_size=200,
+                                  max_samples=20000)
+  
+  """4. Run evaluation"""
+  evaluator.evaluate(stream=stream, model=ht)
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{Scikit_multiflow_example}
+  \caption{Result Table of the example in \ref{lst:scikit}} 
+  \label{fig:sci_result_examp}
+\end{figure}
+
+\section{Criteria for the Comparision}
+
+This section will explain on what criteriy this thesis will base the comparsion of the different implementations. 
+It will also descirbe what the difference between the cireria is and why this is importend to know.
+It will define what this thesis understands under the terms performance and accuracy, as well as what the differences
+between the used error-estimations are.
+
+\subsection{Evaluations for Data Streams}
+To evaluate a learning algorithmus, it must be know which examples were used to train the algorithmus and which are used to 
+test the model output by the algorithms. Which procedure is used in batch learning has partly depended on data size.
+For small data sets with < 1000 examples the procedure of cross-validation was well suited, as it made maximum use of the
+data that it could use.
+A Problem arose when the size of the data keept increasing, as this practicly created a time limit for procedures that keept
+repeating the training process to many times.
+For this reason it is commen practise to try to reduce the number of folds and repetitions for big data sets to allow experiments
+to conclude in reasonable time. 
+One way to achieve this is to take several hundreds of thousend samples in a single batch and take them for a single holdout run,
+as this requires the least computational effort. The rationalization for this, beside the practical time issues, is that the 
+reliability we may lose by not having repeated runs is compensated by the reliability gained by the sheer number of samples that are used. 
+There are two main approaches that we have to consider for the evaluation process, the first one being Holdout and the second being 
+Prequential. \cite{Bifet_datastream} \\
+These two approaches will be now be described in more detail:
+
+\begin{itemize}
+  \item \textbf{Holdout}:
+        It is often acceptable to measure the performance with a single holdout set when the batch learning learning 
+        would otherwise reache a scale where cross-validation would be too time consuming.
+        This can get very helpful, as the results of different studies can be directly compared to each other. 
+        To do this, the division between the train and test set have to be predefiened.
+        To track model performance over time, the model can be evaluated periodically, for example, after every 
+        one million training examples. Testing the model too often has potential to significantly slow the evaluation 
+        process, depending on the size of the test set.
+        A source for holdout dat sets are for example sets of data of the stream that have not yet been used to train 
+        the learning algorithm.
+        These sets could be taken from "further ahead" in the stream to be used as test sets and could then later be 
+        used again to train the learning algortihm again after the testing is complete.
+        This procedure would be recommandable in scenarios with concept-drift, as it would measure a model’s ability
+        to adapt to the latest trends in the data.
+        In scenarios without drift, a single static holdout set should be sufficent, as this would avoid varying estimates 
+        between test sets.
+        If it is assumed that the test set is independent and sufficently large in relation to the complexity of the 
+        target concept, it can be concluded that it then will provide an accurate measurement of generalization accuracy.
+        \cite{Bifet_datastream}
+  \item \textbf{Prequential}:
+        An alternative approach to evaluate data stream algorithm is to interleave testing with training. Each individual
+        set can be used to test the model before it is used for training and then the accuracy can be incremantally updated
+        from this. When it is performed in this order the model will always be tested by sets that it has not seen yet.
+        This has the advantage that no holdout set is needed to perform testing. This also results in a smooth plot of 
+        the accuracy over time, as each individual set will become increasingly more insignificant to the overall average.
+        This approach also has its disadvantages, as it make it diffcult to accuratly seperate and measure
+        training and testing times. It also obscures the true accuracy that the algorithm can achieve at agiven point, as the 
+        algorithm gets punished for mistakes that it made earlier regardless of the level of accuracy they are eventually
+        capable of. It also has to be said that this effect will diminish over time.
+        With this approach the statistcs are updated with every set from the stream and can be recorded at this level od detail
+        if desired. To increase the efficiency a sampling parameter can be used to reduce the required storage for the results,
+        by recording only at periodic intervals like the holdout method.
+        \cite{Bifet_datastream}
+\end{itemize}
 
 \subsection{Performance}
+Performance is the ability of the classifier not to label as positive an instance that is negative.
 
-\subsection{Accuracy}
-
-\subsection{*kappa-errors}
+\subsection{Accuracy score}
+Accuracy is the number of instances correct clasified / total number of instances.
 
 \chapter{Used Algorithms}
 
 \section{Theoretical Work}
+
 This chapter will try to give a short explanation about how the Robust Soft Learning Vector Quantization Algorithm 
 (short: RSLVQ) works and will also explain the algorithm that it is based on. 
 Furthermore will it explain what momentum based gradient descent algortihms there are and how they work.
@@ -407,13 +576,16 @@ These are used in the different optimization implementation of the RSLVQ that wi
 \section{Learning Vector Quantization}
 
 \section{Robust Soft Learning Vector Quantization}
+\cite{RSLVQOrig}
 
 \section{Momentum Based Gradient Descent}
+
 The following section will outline three algorithms that are widely used in the Deep learning Community and that will later
 be used to optimize the RSLVQ Algorithm in hopes to improve its performence and accuracy.
 
 \subsection{Momentum}
-SGD has trouble navigating ravines, i.e. areas where the surface curves much more steeply in one dimension than in another \cite{problemSteepLearn, Ruder2016AnOO},
+
+SGD has trouble navigating ravines, i.e. areas where the surface curves much more steeply in one dimension than in another \cite{problemSteepLearn, overvieDiffRSLVQ},
 which are common around local optima. In these scenarios, SGD oscillates across the slopes of the ravine while only making 
 hesitant progress along the bottom towards the local optimum as in figure.
 
@@ -424,7 +596,7 @@ hesitant progress along the bottom towards the local optimum as in figure.
   \label{fig:SGD_momentum}
 \end{figure}
 
-Momentum \cite{QIAN1999145, Ruder2016AnOO} is a method that helps accelerate SGD in the relevant direction and dampens
+Momentum \cite{QIAN1999145, overvieDiffRSLVQ} is a method that helps accelerate SGD in the relevant direction and dampens
 oscillations as can be seen in figure . It does this by adding a fraction $\gamma $ of the update vector of the past time step to the
 current update vector
 
@@ -445,8 +617,61 @@ point in the same directions and reduces updates for dimensions whose gradients 
 As a result, we gain faster convergence and reduced oscillation.
 \footnotetext{Genevieve B. Orr}
 
+\subsection{Adagrad}
+The first algorithm that will be described is the Adagrad \cite{Zeiler2012ADADELTAAA}. It has to be noted that this 
+algorithm will not be part of the comparision, but as this algorithm is the base from wich the Adadelta and later the 
+RMSprop were developed from, it will be shortly explained nonteless.
+The Adagrad is an algorithm for gradient-based optimization that adapts to updates for each individual parameter to 
+perform larger or smaller updates depending on their importance. The learning rate gets adapted to the parameters, were
+it performs larger updates if the parameters are more infrequent and smaller updates if they are frequent.
+Hence, it is well-suited to deal with sparse data. As other works \cite{dean2012large} have shown, this greatly improves
+the robustness of SGD, which lead to its wide use to train large Neural Networks.
+It was also used to train GloVe word embeddings as infrequent words require
+much larger updates than frequent ones \cite{pennington2014glove, overvieDiffRSLVQ}.   
+
+For the reason that Adagrad uses a different learning rate for every parameter $\theta_i$ at every time step \textit{t},
+Adagrad's per-parameter update is first shown and then vectorized. For brevity, we set $\textit{g}_\textit{t, i}$ to be
+the gradient of the objective function w.r.t. the parameter $\theta_i$ at the time step \textit{t}:
+
+\begin{equation}
+  \textit{g}_\textit{t, i} = \nabla_\textit{$\theta$ t}\textit{J}(\theta_\textit{t, i})
+  \label{equ:Adagrad_1}
+\end{equation}
+
+The update for every SGD parameter $\theta_i$ at time \textit{t} becomes to:
+
+\begin{equation}
+  \theta_\textit{t+1, i} = \theta_\textit{t, i} - \eta \cdot \textit{g}_\textit{t, i}
+\end{equation}
+
+In its update rule, Adagrad modifies the general learning rate $\eta$ each time step \textit{t} for every parameter
+$\theta_i$ based on the past gradients that have been computed for $\theta_i$:
+
+\begin{equation}
+  \theta_\textit{t+1, i} = \theta_\textit{t, i}-\frac{\eta}{\textit{G}_\textit{t, ii} - \epsilon} \textit{g}_\textit{t, i}
+\end{equation}
+
+$\textit{G}_t$ $\in$ $\R^\textit{dxd}$ here is a diagonal matrix where each diagonal element \textit{i, i} is the sum of the
+squares of the gradients w.r.t. $\theta_i$ up to time step \textit{t} \cite{duchi2011adaptive}, while $\epsilon$ is a smoothing term that avoids
+division by zero (usually on the order of 1\textit{e} - 8). 
+
+As $\textit{G}_t$ contains the sum of the squares of the past gradients w.r.t. to all parameters $\theta$ along its
+diagonal, we can now vectorize our implementation by performing an element-wise matrix-vector multiplication $\odot$
+between $\textit{G}_t$ and $\textit{g}_t$:
+
+\begin{equation}
+  \Delta\theta_\textit{t} = -\frac{\eta}{\sqrt{\textit{G}_\textit{t} + \epsilon}} \odot \textit{g}_\textit{t}
+  \label{equ:Adagrad_2}
+\end{equation}
+
+One of Adagrad’s main benefits is that it eliminates the need to manually tune the learning rate. Most implementations 
+use a default value of 0.01 and leave it at that.
+Adagrad’s main weakness is its accumulation of the squared gradients in the denominator: Since every added term is 
+positive, the accumulated sum keeps growing during training. This in turn causes the learning rate to shrink and eventually
+become infinitesimally small, at which point the algorithm is no longer able to acquire additional knowledge. \cite{overvieDiffRSLVQ}
+
 \subsection{Adadelta}
-One of the more often used momentum-based Algorithm is the Adadelta approach. It is an extension of the Adagrad \cite{Zeiler2012ADADELTAAA} that 
+One of the more often used momentum-based algorithm is the Adadelta approach. It is an extension of the Adagrad that 
 seeks to reduce its aggressive, monotonically decreasing learning rate. Instead of accumulating all past squared gradients, 
 Adadelta restricts the window of accumulated past gradients to some fixed size $\omega$.  
 
@@ -456,7 +681,7 @@ then depends (as a fraction $\gamma $ similarly to the Momentum term) only on th
 current gradient:
 
 \begin{equation}
-\textit{E}[\textit{g}^2]_t = \gamma\textit{E}[\textit{g}^2]_t-1 + (1-\gamma)\textit{g}^2_t
+\textit{E}[\textit{g}^2]_t = \gamma\textit{E}[\textit{g}^2]_\textit{t-1} + (1-\gamma)\textit{g}^2_t
 \end{equation}
 
 We then set $\gamma$ to a simliar value as the momentum, around 0.9. The SGD update will then be rewriten in terms of the 
@@ -469,7 +694,8 @@ parameter update vector $\Delta\theta_\textit{t}$:
   \end{split}
 \end{equation}
 
-Bacuase of this, the parameter update vector, that is base of the parameter update vecot of the Adagrad, takes the form of:
+Bacuase of this, the parameter update vector, that is base of the parameter update vecotor of the Adagrad (see equation \ref{equ:Adagrad_2}), 
+takes the form of:
 
 \begin{equation}
   \Delta\theta_\textit{t} = -\frac{\eta}{\sqrt{\textit{G}_\textit{t} + \epsilon}} \odot \textit{g}_\textit{t}
@@ -517,8 +743,81 @@ leads to the final update rule for the Adadelta:
 In the Adadelta we do not need to set a learning rate $\eta$, eliminated from the update rule. \cite{overvieDiffRSLVQ}
 
 \subsection{RMSprop}
+RMSprop is an adaptive learning rate method proposed by Geoff Hinton in Lecture 6e of his Coursera Class. \cite{RMSprop_Hinton}
+As a result of the need to resolve the Adagrad's radically diminishing learning rates, both the Adadelta and 
+the RMSprop had been developed independetly from each other at the same time. RMSprop in fact is identical
+to the first update vector of Adadelta that we derived above:
+
+\begin{equation}
+  \begin{split}
+  \textit{E}[\textit{g}^2]_t = 0.9\textit{E}[\textit{g}^2]_\textit{t-1} + 0.1\textit{g}^2_t \\
+  \theta_\textit{t+1} = \theta_\textit{t}-\frac{\eta}{RMS[\textit{g}]_t} \textit{g}_\textit{t}
+  \end{split}
+\end{equation}
+
+RMSprop as well divides the learning rate by an exponentially decaying average of squared gradients.
+Hinton suggests $\gamma$ to be set to 0.9, while a good default value for the learning rate $\eta$ is 0.001. \cite{overvieDiffRSLVQ}
 
 \subsection{Adam}
+As described in \cite{Incorporating Nesterov Momentum into Adam}, the Adaptive Moment Estimation (Adam) is another way to 
+to compute the adaptive learning rate for each parameter. Additionly to storing an exponentially decaying average of past squared gradients
+$\textit{v}_t$ like Adadelta or RMSprop, Adam also keeps an exponentially decaying average of past gradients $\textit{m}_t$,
+simliar to momentum:
+
+\begin{equation}
+  \begin{split}
+  \textit{m}_t = \beta_1\textit{m}_\textit{t-1} + (1-\beta_1)\textit{g}_t \\
+  \textit{v}_t = \beta_2\textit{v}_\textit{t-1} + (1-\beta_2)\textit{g}^2_t
+  \end{split}
+\end{equation}
+
+$\textit{m}_t$ and $\textit{v}_t$ are estimates of the first moment (the mean) and the second moment (the uncentered variance)
+of the gradients respectively, hence the name of the method. As $\textit{m}_t$ and $\textit{v}_t$ are initialized as vectors of 
+0's, the authors of Adam observe that they are biased towards zero, especially during the initial time steps, and especially 
+when the decay rates are small (i.e. $\beta_1$ and $\beta_2$ are close to 1).
+
+To counteract these biases they compute a bias-corrected estimate of the first and second moment:
+
+\begin{equation}
+  \begin{split}
+  \hat{m}_t = \frac{\textit{m}_t}{1-\beta^t_1} \\
+  \hat{v}_t = \frac{\textit{v}_t}{1-\beta^t_2}
+  \end{split}
+\end{equation}
+
+These are then used to update the parameters just as we have seen in Adadelta and RMSprop, which yields the Adam update rule:
+
+\begin{equation}
+\theta_\textit{t+1} = \theta_\textit{t}-\frac{\eta}{\sqrt{\hat{v}_t}+ \epsilon} \hat{m}_t
+\end{equation}
+
+The authors recommend in their work to use as default values of 0.9 for $\beta_1$, 0.999 for $\beta_2$ and $10^-8$ for $\epsilon$.
+They show empirically that Adam works well in practice and compares favorably to other adaptive learning-method algorithms.
+\cite{Kingma2014AdamAM}
+
+\begin{algorithm}
+  \caption{Adam algorithm, as proposed in \cite{Kingma2014AdamAM}. The authors recommend for default settings the value
+          0.9 for $\beta_1$, 0.999 for $\beta_2$ and $10^-8$ for $\epsilon$ as well as a stepsize $\alpha$ of 0.001.}\label{euclid}
+  \begin{algorithmic}[1]
+    \Require $\alpha$: Stepsize
+    \Require $\beta_1$, $\beta_2$ $\in$ $[0,1)$: Exponential decay rates for the moment estimates
+    \Require \textit{f}$(\theta)$: Stochastic objective function with parameters $\theta$
+    \Require $\theta_0$: Initial parameter vector \\
+    Initialize first moment vector: $m_0 = 0$ \\
+    Initialize second moment vector: $v_0 = 0$ \\
+    Initialize timestep: $t = 0$ 
+    \While{$\theta_t$ not converged} \\
+      t = t + 1 \\
+      Get the gradients at timestamp $\textit{t}: \textit{g}_t = \nabla_\textit{$\theta$ t}\textit{J}(\theta_\textit{t-1})$ ( see equation \ref{equ:Adagrad_1}) \\
+      Update first moment estimate: $\textit{m}_t = \beta_1\textit{m}_\textit{t-1} + (1-\beta_1)\textit{g}_t$ \\
+      Update second moment estimate: $\textit{v}_t = \beta_2\textit{v}_\textit{t-1} + (1-\beta_2)\textit{g}^2_t$ \\
+      Compute bias-corrected first moment estimate: $\hat{m}_t = \frac{\textit{m}_t}{1-\beta^t_1}$ \\
+      Compute bias-corrected second moment estimate: $\hat{v}_t = \frac{\textit{v}_t}{1-\beta^t_2}$ \\
+      Update the parameters: $\theta_\textit{t+1} = \theta_\textit{t}-\frac{\eta}{\sqrt{\hat{v}_t}+ \epsilon} \hat{m}_t$ \\
+    \EndWhile
+    \Return Resulting parameters: $\theta_t$
+  \end{algorithmic}
+\end{algorithm}
 
 \section{Implementation of the RSLVQ variants}
 
@@ -534,9 +833,55 @@ In the Adadelta we do not need to set a learning rate $\eta$, eliminated from th
 
 \section{Used Streaming Datat sets}
 
+In this section will be a short describtion of the data streams, synthetic and real world data, that where used to 
+perform the experiments.
+
+\subsection{Synthetic data}
+
+\begin{itemize}
+  \item Sea Concepts: !not finsihed rework required!\\
+        This dataset consists of 50000 instances with three attributes of which only two are relevant. 
+        The two class decision boundary is given by f1 + f2 = b, where f1, f2 are the two relevant features and b a
+        predefined threshold. Abrupt drift is simulated with four different concepts, by changing the value of b every 
+        12500 samples. Also included are 10\verb|%| of noise. \cite{SEADataset}
+  \item Moving Squares: \\
+        placeholder
+\end{itemize}
+
 \subsection{Real world data}
 
-\section{Implementation of the Comparission and Results}
+\begin{itemize}
+  \item Weather Dataset: \\
+        This dataset contains eight different features like the minimum and maximum tempreature, visibility, wind speed, 
+        air pressure, etc. that were measured at the Offutt Air Force Base in Bellevue, Nebraska. These measuredments were
+        measured in the period of 1949-1999. The goal of this dataset is to predict if it is going to rain on certains day or not.
+        It contains 18159 instances with an imbalance towards no rain (69\verb|%|) and was introduced by Elwell et al..
+
+  \item Electicity Market Dataset:\\
+        First described by Harris et al., it is often used for performance comparison, as it is a good benchmark for concept drift 
+        classification. It holds the information of the Australian New South Wales Electricity Market, whose prices are affected 
+        by supply and demand. Each sample is characterized by teh following attributes: day of the week, time stamp, market demand,
+        etc.. Each of the samples refers to a period of 30 minutes and the class label identiﬁes the relative change compared to the
+        last 24 hours. The used Dataset is the normalized version of the original dataset.
+
+  \item Poker Dataset: \\
+        To create this dataset, one million poker hands, each represented by five cards that got encoded with its suit and rank, 
+        were randomly drawn. The class is the resulting poker hand itself such as one pair, full house and so forth.
+        Since the poker hand can not change by definition and each instance was randomly generated, this dataset had 
+        in its original form no drift in it.
+        As this is the version as it was introduced by \cite{bifet2013efficient}, virtual drift is present in this dataset. 
+        This was achieved by sorting the instances of the dataset by rank and suit. Duplicate hands were also removed.
+        Additionly, this version was also normalized.
+
+  \item Outdoor Objects: \\
+        This Dataset was optained by images that were recorded by a mobile in a garden enviroment. The goal is to classify 40 different objects,
+        each approached ten times under varying lighting conditions affecting the color based representation.
+        Every ten images represent one approach and each approach is in temporal order within the dataset.
+        The objects are encoded in a normalized 21-dimensional RG-Chromaticity histogram.
+
+\end{itemize}
+
+\section{Implementation of the Comparision and Results}
 
 \subsection{Experiment begrenzung}
 
@@ -578,8 +923,6 @@ Etiam vitae eros erat. Praesent nec accumsan turpis, et mollis eros. Praesent la
 Sed in tempus elit, sit amet suscipit quam. Ut suscipit dictum molestie. Etiam quis porta mauris. Cras dapibus sapien eget sem porta, ut congue sapien accumsan. Maecenas hendrerit lobortis mauris ut hendrerit. Suspendisse at aliquet est. Quisque eros est, scelerisque ac orci quis, placerat suscipit lorem. Phasellus rutrum enim non odio ullamcorper, sit amet auctor nulla fringilla. Nunc eleifend vulputate dui, a sollicitudin tellus venenatis non. Cras condimentum lorem at ultricies vestibulum. Vestibulum interdum lobortis commodo. Nullam rhoncus interdum massa, ut varius nisi scelerisque id. Nunc interdum quam in enim bibendum vulputate.
 
 \chapter{Summary}
-
-\chapter{Sources}
 
 \backmatter
 %%%%%%%%%%%%%%%%%%%

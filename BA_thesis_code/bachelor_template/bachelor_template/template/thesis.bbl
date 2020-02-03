@@ -19,6 +19,80 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{Bifet_datastream}{book}{}
+      \name{author}{3}{}{%
+        {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
+           family={Bifet},
+           familyi={B\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9a94cc4d8fdede6bc394f7eb30eab646}{%
+           family={Kirkby},
+           familyi={K\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=d1ea1c871e86cad148936a9a020250c3}{%
+           family={Pfahringer},
+           familyi={P\bibinitperiod},
+           given={Bernhardt},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{3c4d57cfb4cab4f30a1c58ca4ce21217}
+      \strng{fullhash}{3c4d57cfb4cab4f30a1c58ca4ce21217}
+      \strng{bibnamehash}{3c4d57cfb4cab4f30a1c58ca4ce21217}
+      \strng{authorbibnamehash}{3c4d57cfb4cab4f30a1c58ca4ce21217}
+      \strng{authornamehash}{3c4d57cfb4cab4f30a1c58ca4ce21217}
+      \strng{authorfullhash}{3c4d57cfb4cab4f30a1c58ca4ce21217}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{DATA STREAM MINING A Practical Approach}
+      \field{year}{2011}
+    \endentry
+    \entry{bifet2013efficient}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
+           family={Bifet},
+           familyi={B\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8d3031672ff9944d1bd83979cee191bb}{%
+           family={Pfahringer},
+           familyi={P\bibinitperiod},
+           given={Bernhard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=5903f6c15fa819e151c16c5691b5b372}{%
+           family={Read},
+           familyi={R\bibinitperiod},
+           given={Jesse},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fbe67b128273a908b77e6417dcc337a2}{%
+           family={Holmes},
+           familyi={H\bibinitperiod},
+           given={Geoff},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{fullhash}{cc35cd17f4e2aebea2701d5aea29e710}
+      \strng{bibnamehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{authorbibnamehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{authornamehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{authorfullhash}{cc35cd17f4e2aebea2701d5aea29e710}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 28th annual ACM symposium on applied computing}
+      \field{title}{Efficient data stream classification via probabilistic adaptive windows}
+      \field{year}{2013}
+      \field{pages}{801\bibrangedash 806}
+      \range{pages}{6}
+    \endentry
     \entry{MLonDataStreams}{book}{}
       \name{author}{4}{}{%
         {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
@@ -51,6 +125,7 @@
       \strng{authorbibnamehash}{d58180b363e800ecb53eb5bad4d889f3}
       \strng{authornamehash}{d58180b363e800ecb53eb5bad4d889f3}
       \strng{authorfullhash}{4335ded1a68387ec7ce9525c3f16c320}
+      \field{extraname}{2}
       \field{sortinit}{B}
       \field{sortinithash}{8de16967003c7207dae369d874f1456e}
       \field{labelnamesource}{author}
@@ -58,6 +133,77 @@
       \field{note}{\url{https://moa.cms.waikato.ac.nz/book/}}
       \field{title}{Machine Learning for Data Streams with Practical Examples in MOA}
       \field{year}{2018}
+    \endentry
+    \entry{dean2012large}{inproceedings}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=4aecfb0cc2e1e3b7899129fa2a94e2b8}{%
+           family={Dean},
+           familyi={D\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3d11e6f2a0d0a1183b2cf62996525afc}{%
+           family={Corrado},
+           familyi={C\bibinitperiod},
+           given={Greg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=f34904ef0a6e0864175e4c446f9fcf14}{%
+           family={Monga},
+           familyi={M\bibinitperiod},
+           given={Rajat},
+           giveni={R\bibinitperiod}}}%
+        {{hash=ee3f7d7b96add98106db907e189d6c13}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Kai},
+           giveni={K\bibinitperiod}}}%
+        {{hash=bd7f88635b51bc5abb3d5a2cab967724}{%
+           family={Devin},
+           familyi={D\bibinitperiod},
+           given={Matthieu},
+           giveni={M\bibinitperiod}}}%
+        {{hash=110bac034ee2649499af3a0caecd55a1}{%
+           family={Mao},
+           familyi={M\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=95ac6c23bb83367a9ed91ef0e828f26e}{%
+           family={Ranzato},
+           familyi={R\bibinitperiod},
+           given={Marc'aurelio},
+           giveni={M\bibinitperiod}}}%
+        {{hash=99e8963f52f6bfb1af553a6a8823718a}{%
+           family={Senior},
+           familyi={S\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c7360a7ebeba8420b8c7e0eeb0cb81ac}{%
+           family={Tucker},
+           familyi={T\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=decb3ccdac45fcb482db58da7bb34a14}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Ke},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{22dbff284f8d6a274d7a4dcc5e95ffea}
+      \strng{fullhash}{155991a3692243d15225d493b116c341}
+      \strng{bibnamehash}{22dbff284f8d6a274d7a4dcc5e95ffea}
+      \strng{authorbibnamehash}{22dbff284f8d6a274d7a4dcc5e95ffea}
+      \strng{authornamehash}{22dbff284f8d6a274d7a4dcc5e95ffea}
+      \strng{authorfullhash}{155991a3692243d15225d493b116c341}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in neural information processing systems}
+      \field{title}{Large scale distributed deep networks}
+      \field{year}{2012}
+      \field{pages}{1223\bibrangedash 1231}
+      \range{pages}{9}
     \endentry
     \entry{AdadeltaAddition}{article}{}
       \name{author}{3}{}{%
@@ -86,6 +232,7 @@
       \strng{authorbibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
       \strng{authornamehash}{21039f1d6e97f13dbd40c187a8131cf0}
       \strng{authorfullhash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \field{extraname}{1}
       \field{sortinit}{D}
       \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
       \field{labelnamesource}{author}
@@ -99,6 +246,105 @@
       \field{year}{2011}
       \field{pages}{2121\bibrangedash 2159}
       \range{pages}{39}
+    \endentry
+    \entry{duchi2011adaptive}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b8fbef1897da5bf46822ced31bc865c6}{%
+           family={Duchi},
+           familyi={D\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0b3d32703edd2b7248e8e8f33c5893db}{%
+           family={Hazan},
+           familyi={H\bibinitperiod},
+           given={Elad},
+           giveni={E\bibinitperiod}}}%
+        {{hash=300d4990e626d975e0c28630444f63c3}{%
+           family={Singer},
+           familyi={S\bibinitperiod},
+           given={Yoram},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{fullhash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{bibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authorbibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authornamehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authorfullhash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of machine learning research}
+      \field{number}{Jul}
+      \field{title}{Adaptive subgradient methods for online learning and stochastic optimization}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{2121\bibrangedash 2159}
+      \range{pages}{39}
+    \endentry
+    \entry{ConceptDrift}{article}{}
+      \name{author}{5}{}{%
+        {{hash=844d99c5b8c67291826b6a62fea44989}{%
+           family={Gama},
+           familyi={G\bibinitperiod},
+           given={João},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0743cb9bc0f7e160f30c26a1ef42297b}{%
+           family={Žliobaitundefined},
+           familyi={Ž\bibinitperiod},
+           given={Indrundefined},
+           giveni={I\bibinitperiod}}}%
+        {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
+           family={Bifet},
+           familyi={B\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8e2774559888845d8e0e20be5a4dd907}{%
+           family={Pechenizkiy},
+           familyi={P\bibinitperiod},
+           given={Mykola},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2cb927209b522e1d5fff80c38210c753}{%
+           family={Bouchachia},
+           familyi={B\bibinitperiod},
+           given={Abdelhamid},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{56431deb8901de6306944b9ccd741193}
+      \strng{fullhash}{05bcccf822d6c292bc78cef77a9fe417}
+      \strng{bibnamehash}{56431deb8901de6306944b9ccd741193}
+      \strng{authorbibnamehash}{56431deb8901de6306944b9ccd741193}
+      \strng{authornamehash}{56431deb8901de6306944b9ccd741193}
+      \strng{authorfullhash}{05bcccf822d6c292bc78cef77a9fe417}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0360-0300}
+      \field{journaltitle}{ACM Comput. Surv.}
+      \field{month}{3}
+      \field{number}{4}
+      \field{title}{A Survey on Concept Drift Adaptation}
+      \field{volume}{46}
+      \field{year}{2014}
+      \verb{doi}
+      \verb 10.1145/2523813
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/2523813
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/2523813
+      \endverb
+      \keyw{data streams,change detection,adaptive learning,Concept drift}
     \endentry
     \entry{Goodfellow-et-al-2016}{book}{}
       \name{author}{3}{}{%
@@ -135,6 +381,107 @@
       \field{title}{Deep Learning}
       \field{year}{2016}
     \endentry
+    \entry{RMSprop_Hinton}{article}{}
+      \name{author}{1}{}{%
+        {{hash=02d6b3dbe848ae8d6daa02d0ca551107}{%
+           family={Hinton},
+           familyi={H\bibinitperiod},
+           given={Geoff},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{02d6b3dbe848ae8d6daa02d0ca551107}
+      \strng{fullhash}{02d6b3dbe848ae8d6daa02d0ca551107}
+      \strng{bibnamehash}{02d6b3dbe848ae8d6daa02d0ca551107}
+      \strng{authorbibnamehash}{02d6b3dbe848ae8d6daa02d0ca551107}
+      \strng{authornamehash}{02d6b3dbe848ae8d6daa02d0ca551107}
+      \strng{authorfullhash}{02d6b3dbe848ae8d6daa02d0ca551107}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Overview of mini-­‐batch gradient descent}
+      \verb{urlraw}
+      \verb 2http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf
+      \endverb
+      \verb{url}
+      \verb 2http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf
+      \endverb
+    \endentry
+    \entry{Kingma2014AdamAM}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b6fbd171848aad4edf3925543f1f1522}{%
+           family={Kingma},
+           familyi={K\bibinitperiod},
+           given={Diederik\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=8aa66e8231cc2fdbe67aa4f18ca970c6}{%
+           family={Ba},
+           familyi={B\bibinitperiod},
+           given={Jimmy},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{fullhash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{bibnamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorbibnamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authornamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorfullhash}{a09df9f123146b8e2c7f1134c9496932}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{CoRR}
+      \field{title}{Adam: A Method for Stochastic Optimization}
+      \field{volume}{abs/1412.6980}
+      \field{year}{2014}
+    \endentry
+    \entry{skmultiflow}{article}{}
+      \name{author}{4}{}{%
+        {{hash=6d4514d05199508788a0f944e8b6a846}{%
+           family={Montiel},
+           familyi={M\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5903f6c15fa819e151c16c5691b5b372}{%
+           family={Read},
+           familyi={R\bibinitperiod},
+           given={Jesse},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
+           family={Bifet},
+           familyi={B\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2436d3a3a62826e36a51a786f447aa69}{%
+           family={Abdessalem},
+           familyi={A\bibinitperiod},
+           given={Talel},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{cbe704f6187f69c0d3ee61062a00118c}
+      \strng{fullhash}{ad032449f926f3838b3beeca3b308fd5}
+      \strng{bibnamehash}{cbe704f6187f69c0d3ee61062a00118c}
+      \strng{authorbibnamehash}{cbe704f6187f69c0d3ee61062a00118c}
+      \strng{authornamehash}{cbe704f6187f69c0d3ee61062a00118c}
+      \strng{authorfullhash}{ad032449f926f3838b3beeca3b308fd5}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{72}
+      \field{title}{Scikit-Multiflow: A Multi-output Streaming Framework}
+      \field{volume}{19}
+      \field{year}{2018}
+      \field{pages}{1\bibrangedash 5}
+      \range{pages}{5}
+      \verb{urlraw}
+      \verb http://jmlr.org/papers/v19/18-251.html
+      \endverb
+      \verb{url}
+      \verb http://jmlr.org/papers/v19/18-251.html
+      \endverb
+    \endentry
     \entry{IntroML}{book}{}
       \name{author}{1}{}{%
         {{hash=91c95ed3e3f572f27346b1131492bb8b}{%
@@ -155,6 +502,40 @@
       \field{labeltitlesource}{title}
       \field{title}{Introduction to Machine Learning}
       \field{year}{1998}
+    \endentry
+    \entry{pennington2014glove}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=ab47b497d1b0cdaddd8594e4bd501ee5}{%
+           family={Pennington},
+           familyi={P\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod}}}%
+        {{hash=d5670b2600fea169724521e252d9d09d}{%
+           family={Socher},
+           familyi={S\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2214edb8305f7ccd7cdc310b3a8ae1b4}{%
+           family={Manning},
+           familyi={M\bibinitperiod},
+           given={Christopher\bibnamedelima D},
+           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{077003808bf2e10b988df0fc99931a19}
+      \strng{fullhash}{077003808bf2e10b988df0fc99931a19}
+      \strng{bibnamehash}{077003808bf2e10b988df0fc99931a19}
+      \strng{authorbibnamehash}{077003808bf2e10b988df0fc99931a19}
+      \strng{authornamehash}{077003808bf2e10b988df0fc99931a19}
+      \strng{authorfullhash}{077003808bf2e10b988df0fc99931a19}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP)}
+      \field{title}{Glove: Global vectors for word representation}
+      \field{year}{2014}
+      \field{pages}{1532\bibrangedash 1543}
+      \range{pages}{12}
     \endentry
     \entry{IntroAI}{book}{}
       \name{author}{1}{}{%
@@ -253,29 +634,6 @@
       \strng{authorbibnamehash}{b468248a20d75c52ee742f4592c2569f}
       \strng{authornamehash}{b468248a20d75c52ee742f4592c2569f}
       \strng{authorfullhash}{b468248a20d75c52ee742f4592c2569f}
-      \field{extraname}{1}
-      \field{sortinit}{R}
-      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{An overview of gradient descent optimization algorithms}
-      \field{year}{2016}
-    \endentry
-    \entry{Ruder2016AnOO}{article}{}
-      \name{author}{1}{}{%
-        {{hash=b468248a20d75c52ee742f4592c2569f}{%
-           family={Ruder},
-           familyi={R\bibinitperiod},
-           given={Sebastian},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{b468248a20d75c52ee742f4592c2569f}
-      \strng{fullhash}{b468248a20d75c52ee742f4592c2569f}
-      \strng{bibnamehash}{b468248a20d75c52ee742f4592c2569f}
-      \strng{authorbibnamehash}{b468248a20d75c52ee742f4592c2569f}
-      \strng{authornamehash}{b468248a20d75c52ee742f4592c2569f}
-      \strng{authorfullhash}{b468248a20d75c52ee742f4592c2569f}
-      \field{extraname}{2}
       \field{sortinit}{R}
       \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
       \field{labelnamesource}{author}
@@ -284,6 +642,87 @@
       \field{title}{An overview of gradient descent optimization algorithms}
       \field{volume}{abs/1609.04747}
       \field{year}{2016}
+    \endentry
+    \entry{RSLVQOrig}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9e57533c81d816e90b7ec4ea17ba6c75}{%
+           family={Seo},
+           familyi={S\bibinitperiod},
+           given={Sambu},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bc24f398d8c32ab1cff5ad6b60aaceb4}{%
+           family={Obermayer},
+           familyi={O\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{ab18a68b56cc2d801384a3e9411ad301}
+      \strng{fullhash}{ab18a68b56cc2d801384a3e9411ad301}
+      \strng{bibnamehash}{ab18a68b56cc2d801384a3e9411ad301}
+      \strng{authorbibnamehash}{ab18a68b56cc2d801384a3e9411ad301}
+      \strng{authornamehash}{ab18a68b56cc2d801384a3e9411ad301}
+      \strng{authorfullhash}{ab18a68b56cc2d801384a3e9411ad301}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neural computation}
+      \field{number}{7}
+      \field{title}{Soft learning vector quantization}
+      \field{volume}{15}
+      \field{year}{2003}
+      \field{pages}{1589\bibrangedash 1604}
+      \range{pages}{16}
+    \endentry
+    \entry{SEADataset}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=628f3831a8a99de2c064a36e3cc5aded}{%
+           family={Street},
+           familyi={S\bibinitperiod},
+           given={W.\bibnamedelimi Nick},
+           giveni={W\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=6f4a965307aba35585091bb8ab946453}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={YongSeog},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {San Francisco, California}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{05214c2de7b2a6f3ceeb15aed6e94dc4}
+      \strng{fullhash}{05214c2de7b2a6f3ceeb15aed6e94dc4}
+      \strng{bibnamehash}{05214c2de7b2a6f3ceeb15aed6e94dc4}
+      \strng{authorbibnamehash}{05214c2de7b2a6f3ceeb15aed6e94dc4}
+      \strng{authornamehash}{05214c2de7b2a6f3ceeb15aed6e94dc4}
+      \strng{authorfullhash}{05214c2de7b2a6f3ceeb15aed6e94dc4}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the Seventh ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}
+      \field{isbn}{158113391X}
+      \field{series}{KDD ’01}
+      \field{title}{A Streaming Ensemble Algorithm (SEA) for Large-Scale Classification}
+      \field{year}{2001}
+      \field{pages}{377\bibrangedash 382}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/502512.502568
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/502512.502568
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/502512.502568
+      \endverb
+      \keyw{ensemble classification,streaming data}
     \endentry
     \entry{problemSteepLearn}{paper}{}
       \name{author}{1}{}{%
@@ -330,6 +769,7 @@
       \field{year}{2012}
     \endentry
   \enddatalist
+  \missing{Incorporating Nesterov Momentum into Adam}
 \endrefsection
 \endinput
 

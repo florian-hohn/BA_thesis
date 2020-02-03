@@ -5,17 +5,17 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Overview of the Machine Learning Strategy's.\relax }}{3}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Overview of the Machine Learning Strategy's.\relax }}{4}{figure.caption.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Process of the Supervised Learning. \cite {PythonML}\relax }}{5}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Process of the Supervised Learning. \cite {PythonML}\relax }}{6}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Visualisation differences of the three Gradient Descent Algorithms\relax }}{7}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Visualisation differences of the three Gradient Descent Algorithms\relax }}{8}{figure.caption.9}%
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Diff. SGD moment.}}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Result Table of the example in \ref {lst:scikit}\relax }}{11}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diff. SGD moment.}}{15}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
