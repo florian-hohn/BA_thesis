@@ -1,8 +1,8 @@
 import numpy
-from skmultiflow.prototype.robust_soft_learning_vector_quantization import RobustSoftLearningVectorQuantization as RSLVQ
+import skmultiflow.prototype
 
 
-class RSLVQSgd(RSLVQ):
+class RSLVQSgd(skmultiflow.prototype.robust_soft_learning_vector_quantization):
     """Inherits from the scikit-multiflow framework implementation 
     of the rslvq algortihm and modifies it to an implementation where the decition is done with the sgd"""
 
