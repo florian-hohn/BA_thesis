@@ -1,7 +1,7 @@
 import numpy
 from skmultiflow.prototype.robust_soft_learning_vector_quantization import RobustSoftLearningVectorQuantization as RSLVQ
 
-class RSLVQRmsprop(RSLVQ):
+class RSLVQRmspropAda(RSLVQ):
     """description of class"""
     def _optimize(self, x, y, random_state):
         """Implementation of Adaptive RMSprop"""
