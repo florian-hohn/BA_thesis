@@ -9,8 +9,8 @@ class RSLVQAdam(RSLVQ):
             beta1 = 0.9
             beta2 = 0.999
             t = 0
-            m0 = 0  #initalize as vector of 0, not as 0
-            v0 = 0  #initalize as vector of 0, not as 0
+            m = 0  #initalize as vector of 0, not as 0
+            v = 0  #initalize as vector of 0, not as 0
             n_data, n_dim = x.shape
             nb_prototypes = self.c_w_.size
             prototypes = self.w_.reshape(nb_prototypes, n_dim)
@@ -25,13 +25,21 @@ class RSLVQAdam(RSLVQ):
                         gradient = (self._p(j, xi, prototypes=self.w_,y=c_xi) - self._p(j, xi, prototypes=self.w_))* d
                     else:
                         gradient = - self._p(j, xi, prototypes=self.w_)* d
+                    
+                    """Update t by 1"""
                     t += 1
 
                     """Compute decaying averages of gradients"""
-                    m = beta1 m + (1-beta1)*gradient
+                    m = beta1 * m + (1-beta1)*gradient
 
                     """Compute decaying averages of gradients^2"""
-                    v = beta2 v + (1-beta2)*gradient^2
+                    v = beta2 * v + (1-beta2)*gradient^2
+
+                    """Update m by the last gradient"""
+                    m = gradient
+
+                    """Update m by the last squared gradient"""
+                    v = gradient^2
 
                     """Update prototype"""
                     self.w_[j] += - (self.learning_rate/(sqrt(self._v_corrected(t,beta2,v)) + self.epsilon ))*self._m_corrected(t,beta1,m)

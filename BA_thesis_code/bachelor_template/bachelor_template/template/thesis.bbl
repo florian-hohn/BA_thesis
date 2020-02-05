@@ -232,7 +232,6 @@
       \strng{authorbibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
       \strng{authornamehash}{21039f1d6e97f13dbd40c187a8131cf0}
       \strng{authorfullhash}{21039f1d6e97f13dbd40c187a8131cf0}
-      \field{extraname}{1}
       \field{sortinit}{D}
       \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
       \field{labelnamesource}{author}
@@ -242,43 +241,6 @@
       \field{month}{7}
       \field{number}{null}
       \field{title}{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}
-      \field{volume}{12}
-      \field{year}{2011}
-      \field{pages}{2121\bibrangedash 2159}
-      \range{pages}{39}
-    \endentry
-    \entry{duchi2011adaptive}{article}{}
-      \name{author}{3}{}{%
-        {{hash=b8fbef1897da5bf46822ced31bc865c6}{%
-           family={Duchi},
-           familyi={D\bibinitperiod},
-           given={John},
-           giveni={J\bibinitperiod}}}%
-        {{hash=0b3d32703edd2b7248e8e8f33c5893db}{%
-           family={Hazan},
-           familyi={H\bibinitperiod},
-           given={Elad},
-           giveni={E\bibinitperiod}}}%
-        {{hash=300d4990e626d975e0c28630444f63c3}{%
-           family={Singer},
-           familyi={S\bibinitperiod},
-           given={Yoram},
-           giveni={Y\bibinitperiod}}}%
-      }
-      \strng{namehash}{21039f1d6e97f13dbd40c187a8131cf0}
-      \strng{fullhash}{21039f1d6e97f13dbd40c187a8131cf0}
-      \strng{bibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
-      \strng{authorbibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
-      \strng{authornamehash}{21039f1d6e97f13dbd40c187a8131cf0}
-      \strng{authorfullhash}{21039f1d6e97f13dbd40c187a8131cf0}
-      \field{extraname}{2}
-      \field{sortinit}{D}
-      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of machine learning research}
-      \field{number}{Jul}
-      \field{title}{Adaptive subgradient methods for online learning and stochastic optimization}
       \field{volume}{12}
       \field{year}{2011}
       \field{pages}{2121\bibrangedash 2159}
@@ -769,7 +731,6 @@
       \field{year}{2012}
     \endentry
   \enddatalist
-  \missing{Incorporating Nesterov Momentum into Adam}
 \endrefsection
 \endinput
 
