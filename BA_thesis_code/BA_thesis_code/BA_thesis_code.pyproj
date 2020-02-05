@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\base_rslvq.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Algorithms\RSLVQAdam.py">
       <SubType>Code</SubType>
     </Compile>
@@ -29,6 +32,21 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Algorithms\RSLVQRMSprop.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\rslvq_adadelta.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\rslvq_adam.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\rslvq_rmspropada.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\rslvq_sgd.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\rslvq_rmsprop.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BAThesisCode.py" />
