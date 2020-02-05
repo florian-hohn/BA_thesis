@@ -1,0 +1,10 @@
+# TEST CONFIGURATION BEGIN
+# DataStream(n_targets=-1, target_idx=1, cat_features=None, name=None)
+# [M0] RobustSoftLearningVectorQuantization(gamma=0.9, gradient_descent='vanilla', initial_prototypes=None, prototypes_per_class=1, random_state=None, sigma=1.0)
+# EvaluateHoldout(batch_size=1, dynamic_test_set=False, max_samples=8000, max_time=inf, metrics=['accuracy', 'kappa', 'kappa_t', 'kappa_m'], n_wait=800, output_file='electric_hold_result_sgd.csv', restart_stream=True, show_plot=True, test_size=5000)
+# TEST CONFIGURATION END
+id,mean_acc_[M0],current_acc_[M0],mean_kappa_[M0],current_kappa_[M0],mean_kappa_t_[M0],current_kappa_t_[M0],mean_kappa_m_[M0],current_kappa_m_[M0]
+5800,0.561600,0.561600,0.042156,0.042156,-1.753769,-1.753769,-0.127572,-0.122376
+6600,0.516300,0.471000,0.036726,0.032179,-2.038317,-2.322864,-0.242806,-0.357803
+7400,0.539400,0.585600,0.021625,-0.015540,-1.893216,-1.603015,-0.183048,-0.063655
+8000,0.507850,0.413200,0.013544,-0.006025,-2.091394,-2.685930,-0.263867,-0.506160

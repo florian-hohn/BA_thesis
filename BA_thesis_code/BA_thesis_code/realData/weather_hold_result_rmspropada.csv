@@ -1,0 +1,6 @@
+# TEST CONFIGURATION BEGIN
+# DataStream(n_targets=-1, target_idx=1, cat_features=None, name=None)
+# [M0] RobustSoftLearningVectorQuantization(gamma=0.9, gradient_descent='vanilla', initial_prototypes=None, prototypes_per_class=1, random_state=None, sigma=1.0)
+# EvaluateHoldout(batch_size=1, dynamic_test_set=False, max_samples=2000, max_time=inf, metrics=['kappa', 'kappa_t', 'kappa_m'], n_wait=1000, output_file='weather_hold_result_rmspropada.csv', restart_stream=True, show_plot=True, test_size=5000)
+# TEST CONFIGURATION END
+id,mean_kappa_[M0],current_kappa_[M0],mean_kappa_t_[M0],current_kappa_t_[M0],mean_kappa_m_[M0],current_kappa_m_[M0]

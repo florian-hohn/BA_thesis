@@ -1,40 +1,82 @@
 import numpy
 import pandas as pd
+from Algorithms.RSLVQall import RSLVQall
 from skmultiflow.prototype.robust_soft_learning_vector_quantization import RobustSoftLearningVectorQuantization as RSLVQ
 from skmultiflow.drift_detection.adwin import ADWIN
 from skmultiflow.data.data_stream import DataStream
-from skmultiflow.data import WaveformGenerator
-from skmultiflow.trees import HoeffdingTree
+from skmultiflow.evaluation import EvaluateHoldout
 from skmultiflow.evaluation import EvaluatePrequential
 
-#Workflow from scikit_multiflow framework
-# 1. Load the data set as a stream
-#dfn = [["realData/electric_data.csv", " "], # 7 attributes
- #      ["realData/outdoor_data.csv", " "],  # 5 attributes
-  #     ["realData/poker_data.csv", " "],    # 10 attributes
-   #    ["realData/weather_data.csv", ","]]  # 8 attributes
+filePath = "realData/"
+fileType = ".csv"
 
-#df = pd.read_csv(dfn[0][0],dfn[0][1])
-#df = df.drop(df.columns[0], axis=1)
+realDataFiles = ["electric_data",
+            "outdoor_data",
+            "poker_data",
+            "weather_data"]
 
+realTargetFiles = ["electric_targets",
+            "outdoor_targets",
+            "poker_targets",
+            "weather_targets"]
 
+resultHoldoutFiles = ["electric_hold_result",
+            "outdoor_hold_result",
+            "poker_hold_result",
+            "weather_hold_result"]
 
-#dataStream = DataStream(df)
-#dataStream.prepare_for_use()
-stream = WaveformGenerator()
-stream.prepare_for_use()
+resultPreqFiles = ["electric_preq_result",
+            "outdoor_preq_result",
+            "poker_preq_result",
+            "weather_preq_result"]
 
-#1.1 retrieve the first sample 
-#print("Data: ")
-#print(dataStream.next_sample(5))
+evalHoldoutPara = [[800,8000],[200,600],[10000,100000],[1000,2000]]
 
-# 2. load the classifier that you want to use
-#clf_base_rslvq = RSLVQ()
-ht = HoeffdingTree()
-# 3. Setup the evaluator
-evaluator_rslvq = EvaluatePrequential(show_plot=True,
-                                pretrain_size=200,
-                                max_samples=20000)
+evalPrequPara = [[400,8000],[100,600],[2000,100000],[100,2000]]
 
-# 4. Run evaluation
-evaluator_rslvq.evaluate(stream=stream, model=ht)
+rslvq=["sgd","adadelta","rmsprop","rmspropada"]
+
+eval = ["holdout","prequantial"]
+
+ev = 0
+
+#Make a loop to go through each of the data sets to  automate the whole thing
+#1.Loop to change the Testdata
+for i in range(len(realDataFiles)):
+    #Workflow from scikit_multiflow framework
+    # 1. Load the data set as a stream
+    X = pd.read_csv(filePath+realDataFiles[i]+fileType)
+    Y = pd.read_csv(filePath+realTargetFiles[i]+fileType)
+
+    X = X.to_numpy()
+    Y = Y.to_numpy()
+
+    stream = DataStream(X,Y)
+    stream.prepare_for_use()
+
+    #Second loop to change the classifier that is used on the dataset
+    for j in range(len(rslvq)): 
+        # 2. load the classifier that you want to use
+        clf = RSLVQall(gradient_descent=rslvq[j])
+
+        #Third loop to change the evaluator
+        for k in range(len(eval)):
+            # 3. Setup the evaluator
+            if eval[k] == "holdout":
+                evaluator_rslvq = EvaluateHoldout(show_plot = True,
+                                                n_wait = evalHoldoutPara[i][0],
+                                                max_samples = evalHoldoutPara[i][1],
+                                                metrics = ['accuracy','kappa', 'kappa_t', 'kappa_m'],
+                                                output_file = filePath+resultHoldoutFiles[i]+"_"+rslvq[j]+fileType)
+            else:
+                evaluator_rslvq = EvaluatePrequential(show_plot = True,
+                                                    n_wait = evalPrequPara[i][0],
+                                                    max_samples = evalPrequPara[i][1],
+                                                    pretrain_size = evalPrequPara[i][0],
+                                                    metrics = ['accuracy','kappa', 'kappa_t', 'kappa_m'],
+                                                    output_file = filePath+resultPreqFiles[i]+"_"+rslvq[j]+fileType)
+            # 4. Run evaluation
+            stream.target_values
+            evaluator_rslvq.evaluate(stream=stream, model=clf)
+
+            print("Evaluation from Dataset "+realDataFiles[i]+" with clf " +rslvq[j]+ " and eval. Para. " +eval[k]+ " complete.")
