@@ -29,62 +29,62 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4.1}Evaluations for Data Streams}{12}{subsection.2.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.2}Performance}{13}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.2}Performance Evaluation}{13}{subsection.2.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.3}Accuracy score}{13}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.3}Accuracy Evaluation}{14}{subsection.2.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Used Algorithms}{14}{chapter.3}%
+\contentsline {chapter}{\numberline {3}Used Algorithms}{15}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Theoretical Work}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Theoretical Work}{15}{section.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Learning Vector Quantization}{14}{section.3.2}%
+\contentsline {subsection}{\numberline {3.1.1}Learning Vector Quantization}{15}{subsection.3.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Robust Soft Learning Vector Quantization}{14}{section.3.3}%
+\contentsline {subsection}{\numberline {3.1.2}Robust Soft Learning Vector Quantization}{18}{subsection.3.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Momentum Based Gradient Descent}{17}{section.3.4}%
+\contentsline {section}{\numberline {3.2}Momentum Based Gradient Descent}{21}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.1}Momentum}{18}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.2.1}Momentum}{21}{subsection.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.2}Adagrad}{19}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.2.2}Adagrad}{22}{subsection.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.3}Adadelta}{20}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.2.3}Adadelta}{23}{subsection.3.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.4}RMSprop}{22}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.2.4}RMSprop}{25}{subsection.3.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.5}Adam}{22}{subsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.2.5}Adam}{26}{subsection.3.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Implementation of the RSLVQ variants}{24}{section.3.5}%
+\contentsline {section}{\numberline {3.3}Implementation of the RSLVQ variants}{27}{section.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.1}RSLVQ SGD}{24}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.3.1}RSLVQ SGD}{27}{subsection.3.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.2}RSLVQ prop}{24}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.3.2}RSLVQ prop}{27}{subsection.3.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.3}RSLVQ adadelta}{24}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.3.3}RSLVQ adadelta}{27}{subsection.3.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.4}RSLVQ adam}{24}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.3.4}RSLVQ adam}{27}{subsection.3.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Test realisation}{25}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Test realisation}{28}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Used Streaming Datat sets}{25}{section.4.1}%
+\contentsline {section}{\numberline {4.1}Used Streaming Datat sets}{28}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Synthetic data}{25}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.1}Synthetic data}{28}{subsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Real world data}{25}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.2}Real world data}{28}{subsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Implementation of the Comparision and Results}{26}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Implementation of the Comparision and Results}{29}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Experiment begrenzung}{26}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.1}Experiment begrenzung}{29}{subsection.4.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Experiment aufbau}{26}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.2}Experiment aufbau}{29}{subsection.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Experiment durchlauf}{26}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.3}Experiment durchlauf}{29}{subsection.4.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Result Evaluation}{28}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Result Evaluation}{31}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Summary}{30}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Summary}{33}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Table of Contents}{31}{chapter*.13}%
+\contentsline {chapter}{Table of Contents}{34}{chapter*.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Literature}{34}{chapter*.17}%
+\contentsline {chapter}{Literature}{37}{chapter*.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Statutory Declaration}{35}{chapter*.19}%
+\contentsline {chapter}{\nonumberline Statutory Declaration}{38}{chapter*.20}%

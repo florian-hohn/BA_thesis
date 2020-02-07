@@ -558,10 +558,50 @@ These two approaches will be now be described in more detail:
         \cite{Bifet_datastream}
 \end{itemize}
 
-\subsection{Performance}
-Performance is the ability of the classifier not to label as positive an instance that is negative.
+\subsection{Performance Evaluation}
+In real data streams, the number of instances for each class may be evolving and changing. It may be argued that the 
+prequential accuracy measure is only appropriate when all classes are balanced and have approximately the same number 
+of examples. The Kappa statistic is a more sensitive measure for quantifying the predictive performance of streaming 
+classifiers. \cite{MLonDataStreams}
+There are 3 different versions of the Kappa statistic that are relevant for the analysis of streaming data.
+THe first Kappa statistc, Kappa $\kappa$, was introduced by Cohen in his work \cite{kappak} and was defined as follows:
 
-\subsection{Accuracy score}
+\begin{equation}
+  \kappa = \frac{p_0-p_c}{1-p_c}
+\end{equation}
+
+The quantity $p0$ is the classifier’s prequential accuracy, and $p_c$  is the probability that a chance classifier—one
+that randomly assigns to each class the same number of examples as the classifier under consideration—makes a correct 
+prediction. If the classifier is always correct, then $\kappa = 1$. If its predictions coincide with the correct ones 
+as often as those of a chance classifier, then $\kappa = 0$ \cite{MLonDataStreams}.
+The second Kappa statistic, $\kappa_m$ \cite{kappam}, is a measure that compares against a majority class classifier instead of a 
+chance classifier:
+
+\begin{equation}
+  \kappa_m = \frac{p_0-p_m}{1-p_m}
+\end{equation}
+
+In cases where the distribution of predicted classes is substantially different from the distribution of the actual classes, 
+the majority class classifier $p_m$ can perform better than a given classifier while the classifier has a positive $\kappa$ statistic \cite{MLonDataStreams}.
+The third Kappa statistic that exist, is the Kappa temporal statistic \cite{kappatemp1,kappatemp2}.
+It considers the presence of temporal dependencies in data streams and is defined as:
+
+\begin{equation}
+  \kappa_temp = \frac{p_0-p'_e}{1-p'_e},
+\end{equation}
+
+where $p'_e$ is the accuracy of the No-change classifier, that is classifier that predicts the last class from the stream. It is 
+a simple and useful classifier when the same labels appear together in bursts.
+Statistic $\kappa_\textit{temp}$ takes values from 0 to 1. The interpretation is similar to that of $\kappa$: if the
+classifier is perfectly correct, then $\kappa_\textit{temp} = 1$. If the classifier is achieving the same accuracy as the No-change
+classifier, then $\kappa_\textit{temp} = 0$. Classifiers that outperform the No-change classifier fall between 0 and 1. Sometimes
+$\kappa_\textit{temp} < 0$, which means that the classifier is performing worse than the No-change baseline \cite{MLonDataStreams}.
+
+Using $\kappa_\textit{temp}$ instead of $\kappa_m$,we can detect misleading classifier performance for data that is not $\prod D$. 
+For highly imbalanced but independently distributed data, the majority class classifier may beat the No-change classifier.
+The $\kappa_\textit{temp}$ and $\kappa_m$ measures can be seen as orthogonal, since they measure different aspects of the performance \cite{MLonDataStreams}.
+
+\subsection{Accuracy Evaluation}
 Accuracy is the number of instances correct clasified / total number of instances.
 
 \chapter{Used Algorithms}
@@ -573,9 +613,70 @@ This chapter will try to give a short explanation about how the Robust Soft Lear
 Furthermore will it explain what momentum based gradient descent algortihms there are and how they work.
 These are used in the different optimization implementation of the RSLVQ that will be compared in the later chapters. 
 
-\section{Learning Vector Quantization}
+\subsection{Learning Vector Quantization}
+The first part of the theoretical work will give an introduction to the Learning Vector Quantization (LVQ), from that later 
+the Robust Soft Learning Vector Quantization (RSLVQ) was derived from.
+The LVQ is a class of learning algorithms for nearest prototype classification (NPC).It stores a set of appropriatly chosen
+prototype vectors instead of storing all the data points of a training set. This change makes the method computationally more
+efficent, as it does not have to store a high number of items to which new data must be compared to for classifcation anymore.
+Instead, the current data point only has to be compared to the prototypes to achieve classification.
+This lead to a high popularity of the LVQ for real time applications, like i.e. speech recognition \cite{lvqEx1,lvqEx2}, 
+were it was used with good success.
 
-\section{Robust Soft Learning Vector Quantization}
+A NPC consists of a set $\tau = (\theta_j, c_j)^M_\textit{j=1}$ of labeled prototype vectors. The parameter $\theta_j \in \chi \equiv \R^D$
+are vectors in the data space and $c_j \in \iota$, $i = 1,\dots,N_y$ are their corresponding labels. Typically, 
+the number of prototypes is larger than the number of classes, such that every classification boundary is determined by 
+more than one prototype.
+The class $y$ of a new datapoint $x$ is determined 
+
+\begin{itemize}
+  \item by selecting the prototype $\theta_i$ which is closest to $x$,
+  \begin{equation}
+    y = \displaystyle\min_{i} d(x,\theta_i),
+    \label{equ:LVQ1}
+  \end{equation}
+  where d(.,.) is the distance between data point and prototype, and
+  \item by assigning the label $y$ of this prototype to the datapoint $x$.
+\end{itemize}
+
+A popular choice for $d$ is the Euclidian distance 
+\begin{equation}
+  d(q,p) = \sqrt{\displaystyle\sum^n_\textit{i = 1}(q_i-p_i)^2}.
+  \label{equ:LVQ2}
+\end{equation}
+LVQ is a class of algorithm for the determination of prototype vectors for NPC, which make use of the distribution of the
+training data as well as their class labels when selecting useful set of prototype vectors. 
+The LVQ 2.1, for example, selects for every pair $(x,y)$, where $x$ is the data point and $y$ is the label, from
+the training set $S = (x_i,y_i)^N_\textit{i=1}$, the two nearest prototypes $\theta_l,\theta_m$ (see equation \ref{equ:LVQ1} 
+for selection of one prototype) according to the Euclidian distance (see equation: \ref{equ:LVQ2}).
+If the labels $c_l$ and $c_m$ are different and if one of them is equal to the label $y$ of the data point, then the two nearest
+prototypes are adjusted according to:
+
+\begin{equation}
+  \begin{split}
+    &\theta_l(t+1) = \theta_l(t) + \alpha(t)(x-\theta_l), \quad c_l = y,\\
+    &\theta_m(t+1) = \theta_m(t) - \alpha(t)(x-\theta_m), \quad c_m \neg y.
+  \end{split}
+\end{equation}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{LVQ}
+  \caption{Graphic depiction of the LVQ classifcation task.}
+  \label{fig:LVQ}
+\end{figure}[H]
+
+If the labels $c_l$ and $c_m$ are equal or both labels differ from the label $y$ of the data point, no parameter update is being performed.
+The prototype, however, are changed are changed only if the data point $x$ is close to the classification boundry, i.e.
+if it falls into a \textit{window}
+
+\begin{equation}
+    min(\frac{d(x,\theta_m)}{d(x,\theta_l)},\frac{d(x,\theta_l)}{d(x,\theta_m)}) > s, \quad where s = \frac{1-\omega}{1+\omega},
+\end{equation}
+
+of relative width $0<\omega\leq1$. This "window rule" had to be introduced, as otherwise the prototype vectors would have diverged. \cite{RSLVQOrig}
+
+\subsection{Robust Soft Learning Vector Quantization}
+
 The LVQ algorithm may be a popular adaptive nearest prototype classifier for multiclass classification, 
 but the algortihms from this familiy had only been propsed on heuristic grounds. Seo and Obermayer then derived the 
 Robust Soft Learning Vector Quantization (RSLVQ varient) in their work \cite{RSLVQOrig}. It is a LVQ that is based on 

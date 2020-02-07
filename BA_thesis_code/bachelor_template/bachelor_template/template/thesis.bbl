@@ -93,6 +93,53 @@
       \field{pages}{801\bibrangedash 806}
       \range{pages}{6}
     \endentry
+    \entry{kappam}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
+           family={Bifet},
+           familyi={B\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=0847bc85d06a66a3e8cb26f736d0c156}{%
+           family={Francisci\bibnamedelima Morales},
+           familyi={F\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Gianmarco},
+           giveni={G\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=5903f6c15fa819e151c16c5691b5b372}{%
+           family={Read},
+           familyi={R\bibinitperiod},
+           given={Jesse},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fbe67b128273a908b77e6417dcc337a2}{%
+           family={Holmes},
+           familyi={H\bibinitperiod},
+           given={Geoff},
+           giveni={G\bibinitperiod}}}%
+        {{hash=8d3031672ff9944d1bd83979cee191bb}{%
+           family={Pfahringer},
+           familyi={P\bibinitperiod},
+           given={Bernhard},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{fullhash}{75997ca3e18d68703e2578ce2818f9b2}
+      \strng{bibnamehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{authorbibnamehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{authornamehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{authorfullhash}{75997ca3e18d68703e2578ce2818f9b2}
+      \field{extraname}{2}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 21th ACM SIGKDD international conference on knowledge discovery and data mining}
+      \field{title}{Efficient online evaluation of big data stream classifiers}
+      \field{year}{2015}
+      \field{pages}{59\bibrangedash 68}
+      \range{pages}{10}
+    \endentry
     \entry{MLonDataStreams}{book}{}
       \name{author}{4}{}{%
         {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
@@ -125,7 +172,7 @@
       \strng{authorbibnamehash}{d58180b363e800ecb53eb5bad4d889f3}
       \strng{authornamehash}{d58180b363e800ecb53eb5bad4d889f3}
       \strng{authorfullhash}{4335ded1a68387ec7ce9525c3f16c320}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{sortinit}{B}
       \field{sortinithash}{8de16967003c7207dae369d874f1456e}
       \field{labelnamesource}{author}
@@ -133,6 +180,83 @@
       \field{note}{\url{https://moa.cms.waikato.ac.nz/book/}}
       \field{title}{Machine Learning for Data Streams with Practical Examples in MOA}
       \field{year}{2018}
+    \endentry
+    \entry{kappatemp1}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
+           family={Bifet},
+           familyi={B\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5903f6c15fa819e151c16c5691b5b372}{%
+           family={Read},
+           familyi={R\bibinitperiod},
+           given={Jesse},
+           giveni={J\bibinitperiod}}}%
+        {{hash=56534dec9cf5897497e2925fa379194c}{%
+           family={{Ž}liobait{ė}},
+           familyi={Ž\bibinitperiod},
+           given={Indr{ė}},
+           giveni={I\bibinitperiod}}}%
+        {{hash=8d3031672ff9944d1bd83979cee191bb}{%
+           family={Pfahringer},
+           familyi={P\bibinitperiod},
+           given={Bernhard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fbe67b128273a908b77e6417dcc337a2}{%
+           family={Holmes},
+           familyi={H\bibinitperiod},
+           given={Geoff},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{fullhash}{5dca21c843cc83255ee3d330506c216a}
+      \strng{bibnamehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{authorbibnamehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{authornamehash}{d58180b363e800ecb53eb5bad4d889f3}
+      \strng{authorfullhash}{5dca21c843cc83255ee3d330506c216a}
+      \field{extraname}{4}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Joint European Conference on Machine Learning and Knowledge Discovery in Databases}
+      \field{title}{Pitfalls in benchmarking data stream classification and how to avoid them}
+      \field{year}{2013}
+      \field{pages}{465\bibrangedash 479}
+      \range{pages}{15}
+    \endentry
+    \entry{kappak}{article}{}
+      \name{author}{1}{}{%
+        {{hash=eaad07ee1c6ef93a9308150f12c3c2eb}{%
+           family={Cohen},
+           familyi={C\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Sage Publications Sage CA: Thousand Oaks, CA}%
+      }
+      \strng{namehash}{eaad07ee1c6ef93a9308150f12c3c2eb}
+      \strng{fullhash}{eaad07ee1c6ef93a9308150f12c3c2eb}
+      \strng{bibnamehash}{eaad07ee1c6ef93a9308150f12c3c2eb}
+      \strng{authorbibnamehash}{eaad07ee1c6ef93a9308150f12c3c2eb}
+      \strng{authornamehash}{eaad07ee1c6ef93a9308150f12c3c2eb}
+      \strng{authorfullhash}{eaad07ee1c6ef93a9308150f12c3c2eb}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Educational and psychological measurement}
+      \field{number}{1}
+      \field{title}{A coefficient of agreement for nominal scales}
+      \field{volume}{20}
+      \field{year}{1960}
+      \field{pages}{37\bibrangedash 46}
+      \range{pages}{10}
     \endentry
     \entry{dean2012large}{inproceedings}{}
       \true{moreauthor}
@@ -396,6 +520,73 @@
       \field{title}{Adam: A Method for Stochastic Optimization}
       \field{volume}{abs/1412.6980}
       \field{year}{2014}
+    \endentry
+    \entry{lvqEx1}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=6132d7560ac1ba39a87b49ffea4a7b6b}{%
+           family={Komori},
+           familyi={K\bibinitperiod},
+           given={Takashi},
+           giveni={T\bibinitperiod}}}%
+        {{hash=af3b5683571d1a8abe11cf88d518fb26}{%
+           family={Katagiri},
+           familyi={K\bibinitperiod},
+           given={Shigeru},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{46b276ef56c3bdd08ba639039287a63f}
+      \strng{fullhash}{46b276ef56c3bdd08ba639039287a63f}
+      \strng{bibnamehash}{46b276ef56c3bdd08ba639039287a63f}
+      \strng{authorbibnamehash}{46b276ef56c3bdd08ba639039287a63f}
+      \strng{authornamehash}{46b276ef56c3bdd08ba639039287a63f}
+      \strng{authorfullhash}{46b276ef56c3bdd08ba639039287a63f}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{[Proceedings] ICASSP-92: 1992 IEEE International Conference on Acoustics, Speech, and Signal Processing}
+      \field{title}{Application of a generalized probabilistic descent method to dynamic time warping-based speech recognition}
+      \field{volume}{1}
+      \field{year}{1992}
+      \field{pages}{497\bibrangedash 500}
+      \range{pages}{4}
+    \endentry
+    \entry{lvqEx2}{article}{}
+      \name{author}{2}{}{%
+        {{hash=efe93a4c13ab7284a6874f12f483e899}{%
+           family={McDermott},
+           familyi={M\bibinitperiod},
+           given={Erik},
+           giveni={E\bibinitperiod}}}%
+        {{hash=af3b5683571d1a8abe11cf88d518fb26}{%
+           family={Katagiri},
+           familyi={K\bibinitperiod},
+           given={Shigeru},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{86897ae625f008baa84497ae91ab8d59}
+      \strng{fullhash}{86897ae625f008baa84497ae91ab8d59}
+      \strng{bibnamehash}{86897ae625f008baa84497ae91ab8d59}
+      \strng{authorbibnamehash}{86897ae625f008baa84497ae91ab8d59}
+      \strng{authornamehash}{86897ae625f008baa84497ae91ab8d59}
+      \strng{authorfullhash}{86897ae625f008baa84497ae91ab8d59}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Speech \& Language}
+      \field{number}{4}
+      \field{title}{Prototype-based minimum classification error/generalized probabilistic descent training for various speech units}
+      \field{volume}{8}
+      \field{year}{1994}
+      \field{pages}{351\bibrangedash 368}
+      \range{pages}{18}
     \endentry
     \entry{skmultiflow}{article}{}
       \name{author}{4}{}{%
@@ -729,6 +920,55 @@
       \field{title}{ADADELTA: An Adaptive Learning Rate Method}
       \field{volume}{abs/1212.5701}
       \field{year}{2012}
+    \endentry
+    \entry{kappatemp2}{article}{}
+      \name{author}{5}{}{%
+        {{hash=56534dec9cf5897497e2925fa379194c}{%
+           family={{Ž}liobait{ė}},
+           familyi={Ž\bibinitperiod},
+           given={Indr{ė}},
+           giveni={I\bibinitperiod}}}%
+        {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
+           family={Bifet},
+           familyi={B\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5903f6c15fa819e151c16c5691b5b372}{%
+           family={Read},
+           familyi={R\bibinitperiod},
+           given={Jesse},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8d3031672ff9944d1bd83979cee191bb}{%
+           family={Pfahringer},
+           familyi={P\bibinitperiod},
+           given={Bernhard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fbe67b128273a908b77e6417dcc337a2}{%
+           family={Holmes},
+           familyi={H\bibinitperiod},
+           given={Geoff},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{977c3f15f449c7d244e2ea13993662e1}
+      \strng{fullhash}{aa5e8e296be251b05b248298987c5ce5}
+      \strng{bibnamehash}{977c3f15f449c7d244e2ea13993662e1}
+      \strng{authorbibnamehash}{977c3f15f449c7d244e2ea13993662e1}
+      \strng{authornamehash}{977c3f15f449c7d244e2ea13993662e1}
+      \strng{authorfullhash}{aa5e8e296be251b05b248298987c5ce5}
+      \field{sortinit}{Ž}
+      \field{sortinithash}{8f7b480688e809b50b6f6577b16f3db5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Machine Learning}
+      \field{number}{3}
+      \field{title}{Evaluation methods and decision theory for classification of streaming data with temporal dependence}
+      \field{volume}{98}
+      \field{year}{2015}
+      \field{pages}{455\bibrangedash 482}
+      \range{pages}{28}
     \endentry
   \enddatalist
 \endrefsection
