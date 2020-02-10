@@ -5,7 +5,7 @@ from sklearn.metrics import euclidean_distances
 from sklearn.utils.multiclass import unique_labels
 from skmultiflow.core.base import ClassifierMixin, BaseSKMObject
 
-class BaseRSLVQ(object):
+class BaseLVQ(object):
     def partial_fit(self, X, y, classes=None, sample_weight=None):
         """Fit the LVQ model to the given training data and parameters using
         gradient ascent.
@@ -26,13 +26,10 @@ class BaseRSLVQ(object):
         --------
         self
         """
-        if set(unique_labels(y)).issubset(set(self.classes_)) or \
-                self.initial_fit is True:
+        if set(unique_labels(y)).issubset(set(self.classes_)) or self.initial_fit is True:
             X, y = self._validate_train_parms(X, y, classes=classes)
         else:
-            raise ValueError('Class {} was not learned - please declare all \
-                             classes in first call of fit/partial_fit'
-                             .format(y))
+            raise ValueError('Class {} was not learned - please declare all classes in first call of fit/partial_fit'.format(y))
 
         self._optimize(X, y)
         return self
@@ -88,9 +85,7 @@ class BaseRSLVQ(object):
         C : array, shape = (n_samples)
             Returns predicted values.
         """
-        return np.array([self.c_w_[np.array([self._costf(xi, p)
-                                             for p in self.w_]).argmax()]
-                         for xi in X])
+        return np.array([self.c_w_[np.array([self._costf(xi, p) for p in self.w_]).argmax()] for xi in X])
 
     def _costf(self, x, w):
         d = (x - w)[np.newaxis].T

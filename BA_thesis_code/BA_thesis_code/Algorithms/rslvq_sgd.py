@@ -1,13 +1,14 @@
+import math
 import numpy as np
 from sklearn.utils import validation
 from sklearn.metrics import euclidean_distances
 from sklearn.utils.multiclass import unique_labels
 from skmultiflow.core.base import ClassifierMixin, BaseSKMObject
-from .base_rslvq import BaseRSLVQ
+from .base_lvq import BaseLVQ
 
-class RSLVQSgd(BaseRSLVQ):
+class RSLVQSgd(BaseLVQ):
     def __init__(self, prototypes_per_class=1, initial_prototypes=None,
-                 sigma=1.0, random_state=None, gamma=0.9):
+                 sigma=1.0, random_state=None):
         self.sigma = sigma
         self.random_state = random_state
         self.epsilon = 1e-8
@@ -16,15 +17,11 @@ class RSLVQSgd(BaseRSLVQ):
         self.initial_fit = True
         self.classes_ = []
         self.learning_rate = 1 / sigma
-        self.gamma = gamma
 
         if sigma <= 0:
             raise ValueError('Sigma must be greater than 0')
         if prototypes_per_class <= 0:
             raise ValueError('Prototypes per class must be more than 0')
-        if gamma >= 1 or gamma < 0:
-            raise ValueError('Decay rate gamma has to be between 0 and\
-                             less than 1')
 
     def _update_prototype(self, j, xi, c_xi, prototypes):
         """SGD"""
@@ -32,18 +29,14 @@ class RSLVQSgd(BaseRSLVQ):
 
         if self.c_w_[j] == c_xi:
             # Attract prototype to data point
-            self.w_[j] += self.learning_rate * \
-                (self._p(j, xi, prototypes=self.w_, y=c_xi) -
-                 self._p(j, xi, prototypes=self.w_)) * d
+            self.w_[j] += self.learning_rate * (self._p(j, xi, prototypes=self.w_, y=c_xi) -  self._p(j, xi, prototypes=self.w_)) * d
         else:
             # Distance prototype from data point
-            self.w_[j] -= self.learning_rate * self._p(
-                j, xi, prototypes=self.w_) * d
+            self.w_[j] -= self.learning_rate * self._p(j, xi, prototypes=self.w_) * d
 
     def _validate_train_parms(self, train_set, train_lab, classes=None):
         random_state = validation.check_random_state(self.random_state)
-        train_set, train_lab = validation.check_X_y(train_set,
-                                                    train_lab.ravel())
+        train_set, train_lab = validation.check_X_y(train_set, train_lab.ravel())
 
         if self.initial_fit:
             if classes:
@@ -56,9 +49,7 @@ class RSLVQSgd(BaseRSLVQ):
             # Validate that labels have correct format
             for i in range(len(self.classes_)):
                 if i not in self.classes_:
-                    raise ValueError('Labels have to be ascending int,\
-                                     starting at 0, got {}'
-                                     .format(self.classes_))
+                    raise ValueError('Labels have to be ascending int, starting at 0, got {}'.format(self.classes_))
 
         nb_classes = len(self.classes_)
         nb_features = train_set.shape[1]
@@ -69,14 +60,12 @@ class RSLVQSgd(BaseRSLVQ):
             if self.prototypes_per_class < 0:
                 raise ValueError('prototypes_per_class must be a positive int')
             # nb_ppc = number of protos per class
-            nb_ppc = np.ones([nb_classes],
-                             dtype='int') * self.prototypes_per_class
+            nb_ppc = np.ones([nb_classes],dtype='int') * self.prototypes_per_class
+
         elif isinstance(self.prototypes_per_class, list):
             # its an array containing individual number of protos per class
             # - not fully supported yet
-            nb_ppc = validation.column_or_1d(
-                validation.check_array(self.prototypes_per_class,
-                                       ensure_2d=False, dtype='int'))
+            nb_ppc = validation.column_or_1d(validation.check_array(self.prototypes_per_class, ensure_2d=False, dtype='int'))
             if nb_ppc.min() <= 0:
                 raise ValueError(
                     'values in prototypes_per_class must be positive')
@@ -93,8 +82,7 @@ class RSLVQSgd(BaseRSLVQ):
         # initialize prototypes
         if self.initial_prototypes is None:
             if self.initial_fit:
-                self.w_ = np.empty([np.sum(nb_ppc), nb_features],
-                                   dtype=np.double)
+                self.w_ = np.empty([np.sum(nb_ppc), nb_features], dtype=np.double)
                 self.c_w_ = np.empty([nb_ppc.sum()], dtype=self.classes_.dtype)
             pos = 0
             for actClassIdx in range(len(self.classes_)):
