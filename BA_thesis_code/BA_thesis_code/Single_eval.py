@@ -1,6 +1,6 @@
 import numpy
 import pandas as pd
-from Algorithms.RSLVQall import RSLVQall
+from Algorithms.rslvq_all import RSLVQall
 from skmultiflow.prototype.robust_soft_learning_vector_quantization import RobustSoftLearningVectorQuantization as RSLVQ
 from skmultiflow.drift_detection.adwin import ADWIN
 from skmultiflow.data.data_stream import DataStream
