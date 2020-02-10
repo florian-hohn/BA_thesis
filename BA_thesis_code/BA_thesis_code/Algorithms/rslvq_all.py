@@ -7,7 +7,62 @@ from skmultiflow.core.base import ClassifierMixin, BaseSKMObject
 from .base_lvq import BaseLVQ
 
 class RSLVQall(BaseLVQ):
-    """a class that contains all the different implementations of the RSLVQ algorithm"""
+    """Robust Soft Learning Vector Quantization for Streaming and Non-Streaming Data.
+
+    By choosing another gradient descent method the Robust Soft Learning Vector Quantization
+    (RSLVQ) method can be used as an adaptive version.
+
+    Parameters
+    ----------
+    prototypes_per_class: int or list of int, optional (default=1)
+        Number of prototypes per class. Use list to specify different
+        numbers per class, not implemented yet.
+    initial_prototypes: array-like, shape =  [n_prototypes, n_features + 1], optional
+        Prototypes to start with. If not given initialization near the class
+        means. Class label must be placed as last entry of each prototype.
+
+        | Example for one prototype per class on a binary classification problem:
+        | `initial_prototypes = [[2.59922826, 2.57368134, 4.92501, 0], [6.05801971, 6.01383352, 5.02135783, 1]]`
+    sigma : float, optional (default=1.0)
+        Variance of the distribution.
+    random_state : int, RandomState instance or None, optional (default=None)
+        If int, random_state is the seed used by the random number generator;
+        If RandomState instance, random_state is the random number generator;
+        If None, the random number generator is the RandomState instance used
+        by `np.random`.
+    gamma : float, Decay rate, optional (default=0.9)
+        Decay rate used for momentum-based algorithm
+    gradient_descent: string, specify gradient optimizer, optional
+    (default='vanilla')
+        To use momentum-based gradient descent, choose 'adadelta' instead
+        of 'vanilla'
+
+    Attributes
+    ----------
+    prototypes : array-like, shape = [n_prototypes, n_features]
+        Prototype vector, where n_prototypes in the number of prototypes and
+        n_features is the number of features
+    prototypes_classes : array-like, shape = [n_prototypes]
+        Prototypes classes
+    class_labels : array-like, shape = [n_classes]
+        Array containing labels.
+
+    Notes
+    -----
+    The RSLVQ [2]_ can be used with vanilla SGD as gradient descent method or
+    with a momentum-based gradient descent technique called Adadelta as proposed in [1]_.
+
+    References
+    ----------
+    .. [1] Heusinger, M., Raab, C., Schleif, F.M.: Passive concept drift
+       handling via momentum based robust soft learning vector quantization.\
+       In: Vellido, A., Gibert, K., Angulo, C., Martı́n Guerrero, J.D. (eds.)
+       Advances in Self-Organizing Maps, Learning Vector Quantization,
+       Clustering and Data Visualization. pp. 200–209. Springer International
+       Publishing, Cham (2020)
+    .. [2] Sambu Seo and Klaus Obermayer. 2003. Soft learning vector
+       quantization. Neural Comput. 15, 7 (July 2003), 1589-1604
+    """
     def __init__(self, prototypes_per_class=1, initial_prototypes=None,
                  sigma=1.0, random_state=None, gradient_descent='sgd',
                  gamma=0.9, decay_rate = 0.9, learning_rate = 0.001,

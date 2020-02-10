@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bd014893-1f5b-40a6-bbe2-532b5919e5b6</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Single_eval.py</StartupFile>
+    <StartupFile>single_eval.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,16 +22,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Algorithms\base_rslvq.py">
+    <Compile Include="Algorithms\base_lvq.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Algorithms\RSLVQAdam.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Algorithms\RSLVQall.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Algorithms\RSLVQRMSprop.py">
+    <Compile Include="Algorithms\rslvq_all.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Algorithms\rslvq_adadelta.py">
@@ -40,26 +34,14 @@
     <Compile Include="Algorithms\rslvq_adam.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Algorithms\rslvq_rmspropada.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Algorithms\rslvq_sgd.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Algorithms\rslvq_rmsprop.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BAThesisCode.py" />
-    <Compile Include="Algorithms\RSLVQAdadelta.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Algorithms\RSLVQRMSpropAda.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Algorithms\RSLVQSgd.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Single_eval.py">
+    <Compile Include="ba_thesis_code.py" />
+    <Compile Include="single_eval.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

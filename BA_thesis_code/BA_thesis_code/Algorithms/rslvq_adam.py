@@ -20,8 +20,6 @@ class RSLVQAdam(BaseLVQ):
         self.beta_1 = beta_1
         self.beta_2 = beta_2
         self.learning_rate = learning_rate
-        self.v_corrected  = 0
-        self.m_corrected  = 0
 
         if sigma <= 0:
             raise ValueError('Sigma must be greater than 0')
@@ -42,7 +40,7 @@ class RSLVQAdam(BaseLVQ):
         self.gradients_m[j] = self.beta_1 * self.gradients_m[j] + (1 - self.beta_1) * gradient
 
         """Compute squared gradients v """
-        self.gradients_v_sqrt[j] = self.beta_2 * self.gradients_v_sqrt[j] + (1 - self.beta_2) * np.sqrt(gradient) 
+        self.gradients_v_sqrt[j] = self.beta_2 * self.gradients_v_sqrt[j] + (1 - self.beta_2) * gradient ** 2 
 
         """Compute m correction"""
         m_corrected = self.gradients_m[j] / (1 - self.beta_1)
@@ -51,7 +49,7 @@ class RSLVQAdam(BaseLVQ):
         v_corrected = self.gradients_v_sqrt[j] / (1 - self.beta_2)
 
         """Update prototype"""
-        self.w_[j] += - (self.learning_rate/(np.sqrt(self.v_corrected) + self.epsilon ))*self.m_corrected
+        self.w_[j] += - (self.learning_rate/(np.sqrt(v_corrected) + self.epsilon ))*m_corrected
 
     def _validate_train_parms(self, train_set, train_lab, classes=None):
         random_state = validation.check_random_state(self.random_state)

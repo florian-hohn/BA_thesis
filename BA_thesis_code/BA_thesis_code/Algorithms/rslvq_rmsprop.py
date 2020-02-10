@@ -62,7 +62,7 @@ class RSLVQRMSprop(BaseLVQ):
             gradient = self._p(j, xi, prototypes=self.w_)
 
         # calc adaptive decay rate
-        dec_rate = np.minimum(np.absolute(self._costf(j=j, x=gradient**2, w=self.squared_mean_gradient[j])), 0.9)
+        dec_rate = np.minimum(np.absolute(self._costf(prototypes[j], x=gradient**2, w=self.squared_mean_gradient[j])), 0.9)#here in the cost function, first item is the problem, moritz fragen
 
         self.decay_rate[j] = 1.0 - dec_rate
 
@@ -164,3 +164,8 @@ class RSLVQRMSprop(BaseLVQ):
             self.initial_fit = False
 
         return train_set, train_lab 
+
+    def _costf_ada(self, x, w, **kwargs):
+        d = (x - w)[np.newaxis].T
+        d = d.T.dot(d)
+        return - d / (2 * self.sigma)
