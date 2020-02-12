@@ -41,7 +41,7 @@ evalHoldoutPara = [[800,8000],[200,600],[10000,100000],[1000,2000]]
 
 evalPrequPara = [[400,8000],[100,600],[2000,100000],[100,2000]]
 
-rslvq=["sgd","adadelta","rmsprop","rmspropada"]
+rslvq=["sgd","adadelta","rmsprop","adam"]
 
 eval = ["holdout","prequantial"]
 
@@ -69,7 +69,7 @@ stream = DataStream(X,Y)
 stream.prepare_for_use()
 
 # 2. load the classifier that you want to use
-clf = RSLVQRMSprop(gradient_descent = 'rmspropada')
+clf = RSLVQall(gradient_descent = rslvq[3])
 
 # 3. Setup the evaluator
 #if eval[0] == "holdout":

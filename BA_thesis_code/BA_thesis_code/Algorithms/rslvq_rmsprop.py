@@ -8,8 +8,7 @@ from .base_lvq import BaseLVQ
 
 class RSLVQRMSprop(BaseLVQ):
     def __init__(self, prototypes_per_class=1, initial_prototypes=None,
-                 sigma=1.0, random_state=None, gradient_descent='rmsprop',
-                 decay_rate=0.9, learning_rate=0.001):
+                 sigma=1.0, random_state=None, decay_rate=0.9, learning_rate=0.001):
         self.sigma = sigma
         self.random_state = random_state
         self.epsilon = 1e-8
@@ -19,24 +18,13 @@ class RSLVQRMSprop(BaseLVQ):
         self.classes_ = []
         self.learning_rate = learning_rate
         self.decay_rate = decay_rate
-        self.gradient_descent = gradient_descent
 
         if sigma <= 0:
             raise ValueError('Sigma must be greater than 0')
         if prototypes_per_class <= 0:
             raise ValueError('Prototypes per class must be more than 0')
 
-        allowed_gradient_optimizers = ['rmsprop','rmspropada']
-
-        if gradient_descent not in allowed_gradient_optimizers:
-            raise ValueError('{} is not a valid gradient optimizer, please use one of {}'.format(gradient_descent, allowed_gradient_optimizers))
-
-        if self.gradient_descent == 'rmspropada':
-            self._update_prototype = self._update_prototype_rmspropada
-        else:
-            self._update_prototype = self._update_prototype_rmsprop
-
-    def _update_prototype_rmsprop(self, j, xi, c_xi, prototypes):
+    def _update_prototype(self, j, xi, c_xi, prototypes):
         """RMSprop"""
         d = xi - prototypes[j]
                 
@@ -50,30 +38,6 @@ class RSLVQRMSprop(BaseLVQ):
         
         # Update Prototype
         self.w_[j] += (self.learning_rate / ((self.squared_mean_gradient[j] + self.epsilon) ** 0.5)) * gradient
-
-    def _update_prototype_rmspropada(self, j, xi, c_xi, prototypes):
-        """RMSpropada"""
-        d = (xi - prototypes[j])
-
-        if self.c_w_[j] == c_xi:
-            gradient = (self._p(j, xi, prototypes=self.w_,
-            y=c_xi) - self._p(j, xi, prototypes=self.w_))
-        else:
-            gradient = self._p(j, xi, prototypes=self.w_)
-
-        # calc adaptive decay rate
-        dec_rate = np.minimum(np.absolute(self._costf(prototypes[j], x=gradient**2, w=self.squared_mean_gradient[j])), 0.9)#here in the cost function, first item is the problem, moritz fragen
-
-        self.decay_rate[j] = 1.0 - dec_rate
-
-        # Accumulate gradient
-        self.squared_mean_gradient[j] = self.decay_rate[j] * self.squared_mean_gradient[j] + (1 - self.decay_rate[j]) * gradient ** 2
-
-        # Update Prototype
-        if self.c_w_[j] == c_xi:
-            self.w_[j] += (self.learning_rate / ((self.squared_mean_gradient[j] + self.epsilon) ** 0.5)) * gradient * d
-        else:
-            self.w_[j] -= (self.learning_rate / ((self.squared_mean_gradient[j] + self.epsilon) ** 0.5)) * gradient * d
 
     def _validate_train_parms(self, train_set, train_lab, classes=None):
         random_state = validation.check_random_state(self.random_state)

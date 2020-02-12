@@ -90,7 +90,7 @@ class RSLVQall(BaseLVQ):
             raise ValueError('Decay rate gamma has to be between 0 and less than 1')
         if decay_rate >= 1.0 or decay_rate <= 0:
             raise ValueError('Decay rate must be greater than 0 and less than 1')
-        allowed_gradient_optimizers = ['sgd','adadelta','rmsprop','rmspropada']
+        allowed_gradient_optimizers = ['sgd','adadelta','rmsprop','adam']
 
         if gradient_descent not in allowed_gradient_optimizers:
             raise ValueError('{} is not a valid gradient optimizer, please use one of {}'.format(gradient_descent, allowed_gradient_optimizers))
@@ -189,19 +189,19 @@ class RSLVQall(BaseLVQ):
             gradient = - self._p(j, xi, prototypes=self.w_)* d
 
         """Compute gradients m """
-        self.gradients_m[j] = self.beta_1 * self.gradients_m[j] + (1 - self.beta_1) * gradient
+        self.squared_mean_step[j] = self.beta_1 * self.squared_mean_step[j] + (1 - self.beta_1) * gradient
 
         """Compute squared gradients v """
-        self.gradients_v_sqrt[j] = self.beta_2 * self.gradients_v_sqrt[j] + (1 - self.beta_2) * np.sqrt(gradient) 
+        self.squared_mean_gradient[j] = self.beta_2 * self.squared_mean_gradient[j] + (1 - self.beta_2) * gradient ** 2
 
         """Compute m correction"""
-        m_corrected = self.gradients_m[j] / (1 - self.beta_1)
+        m_corrected = self.squared_mean_step[j] / (1 - self.beta_1)
 
         """Compute v correction"""
-        v_corrected = self.gradients_v_sqrt[j] / (1 - self.beta_2)
+        v_corrected = self.squared_mean_gradient[j] / (1 - self.beta_2)
 
         """Update prototype"""
-        self.w_[j] += - (self.learning_rate/(np.sqrt(self.v_corrected) + self.epsilon ))*self.m_corrected
+        self.w_[j] += - (self.learning_rate/(np.sqrt(v_corrected) + self.epsilon ))*m_corrected
 
     def _validate_train_parms(self, train_set, train_lab, classes=None):
         random_state = validation.check_random_state(self.random_state)
@@ -298,15 +298,11 @@ class RSLVQall(BaseLVQ):
                     "classes={}\n"
                     "prototype labels={}\n".format(self.classes_, self.c_w_))
         if self.initial_fit:
-            if self.gradient_descent == 'adadelta' or 'rmsprop' or 'rmspropada':
+            if self.gradient_descent == 'sgd':
+                self.initial_fit = False
+            else:
                 self.squared_mean_gradient = np.zeros_like(self.w_)
                 self.squared_mean_step = np.zeros_like(self.w_)
-                self.initial_fit = False
-            elif self.gradient_descent == 'adam':
-                self.gradients_v_sqrt = np.zeros_like(self.w_)
-                self.gradients_m = np.zeros_like(self.w_)
-                self.initial_fit = False
-            elif self.gradient_descent == 'sgd':
                 self.initial_fit = False
 
         return train_set, train_lab
@@ -334,7 +330,7 @@ class RSLVQall(BaseLVQ):
                              classes in first call of fit/partial_fit'
                              .format(y))
 
-        self._optimize(X, y, random_state)
+        self._optimize(X, y)
         return self
 
     def _optimize(self, X, y):

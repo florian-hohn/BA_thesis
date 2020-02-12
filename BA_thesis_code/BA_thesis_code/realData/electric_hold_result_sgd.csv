@@ -3,3 +3,8 @@
 # EvaluateHoldout(batch_size=1, dynamic_test_set=False, max_samples=10000, max_time=inf, metrics=['accuracy', 'kappa', 'kappa_t', 'kappa_m'], n_wait=1000, output_file='electric_hold_result_sgd.csv', restart_stream=True, show_plot=True, test_size=5000)
 # TEST CONFIGURATION END
 id,mean_acc_[M0],current_acc_[M0],mean_kappa_[M0],current_kappa_[M0],mean_kappa_t_[M0],current_kappa_t_[M0],mean_kappa_m_[M0],current_kappa_m_[M0]
+6000,0.389600,0.389600,0.000000,0.000000,-2.834171,-2.834171,-0.569959,-0.562724
+7000,0.389600,0.389600,0.000000,0.000000,-2.834171,-2.834171,-0.568345,-0.566735
+8000,0.389600,0.389600,0.000000,0.000000,-2.834171,-2.834171,-0.567808,-0.566735
+9000,0.389600,0.389600,0.000000,0.000000,-2.834171,-2.834171,-0.567540,-0.566735
+10000,0.389600,0.389600,0.000000,0.000000,-2.834171,-2.834171,-0.567379,-0.566735
