@@ -36,7 +36,7 @@ class RSLVQAdadelta(BaseLVQ):
         else:
             gradient = - self._p(j, xi, prototypes=self.w_) * d
 
-        # Accumulate gradient
+        # Accumulate past squared gradients
         self.squared_mean_gradient[j] = self.decay_rate *self.squared_mean_gradient[j] + (1 - self.decay_rate) * gradient ** 2
 
         # Compute update/step

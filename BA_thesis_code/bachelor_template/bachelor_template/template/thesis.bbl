@@ -19,6 +19,31 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{aggarwal2007data}{book}{}
+      \name{author}{1}{}{%
+        {{hash=86d11a07b1bfeac58dc68f7a419b3039}{%
+           family={Aggarwal},
+           familyi={A\bibinitperiod},
+           given={Charu\bibnamedelima C},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{fullhash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{bibnamehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{authorbibnamehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{authornamehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{authorfullhash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Data streams: models and algorithms}
+      \field{volume}{31}
+      \field{year}{2007}
+    \endentry
     \entry{Bifet_datastream}{book}{}
       \name{author}{3}{}{%
         {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
@@ -370,6 +395,31 @@
       \field{pages}{2121\bibrangedash 2159}
       \range{pages}{39}
     \endentry
+    \entry{IntroAI}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0ad7b7b50f220390cbf1c36575c6a49a}{%
+           family={Ertel},
+           familyi={E\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{fullhash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{bibnamehash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{authorbibnamehash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{authornamehash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{authorfullhash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \field{sortinit}{E}
+      \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780857292995}
+      \field{title}{Introduction to Artifical Intelligence}
+      \field{year}{2003}
+    \endentry
     \entry{ConceptDrift}{article}{}
       \name{author}{5}{}{%
         {{hash=844d99c5b8c67291826b6a62fea44989}{%
@@ -466,6 +516,73 @@
       \field{note}{\url{http://www.deeplearningbook.org}}
       \field{title}{Deep Learning}
       \field{year}{2016}
+    \endentry
+    \entry{PassiveDriftonRSLVQ}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=27d568d42ae4297e22fe63309ff5bda8}{%
+           family={Heusinger},
+           familyi={H\bibinitperiod},
+           given={Moritz},
+           giveni={M\bibinitperiod}}}%
+        {{hash=03c891d81f6b4499c9f6631df2f55082}{%
+           family={Raab},
+           familyi={R\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=5ef530677e7b0d07a50883d0bb04d44a}{%
+           family={Schleif},
+           familyi={S\bibinitperiod},
+           given={Frank-Michael},
+           giveni={F\bibinithyphendelim M\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=87c4de58f23b991334944eb22d3bbe79}{%
+           family={Vellido},
+           familyi={V\bibinitperiod},
+           given={Alfredo},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d238702bdfefb8f163ccf8fd7393179b}{%
+           family={Gibert},
+           familyi={G\bibinitperiod},
+           given={Karina},
+           giveni={K\bibinitperiod}}}%
+        {{hash=2f8c58ae109b1b6121d690802654dc95}{%
+           family={Angulo},
+           familyi={A\bibinitperiod},
+           given={Cecilio},
+           giveni={C\bibinitperiod}}}%
+        {{hash=fd1ddbfd8b593ab40a4ff95c8877ba74}{%
+           family={Mart{í}n\bibnamedelima Guerrero},
+           familyi={M\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={Jos{é}\bibnamedelima David},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{3a99166e19978144e92055106f930d0b}
+      \strng{fullhash}{3a99166e19978144e92055106f930d0b}
+      \strng{bibnamehash}{3a99166e19978144e92055106f930d0b}
+      \strng{authorbibnamehash}{3a99166e19978144e92055106f930d0b}
+      \strng{authornamehash}{3a99166e19978144e92055106f930d0b}
+      \strng{authorfullhash}{3a99166e19978144e92055106f930d0b}
+      \strng{editorbibnamehash}{d948c915bb056782ebc6eecabcfb7a9e}
+      \strng{editornamehash}{d948c915bb056782ebc6eecabcfb7a9e}
+      \strng{editorfullhash}{276ce2977196fe291a3f43e63762a168}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Concept drift is a change of the underlying data distribution which occurs especially with streaming data. Besides other challenges in the field of streaming data classification, concept drift should be addressed to obtain reliable predictions. The Robust Soft Learning Vector Quantization has already shown good performance in traditional settings and is modified in this work to handle streaming data. Further, momentum-based stochastic gradient descent is applied to tackle concept drift passively due to increased learning capabilities. The proposed work is tested against common benchmark algorithms and streaming data in the field.}
+      \field{booktitle}{Advances in Self-Organizing Maps, Learning Vector Quantization, Clustering and Data Visualization}
+      \field{isbn}{978-3-030-19642-4}
+      \field{title}{Passive Concept Drift Handling via Momentum Based Robust Soft Learning Vector Quantization}
+      \field{year}{2020}
+      \field{pages}{200\bibrangedash 209}
+      \range{pages}{10}
     \endentry
     \entry{RMSprop_Hinton}{article}{}
       \name{author}{1}{}{%
@@ -689,28 +806,6 @@
       \field{year}{2014}
       \field{pages}{1532\bibrangedash 1543}
       \range{pages}{12}
-    \endentry
-    \entry{IntroAI}{book}{}
-      \name{author}{1}{}{%
-        {{hash=6a99c575ab87f8c7d1ed1e52e7e349ce}{%
-           family={placeholder},
-           familyi={p\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{6a99c575ab87f8c7d1ed1e52e7e349ce}
-      \strng{fullhash}{6a99c575ab87f8c7d1ed1e52e7e349ce}
-      \strng{bibnamehash}{6a99c575ab87f8c7d1ed1e52e7e349ce}
-      \strng{authorbibnamehash}{6a99c575ab87f8c7d1ed1e52e7e349ce}
-      \strng{authornamehash}{6a99c575ab87f8c7d1ed1e52e7e349ce}
-      \strng{authorfullhash}{6a99c575ab87f8c7d1ed1e52e7e349ce}
-      \field{sortinit}{p}
-      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Introduction to Artifical Ineligence}
-      \field{year}{2003}
     \endentry
     \entry{QIAN1999145}{article}{}
       \name{author}{1}{}{%

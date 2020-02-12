@@ -337,141 +337,41 @@ class RSLVQall(BaseLVQ):
         self._optimize(X, y, random_state)
         return self
 
-    def _optimize(self, X, y, random_state):
-        if(self.gradient_descent=="sgd"):
-            """Implementation of Stochastical Gradient Descent"""
-            n_data, n_dim = X.shape5 
-            nb_prototypes = self.c_w_.size
-            prototypes = self.w_.reshape(nb_prototypes, n_dim)
+    def _optimize(self, X, y):
+        nb_prototypes = self.c_w_.size
 
-            for i in range(n_data):
-                xi = X[i]
-                c_xi = y[i]
-                for j in range(prototypes.shape[0]):
-                    d = (xi - prototypes[j]) 
-                    c = 1 / self.sigma
-                    if self.c_w_[j] == c_xi:
-                        # Attract prototype to data point
-                        self.w_[j] += c * (self._p(j, xi,prototypes=self.w_, y=c_xi) -self._p(j, xi, prototypes=self.w_)) * d
-                    else:
-                        # Move prototype away from data point
-                        self.w_[j] -= c * self._p(j, xi,prototypes=self.w_) * d
+        n_data, n_dim = X.shape
+        prototypes = self.w_.reshape(nb_prototypes, n_dim)
 
-        elif(self.gradient_descent=="adadelta"):
-            """Implementation of Adadelta"""
-            n_data, n_dim = X.shape
-            nb_prototypes = self.c_w_.size
-            prototypes = self.w_.reshape(nb_prototypes, n_dim)
+        for i in range(n_data):
+            xi = X[i]
+            c_xi = int(y[i])
+            best_euclid_corr = np.inf
+            best_euclid_incorr = np.inf
 
-            for i in range(n_data):
-                xi = X[i]
-                c_xi = y[i]
-                for j in range(prototypes.shape[0]):
-                    d = (xi - prototypes[j])
-
+            # find nearest correct and nearest wrong prototype
+            for j in range(prototypes.shape[0]):
                 if self.c_w_[j] == c_xi:
-                    gradient = (self._p(j, xi, prototypes=self.w_, y=c_xi) - self._p(j, xi, prototypes=self.w_)) * d
+                    eucl_dis = euclidean_distances(xi.reshape(1, xi.size),
+                                                   prototypes[j]
+                                                   .reshape(1, prototypes[j]
+                                                   .size))
+                    if eucl_dis < best_euclid_corr:
+                        best_euclid_corr = eucl_dis
+                        corr_index = j
                 else:
-                    gradient = - self._p(j, xi, prototypes=self.w_) * d
+                    eucl_dis = euclidean_distances(xi.reshape(1, xi.size),
+                                                   prototypes[j]
+                                                   .reshape(1, prototypes[j]
+                                                   .size))
+                    if eucl_dis < best_euclid_incorr:
+                        best_euclid_incorr = eucl_dis
+                        incorr_index = j
 
-                # Accumulate gradient
-                self.squared_mean_gradient[j] = self.decay_rate *self.squared_mean_gradient[j] + (1 - self.decay_rate) * gradient ** 2
-
-                # Compute update/step
-                step = ((self.squared_mean_step[j] + self.epsilon) / (self.squared_mean_gradient[j] + self.epsilon)) **0.5 * gradient
-
-                # Accumulate updates
-                self.squared_mean_step[j] = self.decay_rate * self.squared_mean_step[j] + (1 - self.decay_rate) * step ** 2
-
-                # Attract/Distract prototype to/from data point
-                self.w_[j] += step
-
-        elif(self.gradient_descent=="rmsprop"):
-            """Implementation of RMSprop"""
-            n_data, n_dim = X.shape
-            nb_prototypes = self.c_w_.size
-            prototypes = self.w_.reshape(nb_prototypes, n_dim)
-
-            for i in range(n_data):
-                xi = X[i]
-                c_xi = y[i]
-                for j in range(prototypes.shape[0]):
-                    d = (xi - prototypes[j])
-                    if self.c_w_[j] == c_xi:
-                        gradient = (self._p(j, xi, prototypes=self.w_,
-                        y=c_xi) - self._p(j, xi, prototypes=self.w_))* d
-                    else:
-                        gradient = - self._p(j, xi, prototypes=self.w_)* d
-
-                    # Accumulate gradient
-                    self.squared_mean_gradient[j] = 0.9 * self.squared_mean_gradient[j] + 0.1 * gradient ** 2
-
-                    # Update Prototype
-                    self.w_[j] += (self.learning_rate / ((self.squared_mean_gradient[j] + self.epsilon) ** 0.5)) * gradient
-
-        elif(self.gradient_descent=="rmspropada"):
-            """Implementation of Adaptive RMSprop"""
-            n_data, n_dim = x.shape
-            nb_prototypes = self.c_w_.size
-            prototypes = self.w_.reshape(nb_prototypes, n_dim)
-
-            for i in range(n_data):
-                xi = x[i]
-                c_xi = y[i]
-                for j in range(prototypes.shape[0]):
-                    d = (xi - prototypes[j])
-
-                    if self.c_w_[j] == c_xi:
-                        gradient = (self._p(j, xi, prototypes=self.w_,
-                        y=c_xi) - self._p(j, xi, prototypes=self.w_))
-                    else:
-                        gradient = self._p(j, xi, prototypes=self.w_)
-
-                    # calc adaptive decay rate
-                    dec_rate = np.minimum(np.absolute(self._costf(j=j,
-                                                        x=gradient**2,
-                                                        w=self.squared_mean_gradient[j])), 0.9)
-
-                    self.decay_rate[j] = 1.0 - dec_rate
-
-                    # Accumulate gradient
-                    self.squared_mean_gradient[j] = self.decay_rate[j] * self.squared_mean_gradient[j] + (1 - self.decay_rate[j]) * gradient ** 2
-
-                    # Update Prototype
-                    if self.c_w_[j] == c_xi:
-                        self.w_[j] += (self.learning_rate / ((self.squared_mean_gradient[j] + self.epsilon) ** 0.5)) * gradient * d
-                    else:
-                        self.w_[j] -= (self.learning_rate / ((self.squared_mean_gradient[j] + self.epsilon) ** 0.5)) * gradient * d
-
-        elif(self.gradient_descent=="adam"):
-            """Implementation of ADAM"""
-            n_data, n_dim = x.shape
-            nb_prototypes = self.c_w_.size
-            prototypes = self.w_.reshape(nb_prototypes, n_dim)
-
-            for i in range(n_data):
-                xi = x[i]
-                c_xi = y[i]
-                for j in range(prototypes.shape[0]):
-                    d = (xi - prototypes[j])
-
-                    """Calculate posterior"""
-                    if self.c_w_[j] == c_xi:
-                        gradient = (self._p(j, xi, prototypes=self.w_,y=c_xi) - self._p(j, xi, prototypes=self.w_))* d
-                    else:
-                        gradient = - self._p(j, xi, prototypes=self.w_)* d
-
-                    """Compute gradients m """
-                    self.gradients_m[j] = self.beta_1 * self.gradients_m[j] + (1 - self.beta_1) * gradient
-
-                    """Compute squared gradients v """
-                    self.gradients_v_sqrt[j] = self.beta_2 * self.gradients_v_sqrt[j] + (1 - self.beta_2) * np.sqrt(gradient) 
-
-                    """Compute m correction"""
-                    m_corrected = self.gradients_m[j] / (1 - self.beta_1)
-
-                    """Compute v correction"""
-                    v_corrected = self.gradients_v_sqrt[j] / (1 - self.beta_2)
-
-                    """Update prototype"""
-                    self.w_[j] += - (self.learning_rate/(np.sqrt(self.v_corrected) + self.epsilon ))*self.m_corrected
+            # Update nearest wrong prototype and nearest correct prototype
+            # if correct prototype isn't the nearest
+            if best_euclid_incorr < best_euclid_corr:
+                self._update_prototype(j=corr_index, c_xi=c_xi, xi=xi,
+                                       prototypes=prototypes)
+                self._update_prototype(j=incorr_index, c_xi=c_xi, xi=xi,
+                                       prototypes=prototypes)

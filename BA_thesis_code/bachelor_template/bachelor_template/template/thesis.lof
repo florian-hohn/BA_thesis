@@ -11,13 +11,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Visualisation differences of the three Gradient Descent Algorithms\relax }}{8}{figure.caption.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Result Table of the example in \ref {lst:scikit}\relax }}{11}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Visualization of types of Concept drift \cite {ConceptDrift}\relax }}{11}{figure.caption.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Visualization of real and virtual drift \cite {ConceptDrift}\relax }}{11}{figure.caption.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Result Table of the example in \ref {lst:scikit}\relax }}{17}{figure.caption.12}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Graphic depiction of the LVQ classifcation task.\relax }}{17}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Graphic depiction of the LVQ classifcation task.\relax }}{19}{figure.caption.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Diff. SGD moment.}}{21}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diff. SGD moment.}}{24}{figure.caption.14}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

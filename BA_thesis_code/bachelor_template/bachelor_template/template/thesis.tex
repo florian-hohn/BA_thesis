@@ -144,7 +144,38 @@ pdfkeywords={Keywords}
 }
 
 
+%%%%%%%%%%%%%%%%%%%
+%% Abkürzungen
+%%%%%%%%%%%%%%%%%%%
+\DeclareAcronym{sgd}{
+  short = SGD ,
+  long  = Stocastic Gradient Descent ,
+  class = abbrev
+}
 
+\DeclareAcronym{moa}{
+  short = MOA ,
+  long  = Massive Online Analysis ,
+  class = abbrev
+}
+
+\DeclareAcronym{lvq}{
+  short = LVQ ,
+  long  = Learning Vector Quantization ,
+  class = abbrev
+}
+
+\DeclareAcronym{npc}{
+  short = NPC ,
+  long  = nearest prototype classification ,
+  class = abbrev
+}
+
+\DeclareAcronym{rslvq}{
+  short = RSLVQ ,
+  long  = Robust Soft Learning Vector Quantization ,
+  class = abbrev
+}
 
 \begin{document}
 
@@ -363,7 +394,7 @@ Since we need to calculate the gradients for the complete dataset to get just on
 slow and is intractable for dataset that do not fit into the memory. For this reason the batch gradient descent implementation can not be used in this comparison,
 as it is not able to perform updates "on-the-fly", as this is a necessarity for use on streaming Data. 
 
-In contrast to that, the Stocastic Gradient Descent (short: SGD) can perform a update for \textit{each} training example
+In contrast to that, the \ac{sgd} can perform a update for \textit{each} training example
 $\textit{x}^\textit{(i)}$ and label $\textit{y}^\textit{(i)}$:
 
 \begin{equation}
@@ -415,89 +446,69 @@ and we need to extract information in real time from it. That means that usually
 solutions in order to use less time and memory.
 Also, the data may be evolving, so our models have to adapt when there are changes in the data. \cite{MLonDataStreams}
 
-\subsection{Challenges with Streaming Data}
+\subsection{Increasing Volume of the Data}
+When the Data items keep arriving fast and in large quantatiy a algorithm is no longer able to process the data efficiently
+by using multiple passes. Instead, it has to be designed in such a way that it is able to process the data with one pass \cite{aggarwal2007data}.
+\cite{MLonDataStreams} describes five requirements that a algorithm has to fullfill, if it should be able to process streaming data successfull:
 
-\cite{ConceptDrift}
-
-\section{Framework}
-The following section will shortly introduce the python based scikit-multiflow framework, with which the the comperssion 
-of the different implementations of the RSLVQ algorithm where done.
-
-\subsection{SCIKIT-Multiflow}
-Scikit-multiflow is a framework that is inspired by the Massive Online Analysis (MOA), the most popular open source framework for machine learning on data streams,
-and MEKA, an open source implementation of methods for multi labeling. Scikit-multiflow is also inpired by scikit-learn, the most 
-popular framework for machine learning in Python. Following the Scikit philosophy, scikit-multiflow is an open source machine-
-learning framework for multi-output/multi-label and stream data. 
-
-The Scikit-multiflow does not provide a graphical user interface like the MOA framework that it was inspired by. 
-On the other hand can it be used within Jupyter notebooks, a popular interface in the data scientist community that is based 
-on python. 
-It is mainly a library that contains stream generators, learning methods, change detectors and evaluation methods for 
-Machien learning algorithms on streaming data. 
-Scilit-multiflow lays a special focus on its design, so that it is user friendly to new user and familiar for more 
-experienced ones.\cite{skmultiflow}
-
-It achieves this by having a simple workflow that can be easily describe in 4 steps:
-
-\begin{enumerate}
-  \item Create a stream: \\
-        A stream can be generate by use of either one of the predefiend Stream generators or by importing a Stream from a file.
-  \item Instantiate a classifier: \\
-        In this step the user has to choose by which type of algorithm the classifikation process should be accomplished.
-  \item Setup the evaluator: \\
-        Next the user has to choose if the evaluation process should be done presequential or by Hold-out method.
-  Prequential-evaluation or interleaved-testthen-train evaluation, is a popular performance 
-  evaluation method for the stream setting only, where tests are performed on new data before using it to train the model.
-  Hold-out evaluation is a popular performance evaluation method for batch and stream settings, where tests are performed 
-  in a separate test set. \cite{skmultiflow}
-  \item Run the evaluation: \\
-        The evaluator will perform the following subtask in this final step,
-  first, it will check if there are still samples in the stream and then it will pass the next sample to the classifier,
-  which will either test the sample with the \verb|predict()| method or it willl update the classefier with the \verb|partial_fit()|
-  method of the clasifier.
-\end{enumerate}
-  
-To give better understanding how this exactly works, \ref{lst:scikit} will provide a small example where a synthetic waveform gets 
-generated with the WaveformGenerator. This generator will create a synthetic stream that generates default samples with
-21 numeric attributes and 3 target values, based on a random differentiation of some base waveforms.
-For the classifier is the Hoeffding Tree choosen with default parameters.
-After this we chose a prequential evaluator with the following parameters: 
 \begin{itemize}
-  \item \verb|show_plot| = true, this will generate us a dynamic plot that will update as the classifier is trained.
-  \item \verb|pretrain_size| = 200, this parameter sets the number of samples that is used for the first training set.
-  \item \verb|max_sample| = 20000, this parameter set the maximum number of samples that should be used.
+  \item Process an instance at a time, and inspect it (at most) once.
+  \item Use a limited amount of time to process each instance.
+  \item Use a limited amount of memory.
+  \item Be ready to give an answer (prediction, clustering, patterns) at any time.
+  \item Adapt to temporal changes (Concept drift).
+  \label{enum:5requ}
 \end{itemize}
-In the last step we then call evaluator method, that will then update the results and the plot.
-It is to note that at the time this thesis was written, the accuracy score stand for the performance 
-in the framework.  \cite{skmultiflow}
 
-\begin{lstlisting}[label=lst:scikit,
-  language=python,
-  firstnumber=1,
-  caption=Simple example of the scikit-multiflow workflow]			   
+The last point, "Adapt to temporal changes", has to do with evolving data streams and will be described further in the following 
+section.
 
-  """1. Create a stream""" 
-  stream = WaveformGenerator()
-  stream.prepare_for_use()
-  
-  """2. Instantiate the HoeffdingTree classifier"""
-  ht = HoeffdingTree()
-  
-  """3. Setup the evaluator"""
-  evaluator = EvaluatePrequential(show_plot=True,
-                                  pretrain_size=200,
-                                  max_samples=20000)
-  
-  """4. Run evaluation"""
-  evaluator.evaluate(stream=stream, model=ht)
-\end{lstlisting}
+\subsection{Drift in Streaming Data}
+Often there is a inherent temporal component to the stream mining process. This is because the data may evolve over time. 
+This behaviour of a data stream is known as temporal locality\cite{aggarwal2007data} (also known as Concept drift)\cite{MLonDataStreams}.Therefore, 
+a straight forward adaptation of one-pass mining algorithms may not be an effective solution to the task.
+Thus, Stream mining algorithms need to be carefully designed with a clear focus on the evolution of the underlying data, 
+wich leads the the fith requirement (see enumeration \ref{enum:5requ}) described in \cite{MLonDataStreams}.
+
+Now, to be more specific, the term Concept drift will be descript further.
+It does not mean that the items that are observed today are not exactly the same as those that were observed yesterday. 
+A more reasonable notion is that statistical properties of the data change more than what can be attributed to chance
+fluctuations. To better understand this, it helps to assume that the data is in fact the result of a random process that
+at each time generates an item according to a probability distribution that is used at that exact time, and that may or 
+may not be the same that is used at any other given time. There is no change (drift) when this underlying generating distribution
+remains the same. Drift occurs whenever it varies from one time step to the next \cite{MLonDataStreams}.
+
+Often, an additional independence assumption is implicitly or explicitly used: that the item generated at time \textit{t} is 
+independent of those generated at previous time steps. This assumption is often incorrect or false, because in many 
+situations the stream has memory, and experiences bursts of highly correlated events. For example, a fault in a 
+component of a system is likely to generate a burst of faults in related components \cite{MLonDataStreams}. 
+
+Although Concept drift in the item distribution may be arbitrary, it helps to name a few generic types, 
+which are not exclusive within a stream:
+
+\begin{itemize}
+  \item \textit{Sudden} drift occurs when the distribution has remained unchanged for a long time, then changes in a few steps to a significantly different one. It is often called \textit{shift}.
+  \item \textit{Gradual} or \textit{incremental} drift occurs when, for a long time, the distribution experiences at each time step a tiny, barely noticeable change, but these accumulated changes become significant over time.
+  \item Drift may be \textit{global} or \textit{partial} depending on whether it affects all of the item space or just a part of it. In ML terminology, partial change might affect only instances of certain forms, or only some of the instance attributes.
+  \item \textit{Recurrent} concepts occur when distributions that have appeared in the past tend to reappear later. An example is seasonality, where summer distributions are similar among themselves and different from winter distributions. A different example is the distortions in city traffic and public transportation due to mass events or accidents, which happen at irregular, unpredictable times.
+  \item In prediction scenarios, we are expected to predict some outcome feature $Y$ of an item given the values of input features $X$ observed in the item. \textit{Real} drift occurs when $Pr[Y\mid X]$ changes, with or without changes in $Pr[X]$. \textit{Virtual} drift occurs when $Pr[X]$ changes but $Pr[Y\mid X]$ remains unchanged. In other words, in \textit{real} drift the rule used to label instances changes, while in \textit{virtual} drift the input distribution changes \cite{MLonDataStreams}.
+\end{itemize}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\columnwidth]{Scikit_multiflow_example}
-  \caption{Result Table of the example in \ref{lst:scikit}} 
-  \label{fig:sci_result_examp}
+  \includegraphics[width=\columnwidth]{Concept_1}
+  \caption{Visualization of types of Concept drift \cite{ConceptDrift}} 
+  \label{fig:concept_1}
 \end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{Concept_2}
+  \caption{Visualization of real and virtual drift \cite{ConceptDrift}} 
+  \label{fig:concept_2}
+\end{figure}
+
+\cite{ConceptDrift}
 
 \section{Criteria for the Comparision}
 
@@ -574,8 +585,9 @@ The quantity $p0$ is the classifier’s prequential accuracy, and $p_c$  is the 
 that randomly assigns to each class the same number of examples as the classifier under consideration—makes a correct 
 prediction. If the classifier is always correct, then $\kappa = 1$. If its predictions coincide with the correct ones 
 as often as those of a chance classifier, then $\kappa = 0$ \cite{MLonDataStreams}.
-The second Kappa statistic, $\kappa_m$ \cite{kappam}, is a measure that compares against a majority class classifier instead of a 
-chance classifier:
+The second Kappa statistic, $\kappa_m$ \cite{kappam}, is a measure that compares against a majority class classifier $p_m$,
+that is a classifier that stores a count for each of the class labels and predicts as the class of a new instance the most 
+frequent class label, instead of a chance classifier:
 
 \begin{equation}
   \kappa_m = \frac{p_0-p_m}{1-p_m}
@@ -587,11 +599,11 @@ The third Kappa statistic that exist, is the Kappa temporal statistic \cite{kapp
 It considers the presence of temporal dependencies in data streams and is defined as:
 
 \begin{equation}
-  \kappa_temp = \frac{p_0-p'_e}{1-p'_e},
+  \kappa_\textit{temp} = \frac{p_0-p'_e}{1-p'_e},
 \end{equation}
 
-where $p'_e$ is the accuracy of the No-change classifier, that is classifier that predicts the last class from the stream. It is 
-a simple and useful classifier when the same labels appear together in bursts.
+where $p'_e$ is the accuracy of the No-change classifier, that is a classifier that predict the last class in the data stream. 
+It does this by exploiting autocorrelation in the label assignments. It is a simple and useful classifier when the same labels appear together in bursts.
 Statistic $\kappa_\textit{temp}$ takes values from 0 to 1. The interpretation is similar to that of $\kappa$: if the
 classifier is perfectly correct, then $\kappa_\textit{temp} = 1$. If the classifier is achieving the same accuracy as the No-change
 classifier, then $\kappa_\textit{temp} = 0$. Classifiers that outperform the No-change classifier fall between 0 and 1. Sometimes
@@ -602,21 +614,120 @@ For highly imbalanced but independently distributed data, the majority class cla
 The $\kappa_\textit{temp}$ and $\kappa_m$ measures can be seen as orthogonal, since they measure different aspects of the performance \cite{MLonDataStreams}.
 
 \subsection{Accuracy Evaluation}
-Accuracy is the number of instances correct clasified / total number of instances.
+Accuracy describes the ability of the classifier to correctly predict the data points in relation to the whole training set,
+which can be defined as:
+
+\begin{equation}
+  Accuracy = \frac{Number of correct predictions}{Total number of predictions}
+\end{equation}
+
+For a binary classification, accuracy can also be calculated in terms of positive and negatives as follows:
+
+\begin{equation}
+  Accuracy = \frac{TP+TN}{TP+TN+FP+FN},
+\end{equation}
+
+with TP = True Positives, TN = True Negatives, FP = False Positives and FN = False Negatives.
+The accuracy is often used to get an measurement of how good the classifier is at returning correct predictions. 
+It should be noted that the accuracy can give a misleading result for  cases were ther is a high class imbalance.
+In this case the classifier may achieve a high accuracy, but because the model is to simple the result is to crude to be of use.
+A example would be, if the Label for A would occur in $99\%$ of the cases, then the prediction that every case would be A 
+would have a accuracy of 99\%. This is called th Accuracy Paradox.
+For this reason measurements like Kappa, $Kappa_m$ and $Kappa_temp$ are also required to get useful result of the
+performeance and accuracy of a classifier \cite{MLonDataStreams}.
+
+\section{Framework}
+
+The following section will shortly introduce the python based scikit-multiflow framework, with which the the comperssion 
+of the different implementations of the RSLVQ algorithm where done.
+
+Scikit-multiflow is a framework that is inspired by the \ac{moa}, the most popular open source framework for machine learning on data streams,
+and MEKA, an open source implementation of methods for multi labeling. Scikit-multiflow is also inpired by scikit-learn, the most 
+popular framework for machine learning in Python. Following the Scikit philosophy, scikit-multiflow is an open source machine-
+learning framework for multi-output/multi-label and stream data. 
+
+The Scikit-multiflow does not provide a graphical user interface like the MOA framework that it was inspired by. 
+On the other hand can it be used within Jupyter notebooks, a popular interface in the data scientist community that is based 
+on python. 
+It is mainly a library that contains stream generators, learning methods, change detectors and evaluation methods for 
+Machien learning algorithms on streaming data. 
+Scilit-multiflow lays a special focus on its design, so that it is user friendly to new user and familiar for more 
+experienced ones.\cite{skmultiflow}
+
+It achieves this by having a simple workflow that can be easily describe in 4 steps:
+
+\begin{enumerate}
+  \item Create a stream: \\
+        A stream can be generate by use of either one of the predefiend Stream generators or by importing a Stream from a file.
+  \item Instantiate a classifier: \\
+        In this step the user has to choose by which type of algorithm the classifikation process should be accomplished.
+  \item Setup the evaluator: \\
+        Next the user has to choose if the evaluation process should be done presequential or by Hold-out method.
+  Prequential-evaluation or interleaved-testthen-train evaluation, is a popular performance 
+  evaluation method for the stream setting only, where tests are performed on new data before using it to train the model.
+  Hold-out evaluation is a popular performance evaluation method for batch and stream settings, where tests are performed 
+  in a separate test set. \cite{skmultiflow}
+  \item Run the evaluation: \\
+        The evaluator will perform the following subtask in this final step,
+  first, it will check if there are still samples in the stream and then it will pass the next sample to the classifier,
+  which will either test the sample with the \verb|predict()| method or it willl update the classefier with the \verb|partial_fit()|
+  method of the clasifier.
+\end{enumerate}
+  
+To give better understanding how this exactly works, \ref{lst:scikit} will provide a small example where a synthetic waveform gets 
+generated with the WaveformGenerator. This generator will create a synthetic stream that generates default samples with
+21 numeric attributes and 3 target values, based on a random differentiation of some base waveforms.
+For the classifier is the Hoeffding Tree choosen with default parameters.
+After this we chose a prequential evaluator with the following parameters: 
+\begin{itemize}
+  \item \verb|show_plot| = true, this will generate us a dynamic plot that will update as the classifier is trained.
+  \item \verb|pretrain_size| = 200, this parameter sets the number of samples that is used for the first training set.
+  \item \verb|max_sample| = 20000, this parameter set the maximum number of samples that should be used.
+\end{itemize}
+In the last step we then call evaluator method, that will then update the results and the plot.
+It is to note that at the time this thesis was written, the accuracy score stand for the performance 
+in the framework.  \cite{skmultiflow}
+
+\begin{lstlisting}[label=lst:scikit,
+  language=python,
+  firstnumber=1,
+  caption=Simple example of the scikit-multiflow workflow]			   
+
+  """1. Create a stream""" 
+  stream = WaveformGenerator()
+  stream.prepare_for_use()
+  
+  """2. Instantiate the HoeffdingTree classifier"""
+  ht = HoeffdingTree()
+  
+  """3. Setup the evaluator"""
+  evaluator = EvaluatePrequential(show_plot=True,
+                                  pretrain_size=200,
+                                  max_samples=20000)
+  
+  """4. Run evaluation"""
+  evaluator.evaluate(stream=stream, model=ht)
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{Scikit_multiflow_example}
+  \caption{Result Table of the example in \ref{lst:scikit}} 
+  \label{fig:sci_result_examp}
+\end{figure}
 
 \chapter{Used Algorithms}
 
 \section{Theoretical Work}
 
-This chapter will try to give a short explanation about how the Robust Soft Learning Vector Quantization Algorithm 
-(short: RSLVQ) works and will also explain the algorithm that it is based on. 
+This chapter will try to give a short explanation about how the \ac{rslvq} works and will also explain the algorithm that it is based on. 
 Furthermore will it explain what momentum based gradient descent algortihms there are and how they work.
 These are used in the different optimization implementation of the RSLVQ that will be compared in the later chapters. 
 
 \subsection{Learning Vector Quantization}
-The first part of the theoretical work will give an introduction to the Learning Vector Quantization (LVQ), from that later 
-the Robust Soft Learning Vector Quantization (RSLVQ) was derived from.
-The LVQ is a class of learning algorithms for nearest prototype classification (NPC).It stores a set of appropriatly chosen
+The first part of the theoretical work will give an introduction to the \ac{lvq}, from that later 
+the RSLVQ was derived from.
+The LVQ is a class of learning algorithms for \ac{npc}.It stores a set of appropriatly chosen
 prototype vectors instead of storing all the data points of a training set. This change makes the method computationally more
 efficent, as it does not have to store a high number of items to which new data must be compared to for classifcation anymore.
 Instead, the current data point only has to be compared to the prototypes to achieve classification.
@@ -657,13 +768,14 @@ prototypes are adjusted according to:
     &\theta_l(t+1) = \theta_l(t) + \alpha(t)(x-\theta_l), \quad c_l = y,\\
     &\theta_m(t+1) = \theta_m(t) - \alpha(t)(x-\theta_m), \quad c_m \neg y.
   \end{split}
+  \label{equ:LVQ3}
 \end{equation}
 
-\begin{figure}
-  \includegraphics[width=\linewidth]{LVQ}
+\begin{figure}[H]
+  \includegraphics[width=0.75\linewidth]{LVQ}
   \caption{Graphic depiction of the LVQ classifcation task.}
   \label{fig:LVQ}
-\end{figure}[H]
+\end{figure}
 
 If the labels $c_l$ and $c_m$ are equal or both labels differ from the label $y$ of the data point, no parameter update is being performed.
 The prototype, however, are changed are changed only if the data point $x$ is close to the classification boundry, i.e.
@@ -718,7 +830,7 @@ the learning rule becomes
 
 \begin{equation}
   \begin{split}
-    &\frac{\partial}{\partial\theta_l} [log \frac{p(x, y\mid\tau)}{p(x\mid\tau)} = \delta(c_l = y)(P_y(l\mid x) - P(l\mid x))\frac{\partial f(x, \theta_l) }{\partial\theta_l} \\
+    &\frac{\partial}{\partial\theta_l} [log \frac{p(x, y\mid\tau)}{p(x\mid\tau)}] = \delta(c_l = y)(P_y(l\mid x) - P(l\mid x))\frac{\partial f(x, \theta_l) }{\partial\theta_l} \\
     &- \delta(c_l \neq y) P(l\mid x)\frac{\partial f(x, \theta_l) }{\partial\theta_l}.
   \end{split}
 \end{equation}
@@ -733,15 +845,15 @@ where $P_y(l\mid x)$ and $P(l\mid x)$ are assigment probabilities,
 \end{equation}
 
 $P_y(l\mid x)$ describes the (posterior) probability that the data point \textit{x} is assigned to the component \textit{l} of the mixture
-, given that the data point was generated by teh correct class. $P(l\mid x)$ describes teh (posterior) probability that the 
+, given that the data point was generated by the correct class. $P(l\mid x)$ describes the (posterior) probability that the 
 data point \textit{x} is assigned to the component \textit{l} of the complete mixture using all classes.
 Using the gradient given by the equation \ref{equ:RSLVQ_1}, following learning rule is obtained: 
 
 \begin{equation}
   \theta_l(t + 1) = \theta_l(t) + \alpha(t) 
   \begin{cases}
-    P_y(l\mid x) - P(l\mid x)[\frac{\partial f(x, \theta_l) }{\partial\theta_l}], c_l = y,  \\
-    - P(l\mid x)[\frac{\partial f(x, \theta_l) }{\partial\theta_l}],              c_l \neq y.              
+    P_y(l\mid x) - P(l\mid x)[\frac{\partial f(x, \theta_l) }{\partial\theta_l}], &c_l = y,  \\
+    - P(l\mid x)[\frac{\partial f(x, \theta_l) }{\partial\theta_l}],              &c_l \neq y.              
   \end{cases}
   \label{equ:RSLVQ_2}
 \end{equation}
@@ -762,8 +874,8 @@ By substituting the derivative of $f(x,\theta_l)$ into equation \ref{equ:RSLVQ_2
 \begin{equation}
   \theta_l(t + 1) = \theta_l(t) + \alpha(t) 
   \begin{cases}
-    P_y(l\mid x) - P(l\mid x)(x-\theta_l), \quad c_l &= y,  \\
-    - P(l\mid x)(x-\theta_l),               c_l &\neq y,              
+    P_y(l\mid x) - P(l\mid x)(x-\theta_l),  &c_l = y,  \\
+    - P(l\mid x)(x-\theta_l),               &c_l \neq y,              
   \end{cases}
   \label{equ:RSLVQ_3}
 \end{equation}
@@ -912,6 +1024,7 @@ current gradient:
 
 \begin{equation}
 \textit{E}[\textit{g}^2]_t = \gamma\textit{E}[\textit{g}^2]_\textit{t-1} + (1-\gamma)\textit{g}^2_t
+\label{equ:adadelta_1}
 \end{equation}
 
 We then set $\gamma$ to a simliar value as the momentum, around 0.9. The SGD update will then be rewriten in terms of the 
@@ -924,7 +1037,7 @@ parameter update vector $\Delta\theta_\textit{t}$:
   \end{split}
 \end{equation}
 
-Because of this, the parameter update vector, that is base of the parameter update vecotor of the Adagrad (see equation \ref{equ:Adagrad_2}), 
+Because of this, the parameter update vector, that is base of the parameter update vector of the Adagrad (see equation \ref{equ:Adagrad_2}), 
 takes the form of:
 
 \begin{equation}
@@ -951,6 +1064,7 @@ ecaying average, this time not of squared gradients but of squared parameter upd
 
 \begin{equation}
   \textit{E}[\Delta\theta^2]_t = \gamma\textit{E}[\Delta\theta^2]_t-1 + (1-\gamma)\Delta\theta^2_t
+  \label{equ:adadelta_4}
 \end{equation}
 
 This leads to that the root mean squared error of the parameter updates is:
@@ -960,7 +1074,7 @@ This leads to that the root mean squared error of the parameter updates is:
 \end{equation}
 
 Because the $\textit{RMS}[\Delta\theta]_t$ value is unknown to us, we try to approximate it with the \textit{RMS} of 
-parameter updates until the previous time step. Replacing the learning rate $\eta$ in the previous update rule with $\textit{RMS}[\nabla\theta]_t-1$
+parameter updates until the previous time step. Replacing the learning rate $\eta$ in the previous update rule with $\textit{RMS}[\Delta\theta]_\textit{t-1}$
 leads to the final update rule for the Adadelta:
 
 \begin{equation}
@@ -968,9 +1082,10 @@ leads to the final update rule for the Adadelta:
   \Delta\theta_t &= - \frac{\textit{RMS}[\Delta\theta]_\textit{t-1}}{RMS[\textit{g}]_t} \textit{g}_\textit{t} \\
   \theta_\textit{t+1} &= \theta_t + \Delta\theta_t
   \end{split}
+  \label{equ:adadelta_2}
 \end{equation}
 
-In the Adadelta we do not need to set a learning rate $\eta$, eliminated from the update rule. \cite{overvieDiffRSLVQ}
+In the Adadelta we do not need to set a learning rate $\eta$, as it was eliminated from the update rule. \cite{overvieDiffRSLVQ}
 
 \subsection{RMSprop}
 RMSprop is an adaptive learning rate method proposed by Geoff Hinton in Lecture 6e of his Coursera Class. \cite{RMSprop_Hinton}
@@ -979,10 +1094,13 @@ the RMSprop had been developed independetly from each other at the same time. RM
 to the first update vector of Adadelta that we derived above:
 
 \begin{equation}
-  \begin{split}
-  \textit{E}[\textit{g}^2]_t &= 0.9\textit{E}[\textit{g}^2]_\textit{t-1} + 0.1\textit{g}^2_t \\
-  \theta_\textit{t+1} &= \theta_\textit{t}-\frac{\eta}{RMS[\textit{g}]_t} \textit{g}_\textit{t}
-  \end{split}
+  \textit{E}[\textit{g}^2]_t = 0.9\textit{E}[\textit{g}^2]_\textit{t-1} + 0.1\textit{g}^2_t
+  \label{equ:rmsprop_1}
+\end{equation}
+
+\begin{equation}
+  \theta_\textit{t+1} = \theta_\textit{t}-\frac{\eta}{RMS[\textit{g}]_t} \textit{g}_\textit{t}
+  \label{equ:rmsprop_2}
 \end{equation}
 
 RMSprop as well divides the learning rate by an exponentially decaying average of squared gradients.
@@ -1050,14 +1168,261 @@ They show empirically that Adam works well in practice and compares favorably to
 \end{algorithm}
 
 \section{Implementation of the RSLVQ variants}
+THis chapter will show how the different RSLVQ varients where implemented, so that they can work with Streaming data.
+The implementation is based on the version that was used in the scikit-multiflow framework \cite{skmultiflow} and was then further 
+modiefied by Moritz Heusinger in \cite{PassiveDriftonRSLVQ}.
+It has to be said that the implementation is nearly the same as in the previously mentioned work \cite{PassiveDriftonRSLVQ}.
 
 \subsection{RSLVQ SGD}
+The main differences between the different implementations of the algorithms appear in the training phase, when the prototypes
+gets updated in the \texttt{\_update\_prototype} method. As the rest stays nearly the same, it will only be explained once during the explanation of how the $RSLVQ_\textit{SGD}$
+varient was implemented.
+In the scikit-multiflow framework the \textbf{\texttt{partial\_fit}} method, shown in listing \ref{lst:partialfit}, gets executet everytime when an algorithm initiates the
+learning process or when it continous training process. It will check if the algorithm has already completed the intial 
+learning process or if it is the first time that the method gets executed. If one of those 2 cases is true, the method will
+continue by calling the internal \textbf{\texttt{\_validate\_train\_parms}} method, that will then carry out further checks.
+If none of the 2 options is true, the method will raise an error that the algorithm has to intial the learning/training process.
+After this check, the method will call the \textbf{\texttt{\_optimize}} method, that is shown in listing \ref{lst:optimize}.
+It has to be noted that neither the \textbf{\texttt{partial\_fit}}, the \textbf{\texttt{\_validate\_train\_parms}} and the \textbf{\texttt{\_optimize}} methods
+have been altered from how they have been implemented in the scikit-multiflow framework \cite{skmultiflow}.
 
-\subsection{RSLVQ prop}
+\begin{lstlisting}[label=lst:partialfit,
+  language=python,
+  firstnumber=1,
+  caption=Method \texttt{partial\_fit} from the scikit-multiflow framework]			   
 
-\subsection{RSLVQ adadelta}
+  def partial_fit(self, X, y, classes=None, sample_weight=None):
+        """Fit the LVQ model to the given training data and parameters using
+        gradient ascent.
 
-\subsection{RSLVQ adam}
+        Parameters
+        ----------
+        X : array-like, shape = [n_samples, n_features]
+            Training vector, where n_samples in the number of samples and
+            n_features is the number of features.
+        y : numpy.ndarray of shape (n_samples, n_targets)
+            An array-like with the class labels of all samples in X
+        classes : numpy.ndarray, optional (default=None)
+            Contains all possible/known class labels. Usage varies depending
+            on the learning method.
+        sample_weight : Not used.
+
+        Returns
+        --------
+        self
+        """
+        if set(unique_labels(y)).issubset(set(self.classes_)) or self.initial_fit is True:
+            X, y = self._validate_train_parms(X, y, classes=classes)
+        else:
+            raise ValueError('Class {} was not learned - please declare all classes in first call of fit/partial_fit'.format(y))
+
+        self._optimize(X, y)
+        return self
+\end{lstlisting}
+
+The \textbf{\texttt{\_optimize}} method will search for the the nearest correct and the nearest wrong prototype, based on 
+their euclidiean distance towards the data point that has to be classified, as describe in \ref{equ:LVQ3} and visualized in \ref{fig:LVQ}.
+If the the correct prototype(prototype with the right label) is not the nearest to the data point, then each the model of the nearest wrong
+prototype as well as the model of the nearest correct prototype should be updated by calling the \textbf{\texttt{\_update\_prototype}} method
+
+\begin{lstlisting}[label=lst:optimize,
+  language=python,
+  firstnumber=1,
+  caption=Method \texttt{\_optimize} from the scikit-multiflow framework]			   
+
+  def _optimize(self, X, y):
+        nb_prototypes = self.c_w_.size
+
+        n_data, n_dim = X.shape
+        prototypes = self.w_.reshape(nb_prototypes, n_dim)
+
+        for i in range(n_data):
+            xi = X[i]
+            c_xi = int(y[i])
+            best_euclid_corr = np.inf
+            best_euclid_incorr = np.inf
+
+            # find nearest correct and nearest wrong prototype
+            for j in range(prototypes.shape[0]):
+                if self.c_w_[j] == c_xi:
+                    eucl_dis = euclidean_distances(xi.reshape(1, xi.size),
+                                                   prototypes[j]
+                                                   .reshape(1, prototypes[j]
+                                                   .size))
+                    if eucl_dis < best_euclid_corr:
+                        best_euclid_corr = eucl_dis
+                        corr_index = j
+                else:
+                    eucl_dis = euclidean_distances(xi.reshape(1, xi.size),
+                                                   prototypes[j]
+                                                   .reshape(1, prototypes[j]
+                                                   .size))
+                    if eucl_dis < best_euclid_incorr:
+                        best_euclid_incorr = eucl_dis
+                        incorr_index = j
+
+            # Update nearest wrong prototype and nearest correct prototype
+            # if correct prototype isn't the nearest
+            if best_euclid_incorr < best_euclid_corr:
+                self._update_prototype(j=corr_index, c_xi=c_xi, xi=xi,
+                                       prototypes=prototypes)
+                self._update_prototype(j=incorr_index, c_xi=c_xi, xi=xi,
+                                       prototypes=prototypes)
+\end{lstlisting}
+
+The \textbf{\texttt{\_update\_prototype}}, as shown as in listing \ref{lst:sgd}, is when the first real difference to the scikit implementation appears.
+The method will then compare if the prototype has the same label yi (here named as $c_\textit{xi}$) as the data point xi.
+It will be then adjusted according to equation \ref{equ:RSLVQ_3}. 
+$P_y(l\mid x)$ and $P(l\mid x)$ from \ref{equ:RSLVQ_4} are then calculated by the \textbf{\texttt{\_p}} method.
+It uses the internal method \textbf{\texttt{\_costf}} to calculate the cost for each of the prototypes and it represents
+the $\frac{-(x-\theta_l)^2}{2\sigma^2}$ part of equation \ref{equ:RSLVQ_4}. 
+Both the \textbf{\texttt{\_p}} and the \textbf{\texttt{\_costf}} method are unchanged from their implementation in \cite{skmultiflow}
+
+\begin{lstlisting}[label=lst:sgd,
+  language=python,
+  firstnumber=1,
+  caption= Method \texttt{\_update\_prototype} as it was used in \cite{PassiveDriftonRSLVQ}.]			   
+
+  def _update_prototype(self, j, xi, c_xi, prototypes):
+        """SGD"""
+        d = xi - prototypes[j]
+
+        if self.c_w_[j] == c_xi:
+            # Attract prototype to data point
+            self.w_[j] += self.learning_rate * (self._p(j, xi, prototypes=self.w_, y=c_xi) -  self._p(j, xi, prototypes=self.w_)) * d
+        else:
+            # Distance prototype from data point
+            self.w_[j] -= self.learning_rate * self._p(j, xi, prototypes=self.w_) * d
+\end{lstlisting}
+
+\subsection{RSLVQ Adadelta}
+
+The first steps of the Adadelta implementation are the same as in the SGD implementation. In the first step the method will
+again calculate the adjustment for the prototype like it was described in \ref{equ:RSLVQ_3}.
+It will also calculate the Posterior and prior in the same way as described in \ref{equ:RSLVQ_4} with the \textbf{\texttt{\_p}} and
+\textbf{\texttt{\_costf}} methods.
+In next step is now were the differences between the implementation of the SGD and Adadelta start.
+First, it will calculate the sum of the past squared gradients according to equation \ref{equ:adadelta_1}.
+It will then calculate the gradient update at step t according to the first equation from \ref{equ:adadelta_2}.
+As the $\textit{RMS}[\Delta\theta]_t$ value is unknown to us, we try to approximate it with the \textit{RMS} of 
+parameter updates until the previous time step like this: $E[\Delta\theta^2] + \epsilon$.
+This gives us:
+
+\begin{equation}
+  \Delta \theta_t = \frac{(E[\Delta\theta^2] + \epsilon)}{\sqrt{(E[\Delta\theta^2] + \epsilon)}} g_t
+\end{equation}
+
+Next we store the squared parameter updates $ $ according to equation \ref{equ:adadelta_4}.
+Finally we apply the update prototype accoring to the second equation from \ref{equ:adadelta_2}:
+
+\begin{equation}
+  \theta_\textit{t+1} = \theta_t + \Delta\theta_t.
+\end{equation}
+
+This implementation of the Adadelta was also used in \cite{PassiveDriftonRSLVQ}.
+
+\begin{lstlisting}[label=lst:adadelta,
+  language=python,
+  firstnumber=1,
+  caption= Adadelta implementation from \cite{PassiveDriftonRSLVQ}.]			   
+
+  """Implementation of Adadelta"""
+        d = (xi - prototypes[j])
+
+        if self.c_w_[j] == c_xi:
+            gradient = (self._p(j, xi, prototypes=self.w_, y=c_xi) - self._p(j, xi, prototypes=self.w_)) * d
+        else:
+            gradient = - self._p(j, xi, prototypes=self.w_) * d
+
+        # Accumulate past squared gradients
+        self.squared_mean_gradient[j] = self.decay_rate *self.squared_mean_gradient[j] + (1 - self.decay_rate) * gradient ** 2
+
+        # Compute update/step
+        step = ((self.squared_mean_step[j] + self.epsilon) / (self.squared_mean_gradient[j] + self.epsilon)) **0.5 * gradient
+
+        # Accumulate updates
+        self.squared_mean_step[j] = self.decay_rate * self.squared_mean_step[j] + (1 - self.decay_rate) * step ** 2
+
+        # Attract/Distract prototype to/from data point
+        self.w_[j] += step
+\end{lstlisting}
+
+\subsection{RSLVQ RMSprop}
+
+The implementation of the RMSprop is nearly the same as for the Adadelta, the difference is that we reintroduce the learning
+rate $\eta$, that was eliminated in the Adadelta and replaced by the root mean squared error of the parameter updates $\textit{RMS}[\Delta\theta]_\textit{t-1}$.
+
+The steps until after the posterior and prior calculation are the exact same as in the SGD implementation.
+When the gradient is calculated, it will be added to the averge past squared gradients like in equation \ref{equ:rmsprop_1} described.
+If we take the value $0.9$ for $\gamma$ like Hinton suggested in \cite{RMSprop_Hinton}, we get the following equation:
+
+\begin{equation}
+  G_t = 0.9\textit{E}[\textit{g}^2]_\textit{t-1} + 0.1\textit{g}^2_t 
+\end{equation}
+
+The prototype update can be calculated by equation \ref{equ:rmsprop_2}, were the $-\frac{\eta}{RMS[\textit{g}]_t} g_t$ 
+part, that calculates the gradient update, can be substituted with $\Delta\theta$.
+Because the RMSprop is identical to the first update vector of the Adadelta, we will then get for $\Delta\theta$ the following 
+eqaution:
+
+\begin{equation}
+  \Delta\theta = - \frac{\eta}{G_t-\epsilon} \textit{g}_\textit{t}.
+\end{equation}
+
+This equation is then used to calculate the gradient update before it is update is performed on the prototype in the 
+final implementation \cite{PassiveDriftonRSLVQ}.
+
+\begin{lstlisting}[label=lst:rmsprop,
+  language=python,
+  firstnumber=1,
+  caption= Implementation of the RMSprop from \cite{PassiveDriftonRSLVQ}.]			   
+
+  """RMSprop"""
+        d = xi - prototypes[j]
+                
+        if self.c_w_[j] == c_xi:
+            gradient = (self._p(j, xi, prototypes=self.w_, y=c_xi) - self._p(j, xi, prototypes=self.w_)) * d
+        else:
+            gradient = - self._p(j, xi, prototypes=self.w_) * d
+            
+        # Accumulate gradient
+        self.squared_mean_gradient[j] = 0.9 * self.squared_mean_gradient[j] + 0.1 * gradient ** 2
+        
+        # Update Prototype
+        self.w_[j] += (self.learning_rate / ((self.squared_mean_gradient[j] + self.epsilon) ** 0.5)) * gradient
+\end{lstlisting}
+
+\subsection{RSLVQ Adam}
+
+\begin{lstlisting}[label=lst:adam,
+  language=python,
+  firstnumber=1,
+  caption= Implementation of Adam on basis of \cite{PassiveDriftonRSLVQ}]			   
+
+  """Adam"""
+        d = (xi - prototypes[j])
+
+        """Calculate posterior"""
+        if self.c_w_[j] == c_xi:
+            gradient = (self._p(j, xi, prototypes=self.w_,y=c_xi) - self._p(j, xi, prototypes=self.w_))* d
+        else:
+            gradient = - self._p(j, xi, prototypes=self.w_)* d
+
+        """Compute gradients m """
+        self.gradients_m[j] = self.beta_1 * self.gradients_m[j] + (1 - self.beta_1) * gradient
+
+        """Compute squared gradients v """
+        self.gradients_v_sqrt[j] = self.beta_2 * self.gradients_v_sqrt[j] + (1 - self.beta_2) * gradient ** 2 
+
+        """Compute m correction"""
+        m_corrected = self.gradients_m[j] / (1 - self.beta_1)
+
+        """Compute v correction"""
+        v_corrected = self.gradients_v_sqrt[j] / (1 - self.beta_2)
+
+        """Update prototype"""
+        self.w_[j] += - (self.learning_rate/(np.sqrt(v_corrected) + self.epsilon ))*m_corrected
+\end{lstlisting}
 
 \chapter{Test realisation}
 
@@ -1129,32 +1494,18 @@ public void foo() {
 }
 \end{lstlisting}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vehicula felis lectus, nec aliquet arcu aliquam vitae. Quisque laoreet consequat ante, eget pretium quam hendrerit at. Pellentesque nec purus eget erat mattis varius. Nullam ut vulputate velit. Suspendisse in dui in eros iaculis tempus. Phasellus vel est arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer elementum, nulla eu faucibus dignissim, orci justo imperdiet lorem, luctus consectetur orci orci a nunc.
-
-Praesent at nunc nec tortor viverra viverra. Morbi in feugiat lectus. Vestibulum iaculis ipsum at eros viverra volutpat in id ipsum. Donec condimentum, ligula viverra pharetra tincidunt, nunc dui malesuada nisi, vitae mollis lacus massa quis velit. Integer feugiat ipsum a volutpat scelerisque. Nulla facilisis augue nunc. Curabitur eget consectetur nulla. Integer accumsan sem non nisi tristique dictum.
-
-Sed lacinia eu dolor sed congue. Ut dui orci, venenatis id interdum rhoncus, mattis elementum massa. Proin venenatis elementum purus ut rutrum. Phasellus sit amet enim porta, commodo mauris a, bibendum tortor. Nulla ut lobortis justo. Aenean auctor mi nec velit fermentum, quis ultricies odio viverra. Maecenas ultrices urna vel erat ornare, quis suscipit odio molestie. Donec vel dapibus orci, vel tincidunt orci.
-
-Etiam vitae eros erat. Praesent nec accumsan turpis, et mollis eros. Praesent lacinia nulla at neque porta aliquam. Quisque elementum neque ac porta suscipit. Nulla volutpat luctus venenatis. Aliquam imperdiet suscipit pretium. Nunc feugiat lacinia aliquet. Mauris ut sapien nec risus porttitor bibendum. Aenean feugiat bibendum lectus, id mattis elit adipiscing at. Pellentesque interdum felis non risus iaculis euismod fermentum nec urna. Nullam lacinia suscipit erat ac ullamcorper. Sed vitae nulla posuere, posuere sem id, ultricies urna. Maecenas eros lorem, tempus non nulla vitae, ullamcorper egestas nibh. Vestibulum facilisis ante vel purus accumsan mattis. Donec molestie tempor eros, a gravida odio congue posuere.
-
-Sed in tempus elit, sit amet suscipit quam. Ut suscipit dictum molestie. Etiam quis porta mauris. Cras dapibus sapien eget sem porta, ut congue sapien accumsan. Maecenas hendrerit lobortis mauris ut hendrerit. Suspendisse at aliquet est. Quisque eros est, scelerisque ac orci quis, placerat suscipit lorem. Phasellus rutrum enim non odio ullamcorper, sit amet auctor nulla fringilla. Nunc eleifend vulputate dui, a sollicitudin tellus venenatis non. Cras condimentum lorem at ultricies vestibulum. Vestibulum interdum lobortis commodo. Nullam rhoncus interdum massa, ut varius nisi scelerisque id. Nunc interdum quam in enim bibendum vulputate.
-
 
 \chapter{Result Evaluation}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vehicula felis lectus, nec aliquet arcu aliquam vitae. Quisque laoreet consequat ante, eget pretium quam hendrerit at. Pellentesque nec purus eget erat mattis varius. Nullam ut vulputate velit. Suspendisse in dui in eros iaculis tempus. Phasellus vel est arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer elementum, nulla eu faucibus dignissim, orci justo imperdiet lorem, luctus consectetur orci orci a nunc.
-
-Praesent at nunc nec tortor viverra viverra. Morbi in feugiat lectus. Vestibulum iaculis ipsum at eros viverra volutpat in id ipsum. Donec condimentum, ligula viverra pharetra tincidunt, nunc dui malesuada nisi, vitae mollis lacus massa quis velit. Integer feugiat ipsum a volutpat scelerisque. Nulla facilisis augue nunc. Curabitur eget consectetur nulla. Integer accumsan sem non nisi tristique dictum.
-
-Sed lacinia eu dolor sed congue. Ut dui orci, venenatis id interdum rhoncus, mattis elementum massa. Proin venenatis elementum purus ut rutrum. Phasellus sit amet enim porta, commodo mauris a, bibendum tortor. Nulla ut lobortis justo. Aenean auctor mi nec velit fermentum, quis ultricies odio viverra. Maecenas ultrices urna vel erat ornare, quis suscipit odio molestie. Donec vel dapibus orci, vel tincidunt orci.
-
-Etiam vitae eros erat. Praesent nec accumsan turpis, et mollis eros. Praesent lacinia nulla at neque porta aliquam. Quisque elementum neque ac porta suscipit. Nulla volutpat luctus venenatis. Aliquam imperdiet suscipit pretium. Nunc feugiat lacinia aliquet. Mauris ut sapien nec risus porttitor bibendum. Aenean feugiat bibendum lectus, id mattis elit adipiscing at. Pellentesque interdum felis non risus iaculis euismod fermentum nec urna. Nullam lacinia suscipit erat ac ullamcorper. Sed vitae nulla posuere, posuere sem id, ultricies urna. Maecenas eros lorem, tempus non nulla vitae, ullamcorper egestas nibh. Vestibulum facilisis ante vel purus accumsan mattis. Donec molestie tempor eros, a gravida odio congue posuere.
-
-Sed in tempus elit, sit amet suscipit quam. Ut suscipit dictum molestie. Etiam quis porta mauris. Cras dapibus sapien eget sem porta, ut congue sapien accumsan. Maecenas hendrerit lobortis mauris ut hendrerit. Suspendisse at aliquet est. Quisque eros est, scelerisque ac orci quis, placerat suscipit lorem. Phasellus rutrum enim non odio ullamcorper, sit amet auctor nulla fringilla. Nunc eleifend vulputate dui, a sollicitudin tellus venenatis non. Cras condimentum lorem at ultricies vestibulum. Vestibulum interdum lobortis commodo. Nullam rhoncus interdum massa, ut varius nisi scelerisque id. Nunc interdum quam in enim bibendum vulputate.
 
 \chapter{Summary}
 
 \backmatter
+%%%%%%%%%%%%%%%%%%%
+%% create abbreviations list
+%%%%%%%%%%%%%%%%%%%
+
+\printacronyms[include-classes=abbrev,name=Abbreviations]
+
 %%%%%%%%%%%%%%%%%%%
 %% create figure list
 %%%%%%%%%%%%%%%%%%%
