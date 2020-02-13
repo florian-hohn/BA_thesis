@@ -1,7 +1,7 @@
-PWD c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template
+PWD c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template
 INPUT C:\Users\flori\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.tex
-OUTPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.log
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.tex
+OUTPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.log
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrbook.cls
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrbook.cls
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrkbase.sty
@@ -196,10 +196,10 @@ INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3.
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3-code.tex
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3-code.tex
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\nul:.tex
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\nul:.tex
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\nul:.tex
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\nul:.tex
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\nul:.tex
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\nul:.tex
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\nul:.tex
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\nul:.tex
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr10.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr10.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr10.tfm
@@ -259,9 +259,9 @@ INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlan
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\lbx\english.lbx
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\lbx\english.lbx
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.aux
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.aux
-OUTPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.aux
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.aux
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.aux
+OUTPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.aux
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
@@ -272,14 +272,14 @@ INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\refcou
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\refcount.sty
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.out
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.out
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.out
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.out
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.out
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.out
-OUTPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.out
-OUTPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.pdf
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
+OUTPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
+OUTPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.pdf
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\bookmark.sty
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\bookmark.sty
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\ifvtex.sty
@@ -290,10 +290,10 @@ INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\ltcapti
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\ltcaption.sty
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translations\dicts\translations-basic-dictionary-english.trsl
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translations\dicts\translations-basic-dictionary-english.trsl
-OUTPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.bcf
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.bbl
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.bbl
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.bbl
+OUTPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.bcf
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.bbl
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.bbl
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.bbl
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmss12.tfm
@@ -320,8 +320,8 @@ INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts
 INPUT C:\Users\flori\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmsl12.tfm
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.toc
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.toc
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.toc
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.toc
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmmi8.tfm
@@ -334,73 +334,73 @@ INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
-OUTPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.toc
+OUTPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.toc
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti8.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti7.tfm
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Overview_ml.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Overview_ml.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Overview_ml.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Overview_ml.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Overview_ml.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Overview_ml.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Overview_ml.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Overview_ml.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Overview_ml.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Overview_ml.png
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbxti10.tfm
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SL_process_figure.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SL_process_figure.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SL_process_figure.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SL_process_figure.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SL_process_figure.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Gradient_desc_types.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Gradient_desc_types.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Gradient_desc_types.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Gradient_desc_types.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Gradient_desc_types.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SL_process_figure.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SL_process_figure.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SL_process_figure.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SL_process_figure.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SL_process_figure.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Gradient_desc_types.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Gradient_desc_types.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Gradient_desc_types.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Gradient_desc_types.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Gradient_desc_types.png
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\jknappen\ec\tcrm1200.tfm
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_1.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_1.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_1.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_1.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_1.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_2.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_2.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_2.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_2.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Concept_2.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_1.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_1.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_1.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_1.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_1.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_2.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_2.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_2.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_2.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Concept_2.png
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmtt12.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.sty
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Scikit_multiflow_example.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Scikit_multiflow_example.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Scikit_multiflow_example.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Scikit_multiflow_example.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\Scikit_multiflow_example.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\LVQ.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\LVQ.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\LVQ.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\LVQ.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\LVQ.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SGD_momentum.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SGD_momentum.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SGD_momentum.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SGD_momentum.png
-INPUT C:\informatik\7.Semester\BachlorArbeit\figures\SGD_momentum.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Scikit_multiflow_example.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Scikit_multiflow_example.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Scikit_multiflow_example.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Scikit_multiflow_example.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\Scikit_multiflow_example.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\LVQ.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\LVQ.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\LVQ.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\LVQ.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\LVQ.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SGD_momentum.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SGD_momentum.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SGD_momentum.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SGD_momentum.png
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\figures\SGD_momentum.png
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam5.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.lof
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.lof
-OUTPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.lof
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.lot
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.lot
-OUTPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.lot
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.lof
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.lof
+OUTPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.lof
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.lot
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.lot
+OUTPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.lot
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmcsc10.tfm
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.aux
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.out
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.out
-INPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.run.xml
-OUTPUT c:\informatik\7.Semester\BachlorArbeit\Bachelor_latex_files\bachelor_template\bachelor_template\template\thesis.run.xml
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.aux
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.run.xml
+OUTPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.run.xml
 INPUT C:\Users\flori\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
 INPUT C:\Users\flori\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb

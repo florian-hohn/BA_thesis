@@ -10,29 +10,25 @@ from skmultiflow.evaluation import EvaluatePrequential
 filePath = "realData/"
 fileType = ".csv"
 
+realDataComp= "forestcover"
+
 realDataFiles = ["electric_data",
-            "outdoor_data",
             "poker_data",
-            "weather_data"]
+            "weather_data",
+            "rialto_data"]
 
 realTargetFiles = ["electric_targets",
-            "outdoor_targets",
             "poker_targets",
-            "weather_targets"]
+            "weather_targets",
+            "rialto_targets"]
 
 resultHoldoutFiles = ["electric_hold_result",
-            "outdoor_hold_result",
             "poker_hold_result",
             "weather_hold_result"]
 
 resultPreqFiles = ["electric_preq_result",
-            "outdoor_preq_result",
             "poker_preq_result",
             "weather_preq_result"]
-
-evalHoldoutPara = [[800,8000],[200,600],[10000,100000],[1000,2000]]
-
-evalPrequPara = [[400,8000],[100,600],[2000,100000],[100,2000]]
 
 rslvq=["sgd","adadelta","rmsprop","rmspropada"]
 
@@ -64,15 +60,15 @@ for i in range(len(realDataFiles)):
             # 3. Setup the evaluator
             if eval[k] == "holdout":
                 evaluator_rslvq = EvaluateHoldout(show_plot = True,
-                                                n_wait = evalHoldoutPara[i][0],
-                                                max_samples = evalHoldoutPara[i][1],
+                                                n_wait = 1000,
+                                                max_samples = 10000,
                                                 metrics = ['accuracy','kappa', 'kappa_t', 'kappa_m'],
                                                 output_file = filePath+resultHoldoutFiles[i]+"_"+rslvq[j]+fileType)
             else:
                 evaluator_rslvq = EvaluatePrequential(show_plot = True,
-                                                    n_wait = evalPrequPara[i][0],
-                                                    max_samples = evalPrequPara[i][1],
-                                                    pretrain_size = evalPrequPara[i][0],
+                                                    n_wait = 1000,
+                                                    max_samples = 10000,
+                                                    pretrain_size = 1000,
                                                     metrics = ['accuracy','kappa', 'kappa_t', 'kappa_m'],
                                                     output_file = filePath+resultPreqFiles[i]+"_"+rslvq[j]+fileType)
             # 4. Run evaluation

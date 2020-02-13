@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bd014893-1f5b-40a6-bbe2-532b5919e5b6</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>single_eval.py</StartupFile>
+    <StartupFile>main_evaluation.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -41,7 +41,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ba_thesis_code.py" />
-    <Compile Include="single_eval.py">
+    <Compile Include="custom_evaluation.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="main_evaluation.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
