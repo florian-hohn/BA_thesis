@@ -153,6 +153,18 @@ pdfkeywords={Keywords}
   class = abbrev
 }
 
+\DeclareAcronym{adam}{
+  short = ADAM ,
+  long  = Adaptive Moment Estimation ,
+  class = abbrev
+}
+
+\DeclareAcronym{rms}{
+  short = RMS,
+  long  = root mean squared ,
+  class = abbrev
+}
+
 \DeclareAcronym{moa}{
   short = MOA ,
   long  = Massive Online Analysis ,
@@ -209,10 +221,6 @@ pdfkeywords={Keywords}
 %% abstract
 %%%%%%%%%%%%%%%%%%%
 
-\section*{Summary}
-
-TODO
-
 \section*{Abstract}
 
 TODO
@@ -240,12 +248,34 @@ and what it wishes to achiev, as well as an explanation how this work is structu
 for how to navigate this work.
 
 \section{Inspiration for this Thesis} 
+There is an ever growing amount of data that needs to be processed in real time to be of use nowadays, e.g. for use in selfdriving
+cars, from sensors that monitor processes in the industry to improve their quality \cite{MLonDataStreams} or from data streams originating in 
+the Internet that can be used to detect epidemics and natural disasters that can be combined with statistics from 
+official centers for disease and disaster control for better prevention \cite{MLonDataStreams}.
+The problem is this flood of data has outpaced our capability to process, analyze, store, and understand these datasets.
+Traditional Machine learning algorithms are not capable of learning and training from this flood of data in a acceptable 
+amount time. The reason for this, is that the stream can suddenly change (so called "Concept drift"). Data is also 
+rapidly and constantly generated, which means that the learning algorithm can not use the data more than once to learn 
+from it.
+For this reasons we need algorithms that can deal with this amount of data in real-time while also needing only a 
+reasonable amount of resources \cite{MLonDataStreams}.
 
 \section{Purpose of this Thesis} 
+In \cite{PassiveDriftonRSLVQ} was shown that, on average, the $RSLVQ_\textit{Adadelta}$ performance better in nearly
+all aspects beside the computation time and the Kappa Performance in respect to the other versions of the RSLVQ 
+that were tested in this work.
+It had further shown that with delayed settings the $RSLVQ_\textit{RMSprop}$ performed better than the $RSLVQ_\textit{Adadelta}$
+and the $RSLVQ_\textit{SGD}$ implementation.
+This work will compare another modfified RSLVQ version, that is based on the ADAM algorithm, with the other already tested
+RSLVQ versions when they are used on streaming data. It will compare them in respect to their returned accuracy,
+performance and computation time on different synthetic and real data streams with different evaluation approaches.
+According to \cite{Kingma2014AdamAM} the $RSLVQ_\textit{Adam}$ should compare favourably in comparison towards the
+other adaptive learning algorithms and should therefore be returning the best results in the experiments.
+
 
 \section{Outline of the Thesis} 
 
-In the second Chapter of this thesis will give a short overview over the basics of Machine Learning that are relavant for
+The second Chapter of this thesis will give a short overview over the basics of Machine Learning that are relavant for
 the understanding of the premise for the thesis. It will give also a short describtion about what is special about Data stream 
 in Machine learning algorithms and what is importend to take into account when working with them.
 It will also give a short introduction about the criterias with which the comparision of the different implementations 
@@ -575,7 +605,7 @@ prequential accuracy measure is only appropriate when all classes are balanced a
 of examples. The Kappa statistic is a more sensitive measure for quantifying the predictive performance of streaming 
 classifiers. \cite{MLonDataStreams}
 There are 3 different versions of the Kappa statistic that are relevant for the analysis of streaming data.
-THe first Kappa statistc, Kappa $\kappa$, was introduced by Cohen in his work \cite{kappak} and was defined as follows:
+The first Kappa statistc, Kappa $\kappa$, was introduced by Cohen in his work \cite{kappak} and was defined as follows:
 
 \begin{equation}
   \kappa = \frac{p_0-p_c}{1-p_c}
@@ -1051,7 +1081,7 @@ $\textit{E}[\textit{g}^2]_\textit{t}$:
   \Delta\theta_\textit{t} = -\frac{\eta}{\sqrt{\textit{E}[\textit{g}^2]_\textit{t} + \epsilon}} \textit{g}_\textit{t}
 \end{equation}
 
-As the denominator is just the root mean squared (RMS) error criterion of the gradient, we can replace
+As the denominator is just the \ac{rms} error criterion of the gradient, we can replace
 it with the criterion short-hand: 
 
 \begin{equation}
@@ -1107,7 +1137,7 @@ RMSprop as well divides the learning rate by an exponentially decaying average o
 Hinton suggests $\gamma$ to be set to 0.9, while a good default value for the learning rate $\eta$ is 0.001. \cite{overvieDiffRSLVQ}
 
 \subsection{Adam}
-As described in \cite{Kingma2014AdamAM}, the Adaptive Moment Estimation (Adam) is another way to compute the adaptive 
+As described in \cite{Kingma2014AdamAM}, the \ac{adam} is another way to compute the adaptive 
 learning rate for each parameter. Additionly to storing an exponentially decaying average of past squared gradients
 $\textit{v}_t$ like Adadelta or RMSprop, Adam also keeps an exponentially decaying average of past gradients $\textit{m}_t$,
 simliar to momentum:
@@ -1117,6 +1147,7 @@ simliar to momentum:
   \textit{m}_t &= \beta_1\textit{m}_\textit{t-1} + (1-\beta_1)\textit{g}_t \\
   \textit{v}_t &= \beta_2\textit{v}_\textit{t-1} + (1-\beta_2)\textit{g}^2_t
   \end{split}
+  \label{equ:adam_1}
 \end{equation}
 
 $\textit{m}_t$ and $\textit{v}_t$ are estimates of the first moment (the mean) and the second moment (the uncentered variance)
@@ -1131,21 +1162,23 @@ To counteract these biases they compute a bias-corrected estimate of the first a
   \hat{m}_t &= \frac{\textit{m}_t}{1-\beta^t_1} \\
   \hat{v}_t &= \frac{\textit{v}_t}{1-\beta^t_2}
   \end{split}
+  \label{equ:adam_2}
 \end{equation}
 
 These are then used to update the parameters just as we have seen in Adadelta and RMSprop, which yields the Adam update rule:
 
 \begin{equation}
-\theta_\textit{t+1} = \theta_\textit{t}-\frac{\eta}{\sqrt{\hat{v}_t}+ \epsilon} \hat{m}_t
+\theta_\textit{t+1} = \theta_\textit{t}-\frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t
+\label{equ:adam_3}
 \end{equation}
 
-The authors recommend in their work to use as default values of 0.9 for $\beta_1$, 0.999 for $\beta_2$ and $10^-8$ for $\epsilon$.
+The authors recommend in their work to use as default values of 0.9 for $\beta_1$, 0.999 for $\beta_2$ and $10^\textit{-8}$ for $\epsilon$.
 They show empirically that Adam works well in practice and compares favorably to other adaptive learning-method algorithms.
 \cite{overvieDiffRSLVQ, Kingma2014AdamAM}
 
 \begin{algorithm}
   \caption{Adam algorithm, as proposed in \cite{Kingma2014AdamAM}. The authors recommend for default settings the value
-          0.9 for $\beta_1$, 0.999 for $\beta_2$ and $10^-8$ for $\epsilon$ as well as a stepsize $\alpha$ of 0.001.}\label{euclid}
+          0.9 for $\beta_1$, 0.999 for $\beta_2$ and $10^\textit{-8}$ for $\epsilon$ as well as a stepsize $\alpha$ of 0.001.}\label{euclid}
   \begin{algorithmic}[1]
     \Require $\alpha$: Stepsize
     \Require $\beta_1$, $\beta_2$ $\in$ $[0,1)$: Exponential decay rates for the moment estimates
@@ -1394,10 +1427,33 @@ final implementation \cite{PassiveDriftonRSLVQ}.
 
 \subsection{RSLVQ Adam}
 
+As describe in chapter 3.2.5, the Adam implementation is simliar to the Adadelta and RMSprop implementation.
+This means for the implementation, that at the start it does again the same steps the SGD algorithm by computing the gradient.
+When the gradient is computed it continous by computing the average  of  past  gradients $m_t$ and the average  of  past  squared  gradients $v_t$
+like in equation \ref{equ:adam_1}. It has to be noted the parameters $m_t$ and $v_t$ needs to be initialized as vectors of 0's before
+the omputation process. This is done by modifying the \textbf{\texttt{\_optimize}} method in the end like this:
+
 \begin{lstlisting}[label=lst:adam,
   language=python,
   firstnumber=1,
-  caption= Implementation of Adam on basis of \cite{PassiveDriftonRSLVQ}]			   
+  caption= Modification of the \texttt{\_optimize} method to initialize $m_t$ and $v_t$.]			   
+
+  if self.initial_fit:
+    # Next two lines are Init for ADAM last m + v gradients
+    self.gradients_v_sqrt = np.zeros_like(self.w_)
+    self.gradients_m = np.zeros_like(self.w_)
+    self.initial_fit = False
+\end{lstlisting}
+
+In the next step will be then the bias corrected estimates for $m_t$ and $v_t$, $\hat{m}_t$ and $\hat{v}_t$,
+like in equation \ref{equ:adam_2}. 
+In the last step will then the update rule be applyied. Implemented is this rule like equation \ref{equ:adam_3} suggested.
+The values $\beta_1$ and $\beta_2$ are set to 0.9 and 0.999 and $\epsilon$ is set to $10^\textit{-8}$, like it was suggested in \cite{overvieDiffRSLVQ, Kingma2014AdamAM}.
+
+\begin{lstlisting}[label=lst:adam,
+  language=python,
+  firstnumber=1,
+  caption= Implementation of Adam on basis of \cite{PassiveDriftonRSLVQ}.]			   
 
   """Adam"""
         d = (xi - prototypes[j])

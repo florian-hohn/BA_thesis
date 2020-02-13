@@ -7,7 +7,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.2}Purpose of this Thesis}{1}{section.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.3}Outline of the Thesis}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.3}Outline of the Thesis}{2}{section.1.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Basics}{3}{chapter.2}%
 \defcounter {refsection}{0}\relax 
@@ -63,28 +63,28 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3.4}RSLVQ Adam}{35}{subsection.3.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Test realisation}{36}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Test realisation}{37}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Used Streaming Datat sets}{36}{section.4.1}%
+\contentsline {section}{\numberline {4.1}Used Streaming Datat sets}{37}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Synthetic data}{36}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.1}Synthetic data}{37}{subsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Real world data}{36}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.2}Real world data}{37}{subsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Implementation of the Comparision and Results}{37}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Implementation of the Comparision and Results}{38}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Experiment begrenzung}{37}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.1}Experiment begrenzung}{38}{subsection.4.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Experiment aufbau}{37}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.2}Experiment aufbau}{38}{subsection.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Experiment durchlauf}{37}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.3}Experiment durchlauf}{38}{subsection.4.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Result Evaluation}{38}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Result Evaluation}{39}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Summary}{39}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Summary}{40}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Table of Contents}{41}{chapter*.17}%
+\contentsline {chapter}{Table of Contents}{42}{chapter*.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Literature}{45}{chapter*.21}%
+\contentsline {chapter}{Literature}{46}{chapter*.20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Statutory Declaration}{46}{chapter*.23}%
+\contentsline {chapter}{\nonumberline Statutory Declaration}{47}{chapter*.22}%

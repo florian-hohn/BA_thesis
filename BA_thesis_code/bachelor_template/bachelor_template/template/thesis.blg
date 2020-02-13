@@ -1,19 +1,19 @@
 [0] Config.pm:304> INFO - This is Biber 2.13
 [0] Config.pm:307> INFO - Logfile is 'thesis.blg'
-[30] biber-MSWIN64:315> INFO - === 
-[52] Biber.pm:375> INFO - Reading 'thesis.bcf'
-[170] Biber.pm:905> INFO - Found 28 citekeys in bib section 0
-[187] Biber.pm:4196> INFO - Processing section 0
-[189] Utils.pm:75> INFO - Globbing data source 'bib_file.bib'
-[199] Utils.pm:91> INFO - Globbed data source 'bib_file.bib' to bib_file.bib
-[211] Biber.pm:4373> INFO - Looking for bibtex format file 'bib_file.bib' for section 0
-[223] bibtex.pm:1462> INFO - LaTeX decoding ...
-[278] bibtex.pm:1281> INFO - Found BibTeX data source 'bib_file.bib'
-[280] Utils.pm:300> WARN - Possible typo (case mismatch) between datasource keys: 'kappam' and 'KappaM' in file 'bib_file.bib'
-[515] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[516] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[516] Biber.pm:4024> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[516] Biber.pm:4030> INFO - No sort tailoring available for locale 'en-US'
-[549] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[567] bbl.pm:751> INFO - Output to thesis.bbl
-[572] Biber.pm:110> INFO - WARNINGS: 1
+[50] biber-MSWIN64:315> INFO - === 
+[112] Biber.pm:375> INFO - Reading 'thesis.bcf'
+[224] Biber.pm:905> INFO - Found 28 citekeys in bib section 0
+[245] Biber.pm:4196> INFO - Processing section 0
+[277] Utils.pm:75> INFO - Globbing data source 'bib_file.bib'
+[305] Utils.pm:91> INFO - Globbed data source 'bib_file.bib' to bib_file.bib
+[336] Biber.pm:4373> INFO - Looking for bibtex format file 'bib_file.bib' for section 0
+[347] bibtex.pm:1462> INFO - LaTeX decoding ...
+[397] bibtex.pm:1281> INFO - Found BibTeX data source 'bib_file.bib'
+[398] Utils.pm:300> WARN - Possible typo (case mismatch) between datasource keys: 'kappam' and 'KappaM' in file 'bib_file.bib'
+[675] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[675] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[675] Biber.pm:4024> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[676] Biber.pm:4030> INFO - No sort tailoring available for locale 'en-US'
+[737] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[755] bbl.pm:751> INFO - Output to thesis.bbl
+[761] Biber.pm:110> INFO - WARNINGS: 1
