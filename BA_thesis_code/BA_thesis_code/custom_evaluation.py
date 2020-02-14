@@ -1,83 +1,77 @@
 import numpy
 import pandas as pd
-from Algorithms.rslvq_sgd import RSLVQSgd
-from Algorithms.rslvq_adadelta import RSLVQAdadelta
-from Algorithms.rslvq_rmsprop import RSLVQRMSprop
-from Algorithms.rslvq_adam import RSLVQAdam
 from Algorithms.rslvq_all import RSLVQall
 from skmultiflow.evaluation import EvaluateHoldout
 from skmultiflow.evaluation import EvaluatePrequential
 from skmultiflow.metrics import ClassificationMeasurements
 
-def custom_evaluation(datastreams, datastream_names, rslvq_varients, evaluator, metrics, stream_length):
+def custom_evaluation(datastreams, datastream_names, clfs, clfs_names, stream_length):
 
-        clfs_names = ['RSLVQ_SGD', 
-                      'RSLVQ_Adadelta', 
-                      'RSLVQ_RMSprop',
-                      'RSLVQ_Adam']
+        ev=['holdout', 'prequel']
+        
+        eval_results_holdout = []
+        eval_results_prequel = []
 
-        rslvq_sgd = RSLVQall(gradient_descent=rslvq_varients[0])
-        rslvq_adadelta = RSLVQall(gradient_descent=rslvq_varients[1])
-        rslvq_rmsprop = RSLVQall(gradient_descent=rslvq_varients[2])
-        rslvq_adam = RSLVQall(gradient_descent=rslvq_varients[3])
+        mod = clfs
 
-        stream = datastreams[0]
+        stream = datastreams
         stream.prepare_for_use()
 
-        rslvq_sgd = RSLVQall(gradient_descent=rslvq_varients[0])
+        #print(datastream_names[index])
+        #print(stream.get_data_info())
 
         evaluator = EvaluateHoldout(n_wait = 10000,
                                                     max_samples = stream_length,
-                                                    metrics = ['accuracy','kappa', 'kappa_t', 'kappa_m', 'running_time'],
-                                                    output_file = 'results/holdout_evaluation_test.csv')
-        evaluator.evaluate(stream=stream, model=[rslvq_sgd, 
-                                                 rslvq_adadelta, 
-                                                 rslvq_rmsprop, 
-                                                 rslvq_adam]) 
-        print('Holdout evaluation test finished')
+                                                    metrics = ['accuracy','kappa', 'kappa_t', 'kappa_m'],
+                                                    restart_stream = True)
+        try:
+            evaluator.evaluate(stream=stream, model=mod)
+                                                        
 
-        for i in range(len(datastreams)):
-            stream = datastreams[i]
-            stream.prepare_for_use()
-
-            rslvq_sgd = RSLVQall(gradient_descent=rslvq_varients[0])
-            rslvq_adadelta = RSLVQall(gradient_descent=rslvq_varients[1])
-            rslvq_rmsprop = RSLVQall(gradient_descent=rslvq_varients[2])
-            rslvq_adam = RSLVQall(gradient_descent=rslvq_varients[3])
-
-            l = 0
-            for l in range(len(evaluator)):
-                j=0
-                k=0
-                if evaluator[l] == "holdout":
-                    for j in range(len(metrics)):
-                        evaluator = EvaluateHoldout(n_wait = 10000,
-                                                    max_samples = stream_length,
-                                                    metrics = metrics[j],
-                                                    output_file = 'results/holdout_evaluation_' + datastream_names[i] + '.csv',
-                                                    restart_stream = True,
-                                                   )
+            eval_results_holdout.append(evaluator.get_mean_measurements())
+        except Exception as e:
+            print(e)
             
-                        evaluator.evaluate(stream=stream, 
-                                           model=[rslvq_sgd, 
-                                                  rslvq_adadelta, 
-                                                  rslvq_rmsprop, 
-                                                  rslvq_adam]) 
-                                          # model_names=clfs_names)
-                        print('Holdout evaluation '+ datastream_names[i] +' finished')
-                else:
-                    for k in range(len(metrics)):
-                        evaluator_rslvq = EvaluatePrequential(n_wait = 10000,
-                                                              max_samples = stream_length,
-                                                              pretrain_size = 10000,
-                                                              metrics = metrics[k],
-                                                              output_file = 'results/holdout_prequential_' + datastream_names[i] + '.csv',
-                                                              )
-                            
-                        evaluator.evaluate(stream=stream, 
-                                           model=[rslvq_sgd, 
-                                                  rslvq_adadelta, 
-                                                  rslvq_rmsprop, 
-                                                  rslvq_adam])
-                                          # model_names=clfs_names)
-                        print('Prequential evaluation '+ datastream_names[i] +' finished')
+        print('')
+        print('Holdout evaluation for '+datastream_names+' stream finished')
+
+        evaluator_rslvq = EvaluatePrequential(n_wait = 10000,
+                                              max_samples = stream_length,
+                                              pretrain_size = 10000,
+                                              metrics = ['accuracy','kappa', 'kappa_t', 'kappa_m']) 
+        try:
+            evaluator.evaluate(stream=stream, model=mod)
+                                                         
+                       
+            eval_results_prequel.append(evaluator.get_mean_measurements())
+        except Exception as e:
+            print(e)
+           
+        print('')
+        print('Prequential evaluation for '+datastream_names+' stream finished')
+        
+        
+        for i, item in enumerate(eval_results_holdout, start=0):
+            print('')
+            print('Results for the ' + ev[0] + ' eval:')
+            for j in range(len(item)):
+                print('')
+                print(clfs_names+' :')
+                print('Performance: '+str(round(item[j].get_accuracy(), 4)))
+                print('Kappa: '+str(round(item[j].get_kappa(), 4)))
+                print('Kappa_m: '+str(round(item[j].get_kappa_m(), 4)))
+                print('Kappa_t: '+str(round(item[j].get_kappa_t(), 4)))
+
+        print('')
+
+        for i, item in enumerate(eval_results_prequel, start=0):
+            print('')
+            print('Results for the ' + ev[1] + ' eval:')
+            for j in range(len(item)):
+                print('')
+                print(clfs_names+' :')
+                print('Performance: '+str(round(item[j].get_accuracy(), 4)))
+                print('Kappa: '+str(round(item[j].get_kappa(), 4)))
+                print('Kappa_m: '+str(round(item[j].get_kappa_m(), 4)))
+                print('Kappa_t: '+str(round(item[j].get_kappa_t(), 4)))
+        print('')
