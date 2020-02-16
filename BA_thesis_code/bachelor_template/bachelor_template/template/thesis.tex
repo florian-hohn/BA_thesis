@@ -222,11 +222,24 @@ pdfkeywords={Keywords}
 %%%%%%%%%%%%%%%%%%%
 
 \section*{Abstract}
-
-TODO
+There is a ever growing amount of Data in our everday lives that are produced by sensors that are connected to 
+the Internet of Things, used in self-driving cars or used to recognise our speech to take commands from us
+(e.g. Amazons Alexa or Apples Siri). But to be of use for us this Data first need to be analyzied, and this 
+becomes a real challenge, as traditinoal Machine Learning algorithm normaly take several runs through a training set before 
+the learning process is complete.
+Thankfully there are already several Algorithm developed that can train and learn on data by only needing one run on 
+these datasets and can therefor process this streamed Data.
+Moritz Heusinger looked already into different varients of how a \ac{rslvq} algorithm can be modified to work on streaming data
+in \cite{PassiveDriftonRSLVQ} and compared them.
+This work will compare a additional varient of how the the RSLVQ can be implemented to work on streaming data and will it 
+compare to the other three varients of the RSLVQ in terms of accuracy, performance and computation time.
 
 \newpage
 \chapter*{Note of thanks}
+I want to thank my familiy for always supporting me through the whole time I studied and worked on this thesis as well
+as the time I needed to finish my Bachelor of Engineering degree in 'Information Systems'.
+I also want to thank Prof. Schleif and Mr Heusinger, as I could always ask them when I was not sure about something while working on 
+this thesis and they would then try to help me with my questions.
 
 %%%%%%%%%%%%%%%%%%%
 %% Table of Contents
@@ -259,6 +272,12 @@ rapidly and constantly generated, which means that the learning algorithm can no
 from it.
 For this reasons we need algorithms that can deal with this amount of data in real-time while also needing only a 
 reasonable amount of resources \cite{MLonDataStreams}.
+
+Heusinger compared for this reason several varients of how the \ac{rslvq} Machine learning algorithm could be modified
+to make it work with stremed data in \cite{PassiveDriftonRSLVQ}.
+This work will now take another of the in \cite{} suggested varients of modification for the RSLVQ and will compare it 
+with the $RSLVQ_\textit{SGD}$, $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{Adam}$ varients that Heusinger already compared with each
+other and will compare this other varient with them in reference to their accuracy, performance and computation time.
 
 \section{Purpose of this Thesis} 
 In \cite{PassiveDriftonRSLVQ} was shown that, on average, the $RSLVQ_\textit{Adadelta}$ performance better in nearly
@@ -1481,8 +1500,11 @@ The values $\beta_1$ and $\beta_2$ are set to 0.9 and 0.999 and $\epsilon$ is se
 \end{lstlisting}
 
 \chapter{Test realisation}
+This section contains a short description of the syntetic and real datasets that were used to carry out the comparisions.
+It will also shortly describe the settings that were used and the reason for why these parameters were choosen.
+The Tests were carried out on a Microsoft Surface Pro(2017) with an Intel Core i5-7300U with 2 x 2,6 GHz and 8GB of RAM.
 
-\section{Used Streaming Datat sets}
+\section{Used Datasets}
 
 In this section will be a short describtion of the data streams, synthetic and real world data, that where used to 
 perform the experiments.
@@ -1490,30 +1512,113 @@ perform the experiments.
 \subsection{Synthetic data}
 
 \begin{itemize}
-  \item Sea Concepts: !not finsihed rework required!\\
+  \item Agrawal\\
+        The generator was introduced by Agrawal et al in \cite{agrawal1993database}, and was common source of data for early work on scaling up 
+        decision tree learners. The generator produces a stream containing nine features, six numeric and three categorical. 
+        There are ten functions defined for generating binary class labels from the features. Presumably these determine 
+        whether the loan should be approved. The features and functions are listed in the original paper \cite{agrawal1993database,skmultiflow}.
+
+  \item Hyperplane\\
+        Generates a problem of prediction class of a rotation hyperplane. It was used as testbed for CVFDT and VFDT in \cite{hyperplane}.
+        A hyperplane in d-dimensional space is the set of points $x$ that satisfy $\sum^d_\textit{i=1} w_ix_i=w_0 = \sum^d_\textit{i=1} w_i$,
+        where $x_i$ is the ith coordinate of $x$.  Examples for which $\sum^d_\textit{i=1} w_ix_i>w_0$, are 
+        labeled positive, and examples for which $\sum^d_\textit{i=1}w_ix_i\leq w_0$, are labeled negative.
+
+        Hyperplanes are useful for simulating time-changing concepts, because the change of the orientation and position
+        of the hyperplane can be done in a smooth manner by changing the relative size of the weights.
+        Change can be introduced to this dataset by adding drift to each weight feature $w_i=w_i + d\sigma$, where $\sigma$ is the 
+        probability that the direction of change is reversed and $d$ is the change applied to every example \cite{skmultiflow}.
+
+  \item Sinegenerator\\
+        This generator is an implementation of the dara stream with abrupt concept drift, as described in Gama, Joao, et al \cite{sinegenerator}
+        It generates up to 4 relevant numerical attributes, that vary from 0 to 1, where only 2 of them are relevant to 
+        the classification task and the other 2 are added by request of the user. A classification function is chosen 
+        among four possible ones: 
+        \begin{enumerate}
+          \item SINE1. Abrupt concept drift, noise-free examples. It has two relevant attributes. Each attributes has 
+          values uniformly distributed in $[0;1]$. In the first context all points below the curve $y=sin(x)$ are classified as positive.
+          \item Reversed SINE1. The reversed classification of SINE1.
+          \item SINE2. The same two relevant attributes. The classification function is $y<0.5+0.3sin(3\pi x)$.
+          \item Reversed SINE2. The reversed classification of SINE2.
+        \end{enumerate}
+
+        Concept drift can be introduced by changing the classification function. This can be done manually or using the ConceptdriftStream method
+        from the scikit-multiflow framework.
+        Two important features are the possibility to balance classes, which means the class distribution will tend to a uniform one, and the 
+        possibility to add noise, which will, add two non relevant attributes \cite{skmultiflow}.
+    
+  \item Transient Chessboard\\
+        Virtual drift is generated by revealing successively parts of a chessboard. This is done square by square 
+        randomly chosen from the whole chessboard such that each square represents an own concept. Every time after four 
+        fields have been revealed, samples covering the whole chessboard are presented. This reoccurring alternation 
+        penalizes algorithms tending to discard former concepts. Only two instead of eight classes where used to reduce
+        the impact of classification by chance \cite{movingsquaresChessboardRialtobridge}.
+
+
+  \item Moving Squares: \\
+        Four equidistantly separated, squared uniform distributions are moving in horizontal direction with constant 
+        speed. The direction is inverted whenever the leading square reaches a predefined boundary. Each square 
+        represents a different class. The added value of this dataset is the predefined time horizon of 120 examples 
+        before old instances may start to overlap current ones. This is especially useful for dynamic sliding window 
+        approaches, allowing to test whether the size is adjusted accordingly. \cite{movingsquaresChessboardRialtobridge}
+        
+
+  \item Sea Concepts: \\
         This dataset consists of 50000 instances with three attributes of which only two are relevant. 
         The two class decision boundary is given by f1 + f2 = b, where f1, f2 are the two relevant features and b a
         predefined threshold. Abrupt drift is simulated with four different concepts, by changing the value of b every 
-        12500 samples. Also included are 10\verb|%| of noise. \cite{SEADataset}
-  \item Moving Squares: \\
-        placeholder
+        12500 samples. Also included are 10\verb|%| of noise. 
+        This exact Datas was also used in \cite{SEADataset}.
+
+        \begin{table}[H]
+          \label{tab:realdata}
+          \centering
+          \begin{tabular} {|| c c c c c c ||} 
+            \hline
+              Dataset & Drift &Features & Classes & Targets & Samples \\
+            \hline\hline
+              Agrawal & - & 9 & 2 & 1 & 40 000 \\
+            \hline
+              Agrawal Drift & A & 9 & 2 & 1 & 40 000 \\
+            \hline 
+              Hyperplane & G & 10 & 2 & 1 & 40 000 \\
+            \hline 
+              Hyperplane Drift & A & 10 & 2 & 1 & 40 000 \\
+            \hline
+              Sine & A & 2 & 2 & 1 & 40 000 \\
+            \hline
+              Sine Drift & A & 2 & 2 & 1 & 40 000 \\
+            \hline
+              Chessboard & G & 2 & 8 & 1 & 200 000 \\
+            \hline
+              Squares & - & 2 & 4 & 1 & 200 000 \\
+            \hline
+              Sea & A & 3 & 2 & 1 & 50 000 \\
+            \hline
+          \end{tabular} 
+          \caption{Overview over the synthetic generated Datasets, the streams with "Drift" in name generate the drift
+          with the $ConceptDrifStream()$ method from scikit-multiflow. (A: Abrupt Drift, G: Gradual Drift, -: no Drift) }
+        \end{table}
+  
 \end{itemize}
 
 \subsection{Real world data}
+This section contains the description for datasets that were taken in the real world and that were already used in other
+publications. 
 
 \begin{itemize}
   \item Weather Dataset: \\
         This dataset contains eight different features like the minimum and maximum tempreature, visibility, wind speed, 
         air pressure, etc. that were measured at the Offutt Air Force Base in Bellevue, Nebraska. These measuredments were
         measured in the period of 1949-1999. The goal of this dataset is to predict if it is going to rain on certains day or not.
-        It contains 18159 instances with an imbalance towards no rain (69\verb|%|) and was introduced by Elwell et al..
+        It contains 18159 instances with an imbalance towards no rain (69\verb|%|) and was introduced by Elwell in \cite{weather}.
 
   \item Electicity Market Dataset:\\
         First described by Harris et al., it is often used for performance comparison, as it is a good benchmark for concept drift 
         classification. It holds the information of the Australian New South Wales Electricity Market, whose prices are affected 
         by supply and demand. Each sample is characterized by teh following attributes: day of the week, time stamp, market demand,
         etc.. Each of the samples refers to a period of 30 minutes and the class label identiﬁes the relative change compared to the
-        last 24 hours. The used Dataset is the normalized version of the original dataset.
+        last 24 hours. The used Dataset is the normalized version of the original dataset that was used in \cite{MLonDataStreams}.
 
   \item Poker Dataset: \\
         To create this dataset, one million poker hands, each represented by five cards that got encoded with its suit and rank, 
@@ -1524,21 +1629,37 @@ perform the experiments.
         This was achieved by sorting the instances of the dataset by rank and suit. Duplicate hands were also removed.
         Additionly, this version was also normalized.
 
-  \item Outdoor Objects: \\
-        This Dataset was optained by images that were recorded by a mobile in a garden enviroment. The goal is to classify 40 different objects,
-        each approached ten times under varying lighting conditions affecting the color based representation.
-        Every ten images represent one approach and each approach is in temporal order within the dataset.
-        The objects are encoded in a normalized 21-dimensional RG-Chromaticity histogram.
-
+  \item Rialto Bridge Timelapse Dataset: \\
+        Ten of the colorful buildings next to the famous Rialto bridge in Venice are encoded in a normalized 
+        27-dimensional RGB histogram. The images were obtained from time-lapsed videos captured by a webcam with a fixed
+        position. The recordings cover 20 consecutive days during may-june 2016. Continuously changing weather and 
+        lighting conditions affect the representation. The labels were generated by manually masking the corresponding 
+        buildings and excluded overnight recordings since they were too dark for being useful. 
+        This Dataset was originaly used in \cite{movingsquaresChessboardRialtobridge}
 \end{itemize}
 
-\section{Implementation of the Comparision and Results}
+\begin{table}[H]
+  \label{tab:realdata}
+  \centering
+  \begin{tabular} {|| c c c c c ||} 
+    \hline
+      Dataset & Features & Classes & Targets & Samples \\
+    \hline\hline
+      Weather & 8 & 2 & 1 & 18 160 \\
+    \hline 
+      Electricity & 8 & 2 & 1 & 45 312 \\
+    \hline
+      Poker & 10 & 10 & 1 & 829 201 \\
+    \hline
+      Rialto & 27 & 10 & 1 & 82 250 \\
+    \hline
+  \end{tabular} 
+  \caption{Overview over the real Datasets}
+\end{table}
 
-\subsection{Experiment begrenzung}
+\section{Test Settings}
 
-\subsection{Experiment aufbau}
-
-\subsection{Experiment durchlauf}
+\subsection{Test Parameters}
 
 \begin{lstlisting}[label=lst:java,
 				   language=java,
@@ -1549,7 +1670,6 @@ public void foo() {
 	// Kommentar
 }
 \end{lstlisting}
-
 
 \chapter{Result Evaluation}
 

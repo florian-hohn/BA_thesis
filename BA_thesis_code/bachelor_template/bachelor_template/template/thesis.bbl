@@ -44,6 +44,45 @@
       \field{volume}{31}
       \field{year}{2007}
     \endentry
+    \entry{agrawal1993database}{article}{}
+      \name{author}{3}{}{%
+        {{hash=4b876a40aac16cd3d6b0278b1154b9da}{%
+           family={Agrawal},
+           familyi={A\bibinitperiod},
+           given={Rakesh},
+           giveni={R\bibinitperiod}}}%
+        {{hash=d191dc83c8095971fa8e49bfb36fc0dc}{%
+           family={Imielinski},
+           familyi={I\bibinitperiod},
+           given={Tomasz},
+           giveni={T\bibinitperiod}}}%
+        {{hash=64a439d13c6d223424a43f495d60cd29}{%
+           family={Swami},
+           familyi={S\bibinitperiod},
+           given={Arun},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{f5d35ee9e11019aff1b81c2d14ad21bb}
+      \strng{fullhash}{f5d35ee9e11019aff1b81c2d14ad21bb}
+      \strng{bibnamehash}{f5d35ee9e11019aff1b81c2d14ad21bb}
+      \strng{authorbibnamehash}{f5d35ee9e11019aff1b81c2d14ad21bb}
+      \strng{authornamehash}{f5d35ee9e11019aff1b81c2d14ad21bb}
+      \strng{authorfullhash}{f5d35ee9e11019aff1b81c2d14ad21bb}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE transactions on knowledge and data engineering}
+      \field{number}{6}
+      \field{title}{Database mining: A performance perspective}
+      \field{volume}{5}
+      \field{year}{1993}
+      \field{pages}{914\bibrangedash 925}
+      \range{pages}{12}
+    \endentry
     \entry{Bifet_datastream}{book}{}
       \name{author}{3}{}{%
         {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
@@ -395,6 +434,40 @@
       \field{pages}{2121\bibrangedash 2159}
       \range{pages}{39}
     \endentry
+    \entry{weather}{article}{}
+      \name{author}{2}{}{%
+        {{hash=461d385e3e65e9acb5fc18f63212f78a}{%
+           family={Elwell},
+           familyi={E\bibinitperiod},
+           given={Ryan},
+           giveni={R\bibinitperiod}}}%
+        {{hash=a29bd97f376d67ceb3d885362b1fa525}{%
+           family={Polikar},
+           familyi={P\bibinitperiod},
+           given={Robi},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{80846afc834a5c20a8ef57cb28cda514}
+      \strng{fullhash}{80846afc834a5c20a8ef57cb28cda514}
+      \strng{bibnamehash}{80846afc834a5c20a8ef57cb28cda514}
+      \strng{authorbibnamehash}{80846afc834a5c20a8ef57cb28cda514}
+      \strng{authornamehash}{80846afc834a5c20a8ef57cb28cda514}
+      \strng{authorfullhash}{80846afc834a5c20a8ef57cb28cda514}
+      \field{sortinit}{E}
+      \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Neural Networks}
+      \field{number}{10}
+      \field{title}{Incremental learning of concept drift in nonstationary environments}
+      \field{volume}{22}
+      \field{year}{2011}
+      \field{pages}{1517\bibrangedash 1531}
+      \range{pages}{15}
+    \endentry
     \entry{IntroAI}{book}{}
       \name{author}{1}{}{%
         {{hash=0ad7b7b50f220390cbf1c36575c6a49a}{%
@@ -419,6 +492,49 @@
       \field{isbn}{9780857292995}
       \field{title}{Introduction to Artifical Intelligence}
       \field{year}{2003}
+    \endentry
+    \entry{sinegenerator}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=becfb1d06920501e14c8c41ed9590ba9}{%
+           family={Gama},
+           familyi={G\bibinitperiod},
+           given={Joao},
+           giveni={J\bibinitperiod}}}%
+        {{hash=de9b7793613c01dbf79626dbefe2f372}{%
+           family={Medas},
+           familyi={M\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3babefa400c74b6042a6672cc7002cce}{%
+           family={Castillo},
+           familyi={C\bibinitperiod},
+           given={Gladys},
+           giveni={G\bibinitperiod}}}%
+        {{hash=b163c7926cd84d2d8a19ed2950d188cc}{%
+           family={Rodrigues},
+           familyi={R\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{956f3267ecdeca027ab437947be3d3de}
+      \strng{fullhash}{81c3d8053d2efa21fe74ce49cee1664b}
+      \strng{bibnamehash}{956f3267ecdeca027ab437947be3d3de}
+      \strng{authorbibnamehash}{956f3267ecdeca027ab437947be3d3de}
+      \strng{authornamehash}{956f3267ecdeca027ab437947be3d3de}
+      \strng{authorfullhash}{81c3d8053d2efa21fe74ce49cee1664b}
+      \field{extraname}{1}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Brazilian symposium on artificial intelligence}
+      \field{title}{Learning with drift detection}
+      \field{year}{2004}
+      \field{pages}{286\bibrangedash 295}
+      \range{pages}{10}
     \endentry
     \entry{ConceptDrift}{article}{}
       \name{author}{5}{}{%
@@ -460,6 +576,7 @@
       \strng{authorbibnamehash}{56431deb8901de6306944b9ccd741193}
       \strng{authornamehash}{56431deb8901de6306944b9ccd741193}
       \strng{authorfullhash}{05bcccf822d6c292bc78cef77a9fe417}
+      \field{extraname}{2}
       \field{sortinit}{G}
       \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
       \field{labelnamesource}{author}
@@ -610,6 +727,40 @@
       \verb 2http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf
       \endverb
     \endentry
+    \entry{hyperplane}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=55e6c1df6c1f824fa7f8ffb4844d6994}{%
+           family={Hulten},
+           familyi={H\bibinitperiod},
+           given={Geoff},
+           giveni={G\bibinitperiod}}}%
+        {{hash=401806dbd984b7581c9454b636d854dd}{%
+           family={Spencer},
+           familyi={S\bibinitperiod},
+           given={Laurie},
+           giveni={L\bibinitperiod}}}%
+        {{hash=926269a097c38456f5b32d7efb1d1a80}{%
+           family={Domingos},
+           familyi={D\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{1eef1dce659a78632c9dab713e7d5503}
+      \strng{fullhash}{1eef1dce659a78632c9dab713e7d5503}
+      \strng{bibnamehash}{1eef1dce659a78632c9dab713e7d5503}
+      \strng{authorbibnamehash}{1eef1dce659a78632c9dab713e7d5503}
+      \strng{authornamehash}{1eef1dce659a78632c9dab713e7d5503}
+      \strng{authorfullhash}{1eef1dce659a78632c9dab713e7d5503}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the seventh ACM SIGKDD international conference on Knowledge discovery and data mining}
+      \field{title}{Mining time-changing data streams}
+      \field{year}{2001}
+      \field{pages}{97\bibrangedash 106}
+      \range{pages}{10}
+    \endentry
     \entry{Kingma2014AdamAM}{article}{}
       \name{author}{2}{}{%
         {{hash=b6fbd171848aad4edf3925543f1f1522}{%
@@ -670,6 +821,46 @@
       \field{year}{1992}
       \field{pages}{497\bibrangedash 500}
       \range{pages}{4}
+    \endentry
+    \entry{movingsquaresChessboardRialtobridge}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=9e7f736b8f94a62f813066e33b8f1ce1}{%
+           family={{Losing}},
+           familyi={L\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod}}}%
+        {{hash=4479c9971d09a8f94f6dbef3cdf9cb0e}{%
+           family={{Hammer}},
+           familyi={H\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=233e5e59e8f71f239163f13c7d96d495}{%
+           family={{Wersing}},
+           familyi={W\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{719ef00d6810fa65f436d224ad20e3e3}
+      \strng{fullhash}{719ef00d6810fa65f436d224ad20e3e3}
+      \strng{bibnamehash}{719ef00d6810fa65f436d224ad20e3e3}
+      \strng{authorbibnamehash}{719ef00d6810fa65f436d224ad20e3e3}
+      \strng{authornamehash}{719ef00d6810fa65f436d224ad20e3e3}
+      \strng{authorfullhash}{719ef00d6810fa65f436d224ad20e3e3}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2016 IEEE 16th International Conference on Data Mining (ICDM)}
+      \field{issn}{2374-8486}
+      \field{month}{12}
+      \field{title}{KNN Classifier with Self Adjusting Memory for Heterogeneous Concept Drift}
+      \field{year}{2016}
+      \field{pages}{291\bibrangedash 300}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/ICDM.2016.0040
+      \endverb
+      \keyw{data mining;optimisation;pattern classification;KNN classifier;data mining;nonstationary data streams;Internet of Things;Big Data;self adjusting memory model;k nearest neighbor algorithm;metaparameter optimization;performance evaluation;SAM-kNN robustness;Adaptation models;Data mining;Benchmark testing;Biological system modeling;Prediction algorithms;Predictive models;Heuristic algorithms;Data streams;concept drift;kNN;data mining}
     \endentry
     \entry{lvqEx2}{article}{}
       \name{author}{2}{}{%

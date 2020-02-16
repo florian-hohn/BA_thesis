@@ -9,6 +9,10 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.1}{\ignorespaces Overview over the synthetic generated Datasets, the streams with "Drift" in name generate the drift with the $ConceptDrifStream()$ method from scikit-multiflow. (A: Abrupt Drift, G: Gradual Drift, -: no Drift) \relax }}{40}{table.caption.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.2}{\ignorespaces Overview over the real Datasets\relax }}{41}{table.caption.15}%
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
