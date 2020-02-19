@@ -13,6 +13,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {table}{\numberline {4.2}{\ignorespaces Overview over the real Datasets\relax }}{41}{table.caption.15}%
 \defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.3}{\ignorespaces Overview of the metrics that are recorded during the evaluation and that are then used for the comparision.\relax }}{42}{table.caption.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.4}{\ignorespaces Overview of the parameter settings for each of the algorithms. Parameters marked with a * only occured in some of the algorithms. ($\sigma $ = number of prototypes, $\gamma $ = decay rate, $\eta $ = learning rate)\relax }}{42}{table.caption.17}%
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }

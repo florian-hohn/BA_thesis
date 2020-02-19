@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Sea_data,RSLVQ_Adadelta,0.7741,0.5323,0.3835,0.514,30.64

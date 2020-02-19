@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Move_squares,RSLVQ_Adadelta,0.1357,-0.1524,-0.1524,0.1357,59.13

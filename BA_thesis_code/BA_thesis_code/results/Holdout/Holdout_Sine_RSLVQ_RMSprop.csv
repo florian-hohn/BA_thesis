@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Sine,RSLVQ_RMSprop,0.9822,0.964,0.9671,0.9628,26.13

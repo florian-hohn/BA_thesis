@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Cess_data,RSLVQ_SGD,0.5908,0.5319,0.5251,0.0217,89.9

@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Hyperplane_drift,RSLVQ_Adadelta,0.8406,0.6812,0.6776,0.6825,36.05

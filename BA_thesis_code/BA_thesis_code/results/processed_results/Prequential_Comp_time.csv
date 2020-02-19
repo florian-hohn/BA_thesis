@@ -1,0 +1,20 @@
+Data Stream,RSLVQ_SGD,RSLVQ_Adadelta,RSLVQ_RMSprop,RSLVQ_Adam
+Agrawal,35.97,36.08,35.66,35.94
+Agrawal_drift,37.6,37.33,37.22,37.67
+Hyperplane,36.02,34.57,34.41,35.08
+Hyperplane_drift,37.29,36.05,36.04,36.24
+Sine,34.16,32.41,31.38,33.18
+Sine_drift,34.08,32.94,33.54,35.0
+Cess_data,89.9,89.82,101.15,98.36
+Move_squares,49.84,59.13,57.09,56.58
+Sea_data,37.72,36.0,35.9,35.94
+Synth. Mean,43.62,43.8144,44.71,44.8878
+Synth. Rank,1.0,2.0,3.0,4.0
+Electric,35.85,35.31,34.96,35.97
+Poker,120.73,122.72,121.62,124.89
+Weather,17.3,17.67,17.55,17.45
+Rialto,114.05,123.59,123.9,123.58
+Real Mean,71.9825,74.8225,74.5075,75.4725
+Real Rank,1.0,3.0,2.0,4.0
+Overall Mean,52.3469,53.3554,53.8785,54.2985
+Overall Rank,1.0,2.0,3.0,4.0

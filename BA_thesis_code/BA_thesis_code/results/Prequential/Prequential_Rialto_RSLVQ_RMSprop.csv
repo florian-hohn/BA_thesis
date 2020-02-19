@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Rialto,RSLVQ_RMSprop,0.2837,0.2042,0.2042,0.2837,123.9

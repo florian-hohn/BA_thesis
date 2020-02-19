@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Rialto,RSLVQ_Adam,0.1922,0.1025,0.1025,0.1922,107.25

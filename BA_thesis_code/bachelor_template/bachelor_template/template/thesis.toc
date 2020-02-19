@@ -73,14 +73,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Test Settings}{41}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Test Parameters}{41}{subsection.4.2.1}%
-\defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Result Evaluation}{43}{chapter.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Summary}{44}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Table of Contents}{46}{chapter*.18}%
+\contentsline {chapter}{Table of Contents}{46}{chapter*.20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Literature}{50}{chapter*.22}%
+\contentsline {chapter}{Literature}{50}{chapter*.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Statutory Declaration}{51}{chapter*.24}%
+\contentsline {chapter}{\nonumberline Statutory Declaration}{51}{chapter*.26}%

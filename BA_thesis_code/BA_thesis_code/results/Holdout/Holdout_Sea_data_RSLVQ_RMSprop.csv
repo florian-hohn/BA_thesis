@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Sea_data,RSLVQ_RMSprop,0.8492,0.6766,0.5883,0.6755,29.95

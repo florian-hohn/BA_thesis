@@ -1496,7 +1496,7 @@ The values $\beta_1$ and $\beta_2$ are set to 0.9 and 0.999 and $\epsilon$ is se
         v_corrected = self.gradients_v_sqrt[j] / (1 - self.beta_2)
 
         """Update prototype"""
-        self.w_[j] += - (self.learning_rate/(np.sqrt(v_corrected) + self.epsilon ))*m_corrected
+        self.w_[j] += (self.learning_rate/(np.sqrt(v_corrected) + self.epsilon ))*m_corrected
 \end{lstlisting}
 
 \chapter{Test realisation}
@@ -1571,7 +1571,7 @@ perform the experiments.
         This exact Datas was also used in \cite{SEADataset}.
 
         \begin{table}[H]
-          \label{tab:realdata}
+          \label{tab:synthdata}
           \centering
           \begin{tabular} {|| c c c c c c ||} 
             \hline
@@ -1659,17 +1659,68 @@ publications.
 
 \section{Test Settings}
 
-\subsection{Test Parameters}
+The test is run several times for each algorithm that is tested and also several times for each algorithm.
+The reason for this is that each algorithm is evaluated two times in different evaluation settings.
+Once it is evaluated with Holdout and once with Prequential (see section 2.3.1).
+In each of the evaluation processes each of the 4 algorithm performce a evaluation on the selected datastream.
+There are 13 different datastreams that will be used for the evaluation, which means that there will be $13*2*4=104$ 
+runs of the evalution.
+For each run will be a .csv file created and saved that will then later be condensed into 10 overview files for each of the 
+evaluation metrics \ref{tab:metrics} for each of the evaluation settings.
+The metrics are represented in those list as percent, so a kappa score the is listed as 0.56 means it has a value of 56 percent.
 
-\begin{lstlisting}[label=lst:java,
-				   language=java,
-				   firstnumber=1,
-				   caption=Beispiel für einen Quelltext]				   
+\begin{table}[H]
+  \centering
+    \begin{tabular} {|| c ||} 
+      \hline
+        metrics \\
+      \hline\hline
+        Accuracy  \\
+      \hline 
+        Kappa  \\
+      \hline
+        $Kappa_m$  \\
+      \hline
+        $Kappa_t$  \\
+      \hline
+        Computation time  \\
+      \hline
+    \end{tabular} 
+  \caption{Overview of the metrics that are recorded during the evaluation and that are then used for the comparision.}
+  \label{tab:metrics}
+\end{table}
 
-public void foo() {				   
-	// Kommentar
-}
-\end{lstlisting}
+Each evaluation has a set maximum number of samples that it should use and after that it will stop and then start the next evaluation.
+This limit was set to 40 000, because nearly every datastream has has at least 45 000 samples or more (there is 1 exception for this,
+and that is the weather dataset with only 18 000 samples) and the limitation should make it easier to directly compare the computation time 
+between  each of the algorithm even across different datastreams (with the exception for the weather dataset).
+
+For the Setting of the hyperparameters of the Algorithms where mainly the recommended values from the litrature chosen and for 
+the parameter that each of the algorithm shared use the same values.
+The values are listed in table \ref{tab:parameters}.
+This was done so that each algorithm had the same start conditions for the comparision.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular} {|| c c c c c c c c||} 
+    \hline
+      algorithm & $\sigma$ & $\epsilon$ & $\gamma*$ & $\eta*$ & $\beta 1*$ & $\beta 2*$ & Sections\\
+    \hline\hline
+      $RSLVQ_\textit{SGD}$ & 1 & $1e-8$ & - & - & - & - & 3.2.2\\
+    \hline 
+      $RSLVQ_\textit{Adadelta}$ & 1 & $1e-8$ & 0.9 & 0.001 & - & - & 3.2.3\\
+    \hline
+      $RSLVQ_\textit{RMSprop}$ & 1 & $1e-8$ & 0.9 & 0.001 & - & - & 3.2.4\\
+    \hline
+      $RSLVQ_\textit{Adam}$ & 1 & $1e-8$ & - & 0.001 & 0.9 & 0.999 & 3.2.5\\
+    \hline
+  \end{tabular} 
+  \caption{Overview of the parameter settings for each of the algorithms. Parameters marked with a * only occured in some of the algorithms.
+  ($\sigma$ = number of prototypes, $\gamma$ = decay rate, $\eta$ = learning rate)}
+  \label{tab:parameters}
+\end{table}
+
+The evaluation was done in python with the scikit-multiflow framework described in section 2.4.
 
 \chapter{Result Evaluation}
 

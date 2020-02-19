@@ -49,7 +49,7 @@ class RSLVQAdam(BaseLVQ):
         v_corrected = self.gradients_v_sqrt[j] / (1 - self.beta_2)
 
         """Update prototype"""
-        self.w_[j] += - (self.learning_rate/(np.sqrt(v_corrected) + self.epsilon ))*m_corrected
+        self.w_[j] += (self.learning_rate/(np.sqrt(v_corrected) + self.epsilon ))*m_corrected
 
     def _validate_train_parms(self, train_set, train_lab, classes=None):
         random_state = validation.check_random_state(self.random_state)

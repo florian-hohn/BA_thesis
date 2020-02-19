@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Electric,RSLVQ_RMSprop,0.6238,0.2224,0.034,-1.3628,29.47

@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Agrawal,RSLVQ_SGD,0.5006,-0.0048,0.2596,-0.1431,35.97

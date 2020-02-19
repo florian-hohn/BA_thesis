@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Rialto,RSLVQ_SGD,0.1661,0.0734,0.0734,0.1661,96.64

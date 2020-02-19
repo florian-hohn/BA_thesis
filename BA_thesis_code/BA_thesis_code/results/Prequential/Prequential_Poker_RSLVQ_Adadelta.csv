@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Poker,RSLVQ_Adadelta,0.6682,0.457,0.6653,-0.5336,122.72

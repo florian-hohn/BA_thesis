@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Sine_drift,RSLVQ_SGD,0.8628,0.7238,0.7006,0.7206,34.08

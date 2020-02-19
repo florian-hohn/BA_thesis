@@ -1,0 +1,14 @@
+Data Streams,RSLVQ_SGD,RSLVQ_Adadelta,RSLVQ_RMSprop,RSLVQ_Adam
+Agrawal,4.0,2.0,2.0,2.0
+Agrawal_drift,4.0,1.5,3.0,1.5
+Hyperplane,4.0,2.0,1.0,3.0
+Hyperplane_drift,4.0,1.0,2.0,3.0
+Sine,4.0,2.0,3.0,1.0
+Sine_drift,4.0,1.0,2.5,2.5
+Cess_data,3.0,1.0,2.0,4.0
+Move_squares,2.0,4.0,1.0,3.0
+Sea_data,4.0,3.0,1.0,2.0
+Electric,4.0,2.0,3.0,1.0
+Poker,4.0,2.0,3.0,1.0
+Weather,4.0,3.0,1.0,2.0
+Rialto,4.0,3.0,2.0,1.0

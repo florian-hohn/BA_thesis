@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Electric,RSLVQ_Adadelta,0.6468,0.3499,0.0931,-1.2183,28.98

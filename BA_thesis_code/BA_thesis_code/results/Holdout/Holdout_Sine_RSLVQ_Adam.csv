@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Sine,RSLVQ_Adam,0.9826,0.965,0.9681,0.9639,27.6

@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Hyperplane_drift,RSLVQ_RMSprop,0.7778,0.5555,0.5478,0.5603,28.69

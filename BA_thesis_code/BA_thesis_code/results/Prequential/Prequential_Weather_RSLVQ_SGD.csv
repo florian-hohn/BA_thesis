@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Weather,RSLVQ_SGD,0.638,0.2126,0.4728,-0.1347,17.3

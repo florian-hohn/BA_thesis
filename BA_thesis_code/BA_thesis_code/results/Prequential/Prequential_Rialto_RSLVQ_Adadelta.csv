@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Rialto,RSLVQ_Adadelta,0.2715,0.1906,0.1906,0.2715,123.59

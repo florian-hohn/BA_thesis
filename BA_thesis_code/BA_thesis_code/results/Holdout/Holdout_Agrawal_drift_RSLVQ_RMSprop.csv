@@ -1,0 +1,2 @@
+Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
+Agrawal_drift,RSLVQ_RMSprop,0.5826,0.0125,-0.2386,0.0489,31.85
