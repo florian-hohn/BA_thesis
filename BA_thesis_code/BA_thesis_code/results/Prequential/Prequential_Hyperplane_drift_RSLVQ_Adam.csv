@@ -1,2 +1,2 @@
 Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
-Hyperplane_drift,RSLVQ_Adam,0.8306,0.6613,0.6595,0.6615,36.24
+Hyperplane_drift,RSLVQ_Adam,0.8398,0.6796,0.6813,0.6802,34.89

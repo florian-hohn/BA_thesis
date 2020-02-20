@@ -6,13 +6,9 @@ from skmultiflow.data.data_stream import DataStream
 from skmultiflow.evaluation import EvaluateHoldout
 from skmultiflow.evaluation import EvaluatePrequential
 
-#holdFilesFolder = "results/Holdout/"
-#preqFilesFolder = "results/Prequential/"
-#saveFolder = "results/processed_results/"
-#fileType = ".csv"
 def process(types, streams,  algorithms):
     filesFolder = "results/"
-    saveFolder = "results/processed_results/"
+    saveFolder = "../bachelor_template/bachelor_template/template/results/processedResults/"
     fileType = ".csv"
     folderType = ["Holdout", "Prequential"]
     metrics = [
@@ -20,33 +16,33 @@ def process(types, streams,  algorithms):
         "Clf",
         "Accuracy",
         "Kappa",
-        "Kappa_m",
-        "Kappa_t",
-        "Comp_time"
+        "KappaM",
+        "KappaT",
+        "CompTime"
         ]
 
     dFramCol = [
-        'RSLVQ_SGD',
-        'RSLVQ_Adadelta',
-        'RSLVQ_RMSprop', 
-        'RSLVQ_Adam'
+        'RSLVQSGD',
+        'RSLVQAdadelta',
+        'RSLVQRMSprop', 
+        'RSLVQAdam'
         ]
-    resultcolumns=['Data Stream','RSLVQ_SGD','RSLVQ_Adadelta','RSLVQ_RMSprop', 'RSLVQ_Adam']
+    resultcolumns=['DataStream','RSLVQSGD','RSLVQAdadelta','RSLVQRMSprop', 'RSLVQAdam']
 
     rankFix = [
         "Agrawal",
-        "Agrawal_drift",
+        "AgrawalDrift",
         "Hyperplane",
-        "Hyperplane_drift",
+        "HyperplaneDrift",
         "Sine",
-        "Sine_drift",
-        "Cess_data",
-        "Move_squares",
-        "Sea_data",  
+        "SineDrift",
+        "CessData",
+        "MoveSquares",
+        "SeaData",  
         "Electric",
         "Poker",
         "Weather",
-        "Rialto"
+        "Rialto",
         ]
 
     frames = []
@@ -122,9 +118,6 @@ def process(types, streams,  algorithms):
                     else:
                         rankedFrame = mainFrame.rank(1,na_option='bottom')
                         mainFrame = mainFrame.append(rankedFrame.iloc[9],ignore_index=True)
-
-                    resultpath = saveFolder+types[i]+metrics[k]+"_ranked"+fileType
-                    #rankedFrame.to_csv(resultpath, index = None, header=True)
                 else:
                     if k != 6:
                         rankedFrame = mainFrame.rank(1,na_option='bottom',ascending=False)
@@ -133,15 +126,12 @@ def process(types, streams,  algorithms):
                         rankedFrame = mainFrame.rank(1,na_option='bottom')
                         mainFrame = mainFrame.append(rankedFrame.iloc[4],ignore_index=True)
 
-                    resultpath = saveFolder+types[i]+metrics[k]+"_ranked"+fileType
-                    #rankedFrame.to_csv(resultpath, index = None, header=True)
-
                 #replace NaN with Synth. Rank
                 if len(streams[n])==9:
-                    mainFrame.loc[10, 'Data Stream'] = 'Synth. Rank'
+                    mainFrame.loc[10, 'DataStream'] = 'Synth. Rank'
                     tmpSynthFrames.append(mainFrame)   
                 else:
-                    mainFrame.loc[5, 'Data Stream'] = 'Real Rank'
+                    mainFrame.loc[5, 'DataStream'] = 'Real Rank'
                     tmpRealFrames.append(mainFrame)
                     
                 #save this frame and the rank table
@@ -158,7 +148,8 @@ def process(types, streams,  algorithms):
     j = 0
     for i in range(len(types)):
         for k in range(2,len(metrics)):
-            resultpath = saveFolder+types[i]+metrics[k]+fileType
+            resultpath = saveFolder+folderType[i]+metrics[k]+fileType
+
             endResultFile = tmpSynthFrames[j]
             endResultFile = endResultFile.append(tmpRealFrames[j],ignore_index=True)
 
@@ -178,9 +169,13 @@ def process(types, streams,  algorithms):
                 endResultFile = endResultFile.append(overallRank.iloc[0],ignore_index=True)
 
                 overallRank = overallStats.rank(1,na_option='bottom',ascending=False)
-                rankPath = saveFolder+types[i]+metrics[k]+"_ranked"+fileType
-                overallRank.insert(0,'Data Streams',rankFix)
+
+                rankPath = saveFolder+folderType[i]+metrics[k]+"Ranked"+fileType
+                overallRank.insert(0,'DataStream',rankFix)
                 overallRank.to_csv(rankPath, index = None, header=True)
+                print('')
+
+                print(metrics[k])
                 print('')
                 print(overallRank)
             else:
@@ -188,13 +183,26 @@ def process(types, streams,  algorithms):
                 endResultFile = endResultFile.append(overallRank.iloc[0],ignore_index=True)
 
                 overallRank = overallStats.rank(1,na_option='bottom')
-                rankPath = saveFolder+types[i]+metrics[k]+"_ranked"+fileType
-                overallRank.insert(0,'Data Streams',rankFix)
+
+                rankPath = saveFolder+folderType[i]+metrics[k]+"Ranked"+fileType
+                overallRank.insert(0,'DataStream',rankFix)
                 overallRank.to_csv(rankPath, index = None, header=True)
+                print('')
+
+                print(metrics[k])
                 print('')
                 print(overallRank)
 
-            endResultFile.loc[18, 'Data Stream'] = 'Overall Rank'
+            print('')
+            endResultFile.loc[18, 'DataStream'] = 'Overall Rank'
+            endResultFile.loc[1, 'DataStream'] = "AgrawalDrift"
+            endResultFile.loc[3, 'DataStream'] = "HyperplaneDrift"
+            endResultFile.loc[5, 'DataStream'] = "SineDrift"
+            endResultFile.loc[6, 'DataStream'] =  "CessData"
+            endResultFile.loc[7, 'DataStream'] = "MoveSquares"
+            endResultFile.loc[8, 'DataStream'] = "SeaData"
+            #endResultFile = endResultFile["DataStreams"].replace(simplecsvFix, inplace=True)
+            print(endResultFile)
             endResultFile.to_csv(resultpath, index = None, header=True)
     
             j += 1

@@ -1,0 +1,14 @@
+DataStream,RSLVQSGD,RSLVQAdadelta,RSLVQRMSprop,RSLVQAdam
+Agrawal,4.0,2.0,2.0,2.0
+AgrawalDrift,4.0,1.5,3.0,1.5
+Hyperplane,4.0,2.0,1.0,3.0
+HyperplaneDrift,4.0,1.0,2.0,3.0
+Sine,4.0,2.0,3.0,1.0
+SineDrift,4.0,1.0,2.5,2.5
+CessData,3.0,1.0,2.0,4.0
+MoveSquares,2.0,4.0,1.0,3.0
+SeaData,4.0,3.0,1.0,2.0
+Electric,4.0,2.0,3.0,1.0
+Poker,4.0,2.0,3.0,1.0
+Weather,4.0,3.0,1.0,2.0
+Rialto,4.0,3.0,2.0,1.0

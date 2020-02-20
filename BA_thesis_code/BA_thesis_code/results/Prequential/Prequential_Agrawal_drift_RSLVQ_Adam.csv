@@ -1,2 +1,2 @@
 Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
-Agrawal_drift,RSLVQ_Adam,0.5803,0.0032,0.3722,0.0525,37.67
+Agrawal_drift,RSLVQ_Adam,0.4371,-0.0055,0.158,-0.2681,39.12

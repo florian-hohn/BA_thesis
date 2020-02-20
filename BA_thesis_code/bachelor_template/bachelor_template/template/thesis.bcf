@@ -2237,6 +2237,7 @@
     <bcf:citekey order="98">MLonDataStreams</bcf:citekey>
     <bcf:citekey order="99">bifet2013efficient</bcf:citekey>
     <bcf:citekey order="100">movingsquaresChessboardRialtobridge</bcf:citekey>
+    <bcf:citekey order="101">Kingma2014AdamAM</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

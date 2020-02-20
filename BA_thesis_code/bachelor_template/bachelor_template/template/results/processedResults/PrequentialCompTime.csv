@@ -1,0 +1,20 @@
+DataStream,RSLVQSGD,RSLVQAdadelta,RSLVQRMSprop,RSLVQAdam
+Agrawal,35.97,36.08,35.66,36.96
+AgrawalDrift,37.6,37.33,37.22,39.12
+Hyperplane,36.02,34.57,34.41,34.28
+HyperplaneDrift,37.29,36.05,36.04,34.89
+Sine,34.16,32.41,31.38,32.25
+SineDrift,34.08,32.94,33.54,33.75
+CessData,89.9,89.82,101.15,93.2
+MoveSquares,49.84,59.13,57.09,59.02
+SeaData,37.72,36.0,35.9,33.66
+Synth. Mean,43.62,43.8144,44.71,44.1256
+Synth. Rank,1.0,2.0,4.0,3.0
+Electric,35.85,35.31,34.96,35.16
+Poker,120.73,122.72,121.62,117.75
+Weather,17.3,17.67,17.55,16.51
+Rialto,114.05,123.59,123.9,113.92
+Real Mean,71.9825,74.8225,74.5075,70.835
+Real Rank,2.0,4.0,3.0,1.0
+Overall Mean,52.3469,53.3554,53.8785,52.3438
+Overall Rank,2.0,3.0,4.0,1.0

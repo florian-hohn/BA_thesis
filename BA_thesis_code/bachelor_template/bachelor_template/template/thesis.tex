@@ -31,6 +31,8 @@
 \usepackage[noend]{algpseudocode}
 \usepackage{acro}
 \usepackage[style=numeric]{biblatex}
+\usepackage[toc,page]{appendix}
+\usepackage{csvsimple}
 \addbibresource{bib_file.bib}
 \bibliography{bib_file}
 \graphicspath{ {figures/} }
@@ -300,7 +302,6 @@ in Machine learning algorithms and what is importend to take into account when w
 It will also give a short introduction about the criterias with which the comparision of the different implementations 
 of the Algorithm take place and why these criteria are used for  comparision.
 In the last part of the first chapter will be the framework introduced that was used for implementation and comparision.
-
 The next chapter will then continue to give a deeper look into the deeper parts of the subsection of Machine learning 
 and the Algorithm that is the basis for the different variation of implementation for the Algorithms.
 It will also give a short introduction about the version that this algorithm was based on, as this is importend to later understand
@@ -310,10 +311,8 @@ In the last part of that chapter will then explain the differnet methods and the
 The fourth chapter will then list and describe the used synthetic and real world streaming data sets that where used to 
 perform the experiments.
 Furthermore will be describe how the experiments where conductet and with wich methods the results where controlled.
-
 Following this, the next chapter will be dedicated for the result evaluation what what we informations where hoefully gained
 from conducting these experiments for the comparision of thes implementations.
-
 The last chapter will summarys all the work that was done and give a final evaluation to the algorithms.
 
 \chapter{Basics}
@@ -466,7 +465,7 @@ This fluctuation enables the SGD to jump to new and potetially better local mini
 to the minimum of the basin the parameters are placed in. But this also ultimatly complicates the convergensto the exact minimum, 
 as the SGD keeps overshooting. This can be fixed by slowly decreasing the learning rate, as the SGD then shows the same 
 convergeance behaviour as the batch gradient descent. It then almost certainly converges to a local or gloabl minimum for
-non-convex and convex optimization respectivly. \cite{overvieDiffRSLVQ}
+non-convex and convex optimization respectively. \cite{overvieDiffRSLVQ}
 These advantages lead to the fact that the SGD is the most common Gradient descent algorithm.
 
 Then there is also the Mini-batch gradient descent algorithm. It takes the best of both worlds and performs an update for
@@ -1500,7 +1499,7 @@ The values $\beta_1$ and $\beta_2$ are set to 0.9 and 0.999 and $\epsilon$ is se
 \end{lstlisting}
 
 \chapter{Test realisation}
-This section contains a short description of the syntetic and real datasets that were used to carry out the comparisions.
+This section contains a short description of the synthetic and real datasets that were used to carry out the comparisions.
 It will also shortly describe the settings that were used and the reason for why these parameters were choosen.
 The Tests were carried out on a Microsoft Surface Pro(2017) with an Intel Core i5-7300U with 2 x 2,6 GHz and 8GB of RAM.
 
@@ -1723,8 +1722,158 @@ This was done so that each algorithm had the same start conditions for the compa
 The evaluation was done in python with the scikit-multiflow framework described in section 2.4.
 
 \chapter{Result Evaluation}
+This chapter will list the results of the algorithm comparsions sepratly.
+First will be the results for the Holdout setting described and after this will be the results that were produced with the 
+Prequential setting. The Result Tables on that these evaluations are based on can be found in the appendix of this work.
+(5 tables from the Holdout setting, 5 tables from the Prequential setting, 5 tables with ranks from the Holdout setting
+and 5 tables with ranks from the Prequential setting.) 
+
+\section{Holdout settings}
+This section will provide the results of the algorithms based on their Accuracy, Preformance measures as described in section 2.3.2
+and their Computation time with Holdout evaluation setting
+
+\begin{itemize}
+  \item \textbf{Accuracy}: \\
+        Based on the Overall Accuracy score from Table \ref{tab:holdoutAcc} it can be seen that in the Holdout setting the
+        normal $RSLVQ_\textit{SGD}$ implementation performce the worst in comparision to the other three implementations.
+        The $RSLVQ_\textit{Adadelta}$ has the second best accuracy overall and the $RSLVQ_\textit{RMSprop}$ has the best 
+        accuracy overall. The $RSLVQ_\textit{Adam}$ implementation has performed worse than the $RSLVQ_\textit{Adadelta}$
+        and the $RSLVQ_\textit{RMSprop}$, but still performed better than the $RSLVQ_\textit{SGD}$.
+        Looking at the results of the synthetic and real Datastreams separetly, it can see that the the result are the same
+        for the synthetic Streams, but on the Datastream based on real world Data the $RSLVQ_\textit{Adam}$ performed better then
+        the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{RMSprop}$, as it was in fact the best performing implementation.
+        The $RSLVQ_\textit{Adadelta}$ was still the second best implementation, while the $RSLVQ_\textit{RMSprop}$ was only the thrid 
+        best implementation. The $RSLVQ_\textit{SGD}$ stayed the worst performing implementation accuracy wise.
+
+  \item \textbf{Kappa}: \\
+        In the next step the $Kappa$ score gets a closer look. The $Kappa$ score results are listed in the 
+        Table \ref{tab:holdoutKappa} and on their rank in Table \ref{tab:holdoutKappaRanked}.
+        In these table can be simliar result observed as in the results from the Accuracy metric.
+        Overall the $RSLVQ_\textit{SGD}$ again performed the worst out all the implementations, while the $RSLVQ_\textit{Adam}$
+        performed the third best again. The $RSLVQ_\textit{Adadelta}$ and $RSLVQ_\textit{RMSprop}$ switched their respectiv rank this 
+        time, with the $RSLVQ_\textit{RMSprop}$ performing  the best this time.
+        A closer look to the results of the Synthetic and real world Data streams shows something
+        simliar to what was already observed in the the Accuracy score.
+        While the ranking of the four implementation stayed the same for the synthetic Data streams, the $RSLVQ_\textit{Adam}$ performed 
+        the best again for the real Data streams. The $RSLVQ_\textit{RMSprop}$ performed the third best, while the $RSLVQ_\textit{SGD}$ and
+        the $RSLVQ_\textit{Adadelta}$ stayed on their respectiv ranks of four and two.
+        We can conclude from this that the $RSLVQ_\textit{Adam}$ performs the best for the Kappa score when used on real streams with the holdout
+        evalution.
+
+  \item \textbf{$Kappa_m$}: \\
+        In Table \ref{tab:holdoutKappaM} and \ref{tab:holdoutKappaMRanked} are the results based on their $Kappa_m$ score listed.
+        Based on the $Kappa_m$ score the algorithm perfomed the same as with the Kappa score. The $RSLVQ_\textit{RMSprop}$ performed the best 
+        for the Overall result as well as for the synthetic streams only, while the $RSLVQ_\textit{Adadelta}$ was second best in the
+        overall, synthetic and real data streams. The $RSLVQ_\textit{Adam}$ was again the third best in the overall and synthetic only scores,
+        while it was the best for real data streams.
+        The $RSLVQ_\textit{SGD}$ was again the worst in all three.
+        Based on the results from the $Kappa_m$ score the best choice for the evaluation of real world data streams would be the $RSLVQ_\textit{Adam}$
+        implementation with holdout evaluation settings.
+
+  \item \textbf{$Kappa_t$}: \\
+        The Tables \ref{tab:holdoutKappaT} and \ref{tab:holdoutKappaTRanked} provide us with the metrics and the ranked values for the $Kappa_t$ score.
+        This time the $RSLVQ_\textit{Adam}$ perfomed the best in the Overall score and again on the real data streams, while performing the third best on
+        the synthetic streams. The $RSLVQ_\textit{Adadelta}$ and $RSLVQ_\textit{SGD}$ implementations stayed again on the respectively second and last place for 
+        all three results. The $RSLVQ_\textit{RMSprop}$ changed from the best performing implementation overall to only the third best performing implementation
+        but still stayed the best performing algorithm on synthetic generated streams.
+        Based on the performance of the $Kappa_t$ score the $RSLVQ_\textit{Adam}$ is the best algorithm of the four compared once for
+        the evaluation of real data streams.
+
+  \item \textbf{Computation Time}: \\
+        The values for the Computation Time are listed in Table \ref{tab:holdtime} and with ranks in Table \ref{tab:holdTimeRanked}.
+        In it can be sees that the $RSLVQ_\textit{SGD}$ implementation still performs the worst out of all 4 algorithms overall,
+        but when used on real data streams it is the fastes computation wise.
+        The fastes implementatin overall is the $RSLVQ_\textit{Adadelta}$, followed $RSLVQ_\textit{RMSprop}$ and the $RSLVQ_\textit{Adam}$.
+        If we take again a seprate look at the result for the synthetic and real data streams, we can see that on the synthetic stream the 
+        fastest algorithm was the $RSLVQ_\textit{RMSprop}$, followed by the $RSLVQ_\textit{Adam}$ and the $RSLVQ_\textit{RMSprop}$ 
+        algorithms and with the $RSLVQ_\textit{SGD}$ being the slowest one.
+        On the real data streams, as menationed at the beginning, the $RSLVQ_\textit{SGD}$ was the fastest, followed by the $RSLVQ_\textit{RMSprop}$ and
+        the $RSLVQ_\textit{Adadelta}$ algorithms and with the $RSLVQ_\textit{Adam}$ algorithm being the slowest of the four.
+        The computation time has shown that the other three algorithm may perform in all other metrics better than the normal 
+        $RSLVQ_\textit{SGD}$ implementation, but this comes at the cost of the computation time, with all 3 taking longer than the
+        $RSLVQ_\textit{SGD}$.
+
+\end{itemize}
+\section{Prequential settings}
+This section will provide the results of the algorithms based on their Accuracy, Preformance measures as described in section 2.3.2
+and their Computation time with Prequential evaluation setting.
+
+\begin{itemize}
+  \item \textbf{Accuracy}: \\
+  The results and the rankings in respect to the Accuracy score for the algorithms are provided by the Tables \ref{tab:preqAcc} and \ref{tab:preqAccRanked}
+  respectively.
+  With Prequential evalution enabled the $RSLVQ_\textit{SGD}$ performed the best out off all four algorithms, followed by the 
+  $RSLVQ_\textit{RMSprop}$ and the $RSLVQ_\textit{Adadelta}$, with the $RSLVQ_\textit{Adam}$ performing the worst on the accuracy score.
+  If separate look at the synthetic and real data stream shows that for the synthetic streams the $RSLVQ_\textit{RMSprop}$ performed the best,
+  followed by the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{SGD}$ as well as the $RSLVQ_\textit{Adam}$ performing the thrid best.
+  The real data streams showed the same results as the overall results, with the $RSLVQ_\textit{SGD}$ performing the best and the $RSLVQ_\textit{Adam}$ performing
+  the worst out of the four streams.
+
+  \item \textbf{Kappa}: \\
+  The Tables \ref{tab:preqKappa} and \ref{tab:preqKappaRanked} provide us with the values and the rankes for the Kappa score that were taken with the
+  prequentail evaluation.
+  In the Overall result we can see that this time the $RSLVQ_\textit{RMSprop}$ performed the best, followed by the $RSLVQ_\textit{SGD}$ 
+  and $RSLVQ_\textit{Adadelta}$ implementations. The $RSLVQ_\textit{Adam}$ performed again as the worst out of the four tested implementations.
+  The synthetic streams results show on the other hand that the $RSLVQ_\textit{Adam}$ performed the best out of the four algorithms, followed by 
+  the $RSLVQ_\textit{RMSprop}$ and the $RSLVQ_\textit{Adadelta}$, with the $RSLVQ_\textit{SGD}$ performing the worst on the Kappa score.
+  From this we can conclude that the $RSLVQ_\textit{Adam}$ algorithm should not be taken to evalude real world data streams when used with
+  prequentail evaluation settings. Instead of it the $RSLVQ_\textit{RMSprop}$ should be taken according to the Kappa score results.
+  
+  \item \textbf{$Kappa_m$}: \\
+  In the Tables \ref{tab:preqKappaM} and \ref{tab:preqKappaMRanked} are the results listed for the $Kappa_m$ score with prequential evaluation settings.
+  The results for the $Kappa_m$ score show a simliar ranking for the overall results as the Kappa score had shown, with the 
+  $RSLVQ_\textit{RMSprop}$ performing the best and the $RSLVQ_\textit{Adam}$ performing the worst again.
+  For the synthetic streams the $RSLVQ_\textit{RMSprop}$ perfomed the best out of the four, followed by the $RSLVQ_\textit{Adadelta}$ and the
+  $RSLVQ_\textit{Adam}$, with the $RSLVQ_\textit{SGD}$ performing the worst.
+  On the Real data streams the $RSLVQ_\textit{SGD}$ perfomed the best with the $RSLVQ_\textit{RMSprop}$ still being the second best performing
+  algorithm and the $RSLVQ_\textit{Adadelta}$ and $RSLVQ_\textit{Adam}$ performing as the third and fourth best algorithms respectively.
+  
+  \item \textbf{$Kappa_t$}: \\
+  The results for the $Kappa_t$ score are provided in the Tables \ref{tab:preqKappaT} and \ref{tab:preqKappaTRanked}.
+  The $RSLVQ_\textit{RMSprop}$ performed the best in the overall, synthetic and real data stream results in respect to the
+  $Kappa_t$ score. The $RSLVQ_\textit{Adadelta}$ performed in the overall results as well as in the results for the synthetic streams 
+  as the second best algorithm of the four, while still being the third best performing algorithm on the real data streams in regards to 
+  the $Kappa_t$ score. The $RSLVQ_\textit{Adadelta}$ performed the worst on the synthetic streams, while still perfoming the third best on 
+  the real data streams and third best on the overall results.
+  The $RSLVQ_\textit{Adam}$ perfomed the worst of the four algorithms on the overal and real data stream results, while only perfoming the third best
+  on the synthetic streams according to the $Kappa_t$.
+  According to the results of the $Kappa_t$ score as well as the results of the other Kappa scores and the Accuracy score, it can 
+  be concluded that if the evaluation takes place with prequential settings, the algrithm that would return the best results would be the
+  $RSLVQ_\textit{RMSprop}$.
+  
+  \item \textbf{Computation Time}: \\
+  The results for the Computation Time are stored in Table \ref{tab:preqTime} and with ranking in Table \ref{tab:preqtimeRanked}.
+  The overall fastest algorithm with prequential evaluation settings was the $RSLVQ_\textit{Adam}$ algortihm, followed by the 
+  $RSLVQ_\textit{SGD}$, the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{RMSprop}$ algorithm being the slowest of the four.
+  Looking at the synthetic streams sepratly, it can be seen that the $RSLVQ_\textit{SGD}$ was the fastest this time,
+  followed by the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{Adam}$, with the $RSLVQ_\textit{RMSprop}$ being the slowest again.
+  On the real data streams can be seen that the $RSLVQ_\textit{Adam}$ was again the fastest implementation, while the $RSLVQ_\textit{SGD}$
+  was the second fastest and the $RSLVQ_\textit{RMSprop}$ being the third fastest implementation.
+  The Computation Time shows again that the algorithm that will return the best results will need some extra time to compute
+  these results.
+  It also showed that overall the $RSLVQ_\textit{Adam}$ may have performed faster than under the Holdout settings, but because of that
+  the results were worse than before.
+  
+\end{itemize}
 
 \chapter{Summary}
+The Test results have shown that the $RSLVQ_\textit{Adam}$ does indeed perform favourbly in regards to the $RSLVQ_\textit{Adadelta}$ and the
+$RSLVQ_\textit{RMSprop}$ under Holdout evaluation settings, like it was described in \cite{Kingma2014AdamAM}.
+It had also shown that the $RSLVQ_\textit{Adadelta}$, $RSLVQ_\textit{RMSprop}$ and the $RSLVQ_\textit{Adam}$ all perform better
+towards the standard $RSLVQ_\textit{SGD}$ under this setting.
+The only result where all three performed worse than the standard $RSLVQ_\textit{SGD}$ implementation was the Computation time,
+put this can be explained by the fact the the algorithm a more complex than the $RSLVQ_\textit{SGD}$ and because of this take more time
+to compute the results.
+The $RSLVQ_\textit{Adam}$ also performed consitently good on the evaluation of real world data streams, when they were evaluated with 
+Holdout settings.
+It should be noted that on synthetic streams the $RSLVQ_\textit{Adam}$ performed worse than the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{RMSprop}$
+implementations, so for the evaluation under holdout settings these other should be preferd for use rather than the $RSLVQ_\textit{Adam}$.
+
+If the evluation is done with prequential settings, the $RSLVQ_\textit{Adam}$ performce worse than either the $RSLVQ_\textit{Adadelta}$, $RSLVQ_\textit{RMSprop}$
+and the $RSLVQ_\textit{SGD}$, while the $RSLVQ_\textit{RMSprop}$ returned the best results under this setting.
+It should also be noted that if the evaluation is only done on a synthetic stream, the $RSLVQ_\textit{Adam}$ could be taken as a 
+possible alternative to the $RSLVQ_\textit{RMSprop}$ or the $RSLVQ_\textit{Adadelta}$, as it only performs a little bit worse than the other two in this case,
+but is faster in regards to the computation time in comparision to the other two.
 
 \backmatter
 %%%%%%%%%%%%%%%%%%%
@@ -1751,7 +1900,6 @@ The evaluation was done in python with the scikit-multiflow framework described 
 %\lstlistoflistings
 %\addcontentsline{toc}{chapter}{Listings}				
 
-
 \printbibliography
 \addcontentsline{toc}{chapter}{Literature}				
 
@@ -1759,7 +1907,7 @@ The evaluation was done in python with the scikit-multiflow framework described 
 %% declaration on oath
 %%%%%%%%%%%%%%%%%%%
 
-\addchap{Statutory Declaration}
+\addchap{Eidesstattliche Erklärung}
 
 Hiermit versichere ich, dass ich die vorgelegte Bachelorarbeit selbstständig verfasst und noch nicht anderweitig zu Prüfungszwecken vorgelegt habe. Alle benutzten Quellen und Hilfsmittel sind angegeben, wörtliche und sinngemäße Zitate wurden als solche gekennzeichnet.
 
@@ -1767,6 +1915,314 @@ Hiermit versichere ich, dass ich die vorgelegte Bachelorarbeit selbstständig ve
 \begin{flushright}
 $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
 \end{flushright}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%
+%% Appendices
+%%%%%%%%%%%%%%%%%%%
+
+\begin{appendices}
+  \section{Result Tables} 
+
+    \subsection{Holdout results}
+      \begin{itemize}
+        \item \textbf{Accuracy:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutAccuracy.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Accuracy values for the Holdout evaluation.}
+          \label{tab:holdoutAcc}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Kappa:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutKappa.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Kappa values for the Holdout evaluation.}
+          \label{tab:holdoutKappa}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{$Kappa_m$:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutKappaM.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{$Kappa_m$ values for the Holdout evaluation.}
+          \label{tab:holdoutKappaM}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{$Kappa_t$:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutKappaT.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{$Kappa_t$ values for the Holdout evaluation.}
+          \label{tab:holdoutKappaT}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Computation time:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutCompTime.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Computation Time for the Holdout evaluation.}
+          \label{tab:holdtime}
+        \end{table}
+        \pagebreak
+      \end{itemize}
+
+    \subsection{Prequential results}
+      \begin{itemize}
+        \item \textbf{Accuracy:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialAccuracy.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Accuracy values for the Prequential evaluation.}
+          \label{tab:preqAcc}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Kappa:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialKappa.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Kappa values for the Prequential evaluation.}
+          \label{tab:preqKappa}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{$Kappa_m$:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialKappaM.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{$Kappa_m$ values for the Prequential evaluation.}
+          \label{tab:preqKappaM}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{$Kappa_t$:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialKappaT.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{$Kappa_t$ values for the Prequential evaluation.}
+          \label{tab:preqKappaT}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Computation time:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialCompTime.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Computation Time for the Prequential evaluation.}
+          \label{tab:preqTime}
+        \end{table}
+        \pagebreak
+      \end{itemize}
+
+  \section{Ranked Result Tables}
+
+    \subsection{Holdout results}
+      \begin{itemize}
+        \item \textbf{Ranked Accuracy:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutAccuracyRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked Accuracy for the Holdout evaluation.}
+          \label{tab:holdoutAccRanked}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Ranked Kappa:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutKappaRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked Kappa for the Holdout evaluation.}
+          \label{tab:holdoutKappaRanked}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Ranked $Kappa_m$:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutKappaMRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked $Kappa_m$ for the Holdout evaluation.}
+          \label{tab:holdoutKappaMRanked}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Ranked $Kappa_t$:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutKappaTRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked $Kappa_t$ for the Holdout evaluation.}
+          \label{tab:holdoutKappaTRanked}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Ranked Computation time:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/HoldoutCompTimeRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked Computation Time for the Holdout evaluation.}
+          \label{tab:holdTimeRanked}
+        \end{table}
+        \pagebreak
+      \end{itemize}
+
+    \subsection{Prequential results}
+      \begin{itemize}
+        \item \textbf{Ranked Accuracy:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialAccuracyRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked Accuracy for the Prequential evaluation.}
+          \label{tab:preqAccRanked}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Ranked Kappa:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialKappaRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked Kappa for the Prequential evaluation.}
+          \label{tab:preqKappaRanked}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Ranked $Kappa_m$:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialKappaMRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked $Kappa_m$ for the Prequential evaluation.}
+          \label{tab:preqKappaMRanked}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Ranked $Kappa_t$:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialKappaTRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked $Kappa_t$ for the Prequential evaluation.}
+          \label{tab:preqKappaTRanked}
+        \end{table}
+        \pagebreak
+
+        \item \textbf{Ranked Computation time:} \\
+        \begin{table}[H]
+          \begin{tabular}{|c|c|c|c|c|}\hline%
+            \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
+            \csvreader[late after line=\\\hline]%
+            {results/processedResults/PrequentialCompTimeRanked.csv}%
+            {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
+            {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
+          \end{tabular}
+          \caption{Ranked Computation Time for the Prequential evaluation.}
+          \label{tab:preqtimeRanked}
+        \end{table}
+        \pagebreak
+      \end{itemize}
+
+      \subsection{List of contents on USB stick}
+      \begin{itemize}
+        \item 
+      \end{itemize}
+
+\end{appendices}
+
 \end{document}
-
-

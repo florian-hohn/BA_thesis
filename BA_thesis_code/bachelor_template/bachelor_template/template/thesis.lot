@@ -9,16 +9,56 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.1}{\ignorespaces Overview over the synthetic generated Datasets, the streams with "Drift" in name generate the drift with the $ConceptDrifStream()$ method from scikit-multiflow. (A: Abrupt Drift, G: Gradual Drift, -: no Drift) \relax }}{40}{table.caption.14}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Overview over the synthetic generated Datasets, the streams with "Drift" in name generate the drift with the $ConceptDrifStream()$ method from scikit-multiflow. (A: Abrupt Drift, G: Gradual Drift, -: no Drift) \relax }}{39}{table.caption.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.2}{\ignorespaces Overview over the real Datasets\relax }}{41}{table.caption.15}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Overview over the real Datasets\relax }}{40}{table.caption.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.3}{\ignorespaces Overview of the metrics that are recorded during the evaluation and that are then used for the comparision.\relax }}{42}{table.caption.16}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Overview of the metrics that are recorded during the evaluation and that are then used for the comparision.\relax }}{41}{table.caption.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.4}{\ignorespaces Overview of the parameter settings for each of the algorithms. Parameters marked with a * only occured in some of the algorithms. ($\sigma $ = number of prototypes, $\gamma $ = decay rate, $\eta $ = learning rate)\relax }}{42}{table.caption.17}%
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.4}{\ignorespaces Overview of the parameter settings for each of the algorithms. Parameters marked with a * only occured in some of the algorithms. ($\sigma $ = number of prototypes, $\gamma $ = decay rate, $\eta $ = learning rate)\relax }}{41}{table.caption.17}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {1}{\ignorespaces Accuracy values for the Holdout evaluation.\relax }}{55}{table.caption.28}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2}{\ignorespaces Kappa values for the Holdout evaluation.\relax }}{56}{table.caption.29}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3}{\ignorespaces $Kappa_m$ values for the Holdout evaluation.\relax }}{57}{table.caption.30}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4}{\ignorespaces $Kappa_t$ values for the Holdout evaluation.\relax }}{58}{table.caption.31}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5}{\ignorespaces Computation Time for the Holdout evaluation.\relax }}{59}{table.caption.32}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6}{\ignorespaces Accuracy values for the Prequential evaluation.\relax }}{60}{table.caption.33}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {7}{\ignorespaces Kappa values for the Prequential evaluation.\relax }}{61}{table.caption.34}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {8}{\ignorespaces $Kappa_m$ values for the Prequential evaluation.\relax }}{62}{table.caption.35}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {9}{\ignorespaces $Kappa_t$ values for the Prequential evaluation.\relax }}{63}{table.caption.36}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {10}{\ignorespaces Computation Time for the Prequential evaluation.\relax }}{64}{table.caption.37}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {11}{\ignorespaces Ranked Accuracy for the Holdout evaluation.\relax }}{65}{table.caption.38}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {12}{\ignorespaces Ranked Kappa for the Holdout evaluation.\relax }}{66}{table.caption.39}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {13}{\ignorespaces Ranked $Kappa_m$ for the Holdout evaluation.\relax }}{67}{table.caption.40}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {14}{\ignorespaces Ranked $Kappa_t$ for the Holdout evaluation.\relax }}{68}{table.caption.41}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {15}{\ignorespaces Ranked Computation Time for the Holdout evaluation.\relax }}{69}{table.caption.42}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {16}{\ignorespaces Ranked Accuracy for the Prequential evaluation.\relax }}{70}{table.caption.43}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {17}{\ignorespaces Ranked Kappa for the Prequential evaluation.\relax }}{71}{table.caption.44}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {18}{\ignorespaces Ranked $Kappa_m$ for the Prequential evaluation.\relax }}{72}{table.caption.45}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {19}{\ignorespaces Ranked $Kappa_t$ for the Prequential evaluation.\relax }}{73}{table.caption.46}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {20}{\ignorespaces Ranked Computation Time for the Prequential evaluation.\relax }}{74}{table.caption.47}%

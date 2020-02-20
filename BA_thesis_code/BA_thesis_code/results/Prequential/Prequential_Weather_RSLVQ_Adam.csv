@@ -1,2 +1,2 @@
 Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
-Weather,RSLVQ_Adam,0.6601,0.1583,0.505,-0.0653,17.45
+Weather,RSLVQ_Adam,0.6041,0.2131,0.4235,-0.2408,16.51

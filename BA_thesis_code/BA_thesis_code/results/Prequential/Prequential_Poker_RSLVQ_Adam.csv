@@ -1,2 +1,2 @@
 Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
-Poker,RSLVQ_Adam,0.573,0.3223,0.5692,-0.9738,124.89
+Poker,RSLVQ_Adam,0.4577,0.1243,0.4191,-1.507,117.75

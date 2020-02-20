@@ -1,2 +1,2 @@
 Stream,Clf,Accuracy,Kappa,Kappa_m,Kappa_t,total comp. time
-Sea_data,RSLVQ_Adam,0.8257,0.6219,0.7272,0.618,35.94
+Sea_data,RSLVQ_Adam,0.8431,0.666,0.7543,0.656,33.66

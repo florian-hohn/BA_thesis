@@ -113,7 +113,7 @@ def main():
     for i in range(len(synthDataStreams)):
         for j in range(len(clfs)):
             #print('bla')
-            custom_evaluation(synthDataStreams[i], clfs[j], max_items, False)
+            #custom_evaluation(synthDataStreams[i], clfs[j], max_items, False)
             custom_evaluation(synthDataStreams[i], clfs[j], max_items, True)
 
 
