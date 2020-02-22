@@ -961,6 +961,7 @@
       \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{note}{\url{https://ai.stanford.edu/~nilsson/MLBOOK.pdf}}
       \field{title}{Introduction to Machine Learning}
       \field{year}{1998}
     \endentry
