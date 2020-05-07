@@ -211,7 +211,7 @@ pdfkeywords={Keywords}
   Faculty of Computer Science and Business Information Systems}}
 \subject{Bachelor-Thesis}
 \title{\BaTitle\\[15mm]}
-\subtitle{\normalsize{submitted to the University of Applied Sciences W\"{u}rzburg-Schweinfurt in the Faculty of Computer Science and Business Information Systems to achieve the Bachelor of Engineering degree in 'Information Systems'}}
+\subtitle{\normalsize{submitted to the University of Applied Sciences W\"{u}rzburg-Schweinfurt in the Faculty of Computer Science and Business Information Systems to achieve the Bachelor of Engineering degree in 'Computer Science'}}
 \author{\BaAuthor}
 \date{\normalsize{Submitted on: \BaDeadline}}
 \publishers{
@@ -230,21 +230,21 @@ pdfkeywords={Keywords}
 %%%%%%%%%%%%%%%%%%%
 
 \section*{Abstract}
-There is an ever growing amount of Data in our everday lives that are produced by sensors when connected to 
+There is an ever growing amount of Data in our everyday lives that are produced by sensors when connected to 
 the \ac{iot}, used in self-driving cars or used to recognise our speech to take commands from us
-(e.g. Amazons Alexa or Apples Siri). But to be of use for us this Data first needs to be analyzied, and this 
-becomes a real challenge, as traditinoal Machine Learning algorithm normaly take several runs through a training set before 
+(e.g. Amazons Alexa or Apples Siri). But to be of use for us this Data first needs to be analysed, and this 
+becomes a real challenge, as traditional Machine Learning algorithm normally take several runs through a training set before 
 the learning process is complete.
 Thankfully there are already several Algorithm developed that can train and learn on data by only needing one run on 
 these datasets and can therefor process this streamed Data.
-Moritz Heusinger looked already into different varients of how a \ac{rslvq} algorithm can be modified to work on streaming data
+Moritz Heusinger looked already into different variants of how a \ac{rslvq} algorithm can be modified to work on streaming data
 in \cite{PassiveDriftonRSLVQ} and compared them.
-This work will compare an additional varient of how the RSLVQ can be implemented to work on streaming data and will it 
-compare to the other three varients of the RSLVQ in terms of accuracy, performance and computation time.
+This work will compare an additional variant of how the RSLVQ can be implemented to work on streaming data and will it 
+compare to the other three variants of the RSLVQ in terms of accuracy, performance and computation time.
 
 \newpage
 \chapter*{Note of thanks}
-I want to thank my familiy for always supporting me through the whole time I studied and worked on this thesis as well
+I want to thank my family for always supporting me through the whole time I studied and worked on this thesis as well
 as the time I needed to finish my Bachelor of Engineering degree in 'Information Systems'.
 I also want to thank Prof. Schleif and Mr Heusinger, as I could always ask them when I was not sure about something while working on 
 this thesis and they would then try to help me with my questions.
@@ -264,17 +264,17 @@ this thesis and they would then try to help me with my questions.
 
 \chapter{Introduction}\label{ch:intro}
 
-The following chapter will give the reader a short explanation what inspired the work for this thesis, what its prupose is 
-and what it wishes to achieve, as well as an explanation how this work is structured, to give the reader a better oriantation 
+The following chapter will give the reader a short explanation what inspired the work for this thesis, what its purpose is 
+and what it wishes to achieve, as well as an explanation how this work is structured, to give the reader a better orientation 
 for how to navigate the thesis.
 
 \section{Inspiration for this Thesis} 
 There is an ever growing amount of data that needs to be processed in real time to be of use nowadays, e.g. from sensors that 
 monitor processes in the industry to improve their quality \cite{MLonDataStreams}, from data streams originating on 
 the Internet that can be used to detect epidemics and natural disasters, which can be combined with statistics from 
-official centers for disease and disaster control for better prevention \cite{MLonDataStreams} or for the use in selfdriving
+official centres for disease and disaster control for better prevention \cite{MLonDataStreams} or for the use in self driving
 cars.
-The problem is this flood of data has outpaced our capability to process, analyze, store, and understand these datasets.
+The problem is this flood of data has outpaced our capability to process, analyse, store, and understand these datasets.
 Traditional Machine learning algorithms are not capable of learning and training from this flood of data in a acceptable 
 amount time. The reason for this, is that the stream can suddenly change, so called "Concept drift". Data is also 
 rapidly and constantly generated, which means that the learning algorithm can not use the data more than once to learn 
@@ -282,11 +282,11 @@ from it.
 For this reasons we need algorithms that can deal with this amount of data in real-time while also needing only a 
 reasonable amount of resources \cite{MLonDataStreams}.
 
-Heusinger compared for this reason several varients of how the \ac{rslvq} Machine learning algorithm could be modified
-to make it work with stremed data in \cite{PassiveDriftonRSLVQ}.
+Heusinger compared for this reason several variants of how the \ac{rslvq} Machine learning algorithm could be modified
+to make it work with streamed data in \cite{PassiveDriftonRSLVQ}.
 This work will now take the $RSLVQ_\textit{Adam}$ that was suggested in \cite{overvieDiffRSLVQ} as possible modification 
 for the RSLVQ and will compare it with the $RSLVQ_\textit{SGD}$, $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{RMSprop}$ 
-varients, that Heusinger already had compared with each other in \cite{PassiveDriftonRSLVQ},  
+variants, that Heusinger already had compared with each other in \cite{PassiveDriftonRSLVQ},  
 in respect to their accuracy, performance and computation time.
 
 \section{Purpose of this Thesis} 
@@ -295,7 +295,7 @@ all aspects beside the computation time and the Kappa Performance in respect to 
 that were tested in this paper.
 It had further shown that with delayed settings the $RSLVQ_\textit{RMSprop}$ performed better than the $RSLVQ_\textit{Adadelta}$
 and the $RSLVQ_\textit{SGD}$ implementation.
-This work will compare another modfified RSLVQ version, that is based on the ADAM algorithm, with the other already tested
+This work will compare another modified RSLVQ version, that is based on the ADAM algorithm, with the other already tested
 RSLVQ versions when they are used on streaming data. It will compare them in respect to their returned accuracy,
 performance and computation time on different synthetic and real data streams with different evaluation approaches.
 According to \cite{Kingma2014AdamAM} the $RSLVQ_\textit{Adam}$ should compare favourably in comparison towards the
@@ -304,21 +304,21 @@ other adaptive learning algorithms and should therefore be returning the best re
 
 \section{Outline of the Thesis} 
 
-The second Chapter of this thesis will give a short overview over the basics of Machine Learning that are relavant for
-the understanding of the premise for the thesis. This paper will provide a short describtion about what is special about Data stream 
-in Machine learning algorithms and what is importent to take into account when working with them.
-It will also give a short introduction about the criterias with which the comparision of the different implementations 
-of the Algorithm take place and why these criteria are used for  comparision.
-In the last part of the first chapter the framework will be introduced which was used for implementation and comparision.
+The second Chapter of this thesis will give a short overview over the basics of Machine Learning that are relevant for
+the understanding of the premise for the thesis. This paper will provide a short description about what is special about Data stream 
+in Machine learning algorithms and what is important to take into account when working with them.
+It will also give a short introduction about the criteria's with which the comparison of the different implementations 
+of the Algorithm take place and why these criteria are used for  comparison.
+In the last part of the first chapter the framework will be introduced which was used for implementation and comparison.
 The next chapter will then continue to give a deeper look into the more complex parts of the subsection of Machine learning 
 and the Algorithm that is the basis for the different variation of implementation for the Algorithms.
-It will also give a short introduction about the version that this algorithm was based on, as this is importent to later understand
+It will also give a short introduction about the version that this algorithm was based on, as this is important to later understand
 the variations and differences in the other implementations.
-The last part of this chapter will then explain the differnet methods and the implementations of the variants in greater detail.
+The last part of this chapter will then explain the different methods and the implementations of the variants in greater detail.
 
 The fourth chapter will then list and describe the used synthetic and real world streaming data sets that where used to 
 perform the experiments.
-Furthermore there will be a description how the experiments where conductet and with wich methods the results where controlled.
+Furthermore there will be a description how the experiments where conducted and with which methods the results where controlled.
 The following chapter will then be dedicated to the evaluation of the results. 
 The last chapter will summarize all the work that was done and give a final evaluation of the algorithms.
 
@@ -331,28 +331,28 @@ Modified versions of the Algorithms that will be compared in this work, works an
 After this is done there will also be a short description on what Streaming Data is and on the framework that is used to 
 realise the implementation of the experiments.
 
-Finally there will be an explanation on how the criteria for the comparision of the Algorithms where choosen and how 
+Finally there will be an explanation on how the criteria for the comparison of the Algorithms where chosen and how 
 theses criteria work.
 
 \section{Machine Learning}
 
 The term 'Machine Learning' stands for a collection of self-learning algorithms, that learn form input Data to make 
-fast and correct decisions and predictions. It is importand to remember that it is not a real Artifical Inteligence, 
-but rather a sequence of statistical analyses on given data, with the goal to make gradualy improvments to the prediction 
+fast and correct decisions and predictions. It is important to remember that it is not a real Artificial Intelligence, 
+but rather a sequence of statistical analyses on given data, with the goal to make gradually improvements to the prediction 
 models of the algorithm.  
 A Machine can do this optimization a lot faster and more efficiently than a humans, especially if this optimization has to be 
-done in real time on big data input sets. This gives also a bigger flexability, as a machine that can learn from a changing 
-enviroment needs lesser redesigns, which leads to less time that gets wastet and can be used more productive on other 
+done in real time on big data input sets. This gives also a bigger flexibility, as a machine that can learn from a changing 
+environment needs lesser redesigns, which leads to less time that gets wasted and can be used more productive on other 
 tasks. 
 
 All these are reasons why Machine Learning has an ever increasing importance in the field of computer science, 
-but also an growing impact on everday life. It is thanks to Machine learning that there are intelligent assisstant 
-softwares that can recognize voice commands and questions (Apples SIRI, Amazon Alexa or Microsofts Cortana),
+but also an growing impact on everyday life. It is thanks to Machine learning that there are intelligent assistant 
+software's that can recognize voice commands and questions (Apples SIRI, Amazon Alexa or Microsoft Cortana),
 e-mail spam filter, nearly self-driving cars, reliable search-engines, faster and more precise weather forecasts and 
 challenging game AI's nowadays 
 
-Machine Learning Algorithms can be categorisized depending on how they learn from the available training Data to create 
-a model for the predictions. There are three main subdivisions, under wich these algorithms can fall. 
+Machine Learning Algorithms can be categorised depending on how they learn from the available training Data to create 
+a model for the predictions. There are three main subdivisions, under which these algorithms can fall. 
 The first one is the Supervised learning strategy, then the Unsupervised learning strategy and the Reinforced learning 
 strategy. 
 
@@ -363,36 +363,36 @@ strategy.
 \end{figure}
 
 Only the Supervised Learning strategy will be explained in more detail on the following pages, as the focus of this 
-thesis lays in the comparision of several different implementations of classification algorithms that are based on 
+thesis lays in the comparison of several different implementations of classification algorithms that are based on 
 Supervised Learning \cite{IntroML}.
 
 \subsection{Supervised Learning}
 
-The idea behind Supervised learning is to create a model from an already labeled training data set, that then can make 
+The idea behind Supervised learning is to create a model from an already labelled training data set, that then can make 
 predictions and decisions on new or unknown data based on the learned model from the training set. 
 The following example will help to understand this easier.
-Lets say a fruit farmer wants to automatically sort the harvested Fruits in either categorie A or B for the market. 
-The sorting device is equiepped with 2 sensors to measure 2 features, one for colour and another one for the size of the 
-fruit. It then decides to wich of the two classes the fruit belongs to. As this is a System that is capable of dividing 
+Lets say a fruit farmer wants to automatically sort the harvested Fruits in either category A or B for the market. 
+The sorting device is equipped with 2 sensors to measure 2 features, one for colour and another one for the size of the 
+fruit. It then decides to which of the two classes the fruit belongs to. As this is a System that is capable of dividing 
 features into a discrete number of classes the system can be called a \textit{classifier}. 
-This is a typical exampel of an \textit{classification task}.
+This is a typical example of an \textit{classification task}.
 To configure the System in such a way that it correctly sorts the fruits into the right category, 
-a specailist hand picks several fruits from a small test set and then sorts them depending on the already named features. 
-In other words, the specailist classifies them. Based on this by hand sorted training set the machine will then later 
+a specialist hand picks several fruits from a small test set and then sorts them depending on the already named features. 
+In other words, the specialist classifies them. Based on this by hand sorted training set the machine will then later 
 decide how the other fruits should be sorted. It is used as a \textit{model} for the classification. \cite{IntroAI}
 Another type of Supervised learning is the \textit{regression task}. The difference to the \textit{classification task} is, 
-that instead of a \textit{discrete} number of classes that gets returned, a \textit{continous} number of classes will be 
+that instead of a \textit{discrete} number of classes that gets returned, a \textit{continuous} number of classes will be 
 returned. An example of a \textit{regressive task} is, for example, the prediction of the Stock market or the price of 
 medications.
 
 The Process as seen in figure \ref{fig:sl_process} and as described as in the example of the farmer and his sorted 
-fruits shows how the supervised learning works. The Algorithm (marked in green) learns with the help of the labeled 
+fruits shows how the supervised learning works. The Algorithm (marked in green) learns with the help of the labelled 
 training data. The result of this learning is then that the trained Algorithm, now called predictive model, 
-can be used in a production enviroment.
-New, unlabeled, data can then be send into the predictiv model to get a predictied model as an output. \cite{PythonML}
+can be used in a production environment.
+New, unlabelled, data can then be send into the predictive model to get a predicted model as an output. \cite{PythonML}
 
-To better understand how this predictiv model is formed, one has to understand how the classification task works. 
-In the classification task the computer programm is asked to specify which of \textit{k} catergories a input belongs to. 
+To better understand how this predictive model is formed, one has to understand how the classification task works. 
+In the classification task the computer program is asked to specify which of \textit{k} categories a input belongs to. 
 To solve this task, the learning algorithm is usually asked to produce a function \textit{f} : $\R{}$ $\rightarrow$ ${1,...,k}$. 
 When \textit{y} = \textit{f}(\textit{\textbf{x}}), the model assigns an input described by vector \textit{\textbf{x}} to a 
 category identiﬁed by numeric code \textit{y}.
@@ -408,34 +408,34 @@ of pixel brightness values), and the output is a numeric code identifying the ob
   \label{fig:sl_process}
 \end{figure}
 
-Then there must also be a diffenciation between the type of data that is put into the classification process.
-In batch or offine classification, a classifier-building algorithm is given a set of labeled examples. 
+Then there must also be a differentiation between the type of data that is put into the classification process.
+In batch or offline classification, a classifier-building algorithm is given a set of labelled examples. 
 The algorithm creates a model, a classifier in this case. The model is then deployed, that is, used to predict the label 
-for unlabeled instances that the classifier builder never saw. If we go into more detail, we know that it is good 
+for unlabelled instances that the classifier builder never saw. If we go into more detail, we know that it is good 
 methodology in the first phase to split the dataset available into two parts, the training and the testing dataset, 
 or to resort to cross-validation, to make sure that the classifier is reasonably accurate.
 But in any case, there is a first training phase, clearly separated in time from the prediction phase.
 
 In the online setting, and in particular in streaming from big data sets, like it is in this thesis, this separation between training, 
 evaluating, and testing is far less clear-cut, as the algorithm has to work with the data that it receives right now and often can only use once,
-before new daat arrives that need processing.
+before new data arrives that need processing.
 There is a need to start making predictions before we have all the data, because the data that arrives never ends. 
-The data whose label was predicted needs to be keept to train the model, if possible.
+The data whose label was predicted needs to be kept to train the model, if possible.
 The model also needs to continuously be evaluated in some way to decide if it needs more or 
 less aggressive retraining. \cite{MLonDataStreams}
 
 \subsection{Gradient Descent}
 The Gradient descent Algorithm is one of the most popular Algorithms to perform optimizations on and is by far the most 
-commen way to optimize neural networks.This is also the reason why nearly every state-of-the-art Deep Learning Library 
+common way to optimize neural networks.This is also the reason why nearly every state-of-the-art Deep Learning Library 
 has various forms of implementations to perform optimization on the gradient descent. The Problem however is that these
-Algorithms often perform as some sort of black-box, because a practical explanation of what their stengths and weaknesses 
+Algorithms often perform as some sort of black-box, because a practical explanation of what their strengths and weaknesses 
 is are hard to explain.
-Gradient descent is a way to minimize an objective function \textit{J}($\theta$) parameterizedby a model's parameters $\theta \in \R{}^d$ by 
-updating the parameters in the opposite directionof the gradient of the objective function $\nabla_\theta \in $\textit{J}($\theta$) with respect to 
+Gradient descent is a way to minimize an objective function \textit{J}($\theta$) parameterized by a model's parameters $\theta \in \R{}^d$ by 
+updating the parameters in the opposite direction of the gradient of the objective function $\nabla_\theta \in $\textit{J}($\theta$) with respect to 
 the parameters. The learning rate $\eta$ determines the size of the steps we take to reach a local minimum. In other words, 
 we follow the direction of the slope of the surface created by the objective function downhill until we reach a valley. \cite{overvieDiffRSLVQ}
 
-The normal gradient descent, also known as batch-gradient descent, computes the gradient of the functionwith 
+The normal gradient descent, also known as batch-gradient descent, computes the gradient of the function with 
 respect to the parameters $\theta$ for the entire training set:
 
 \begin{equation}
@@ -444,7 +444,7 @@ respect to the parameters $\theta$ for the entire training set:
 
 Since we need to calculate the gradients for the complete dataset to get just one update, batch gradient descent can get very
 slow and is intractable for datasets that do not fit into the memory. For this reason the batch gradient descent implementation
-can not be used in this comparison, as it is not able to perform updates "on-the-fly", as this is a necessarity for use on streaming Data. 
+can not be used in this comparison, as it is not able to perform updates "on-the-fly", as this is a necessary for use on streaming Data. 
 
 In contrast to that, the \ac{sgd} can perform a update for \textit{each} training example
 $\textit{x}^\textit{(i)}$ and label $\textit{y}^\textit{(i)}$:
@@ -453,8 +453,8 @@ $\textit{x}^\textit{(i)}$ and label $\textit{y}^\textit{(i)}$:
 \theta = \theta - \eta * \nabla_\theta \textit{J}(\theta;\textit{x}^\textit{(i)};\textit{y}^\textit{(i)})
 \end{equation}
 
-While the bacht gradient descent performed redudant computations for large datasets, as it recomputes gradients for similar examples 
-before each update, the SGD puts away this redundacy by performing one update at a time. Because of that it performs much faster and 
+While the batch gradient descent performed redundant computations for large datasets, as it recomputed gradients for similar examples 
+before each update, the SGD puts away this redundancy by performing one update at a time. Because of that it performs much faster and 
 can be used on Streaming Data.
 The SGD performs frequent updates with a high variance, that causes the objective function to fluctuate heavily. 
 
@@ -465,10 +465,10 @@ The SGD performs frequent updates with a high variance, that causes the objectiv
   \label{fig:comp_GD}
 \end{figure}
 
-This fluctuation enables the SGD to jump to new and potetially better local minima, while the batch gradient only converges 
-to the minimum of the basin the parameters are placed in. But this also ultimatly complicates the convergensto the exact minimum, 
+This fluctuation enables the SGD to jump to new and potentially better local minima, while the batch gradient only converges 
+to the minimum of the basin the parameters are placed in. But this also ultimately complicates the converges to the exact minimum, 
 as the SGD keeps overshooting. This can be fixed by slowly decreasing the learning rate, as the SGD then shows the same 
-convergeance behaviour as the batch gradient descent. It then almost certainly converges to a local or gloabl minimum for
+convergence behaviour as the batch gradient descent. It then almost certainly converges to a local or global minimum for
 non-convex and convex optimization respectively. \cite{overvieDiffRSLVQ}
 These advantages lead to the fact that the SGD is the most common Gradient descent algorithm.
 
@@ -499,9 +499,9 @@ solutions in order to use less time and memory.
 Also, the data may be evolving, so our models have to adapt when there are changes in the data. \cite{MLonDataStreams}
 
 \subsection{Increasing Volume of the Data}
-When the Data items keep arriving fast and in large quantatiy an algorithm is no longer able to process the data efficiently
+When the Data items keep arriving fast and in large quantity an algorithm is no longer able to process the data efficiently
 by using multiple passes. Instead, it has to be designed in such a way that it is able to process the data with one pass \cite{aggarwal2007data}.
-\cite{MLonDataStreams} describes five requirements that an algorithm has to fullfill, if it should be able to process streaming data successfull:
+\cite{MLonDataStreams} describes five requirements that an algorithm has to fulfil, if it should be able to process streaming data successful:
 
 \begin{itemize}
   \item Process an instance at a time, and inspect it (at least) once.
@@ -520,7 +520,7 @@ Often there is a inherent temporal component to the stream mining process. This 
 This behaviour of a data stream is known as temporal locality\cite{aggarwal2007data} (also known as Concept drift)\cite{MLonDataStreams}.Therefore, 
 a straight forward adaptation of one-pass mining algorithms may not be an effective solution to the task.
 Thus, Stream mining algorithms need to be carefully designed with a clear focus on the evolution of the underlying data, 
-wich leads the the fith requirement (see enumeration \ref{enum:5requ}) described in \cite{MLonDataStreams}.
+which leads the the fifth requirement (see enumeration \ref{enum:5requ}) described in \cite{MLonDataStreams}.
 
 The term Concept drift will now be descripted further.
 It does not mean that the items that are observed today are not exactly the same as those that were observed yesterday. 
@@ -562,23 +562,23 @@ which are not exclusive within a stream:
 
 \cite{ConceptDrift}
 
-\section{Criteria for the Comparision}
+\section{Criteria for the Comparison}
 
-This section will explain on what criteria this thesis will base the comparsion of the different implementations. 
-It will also descirbed what the difference between the criteria is and why this is importent to know.
+This section will explain on what criteria this thesis will base the comparison of the different implementations. 
+It will also described what the difference between the criteria is and why this is important to know.
 It will define what this thesis understands under the terms performance and accuracy, as well as what the differences
 between the used error-estimations are.
 
 \subsection{Evaluations for Data Streams}
-To evaluate a learning algorithmus, it must be know which examples were used to train the algorithmus and which are used to 
+To evaluate a learning algorithms, it must be know which examples were used to train the algorithms and which are used to 
 test the model output by the algorithms. Which procedure is used in batch learning has partly depended on data size.
 For small data sets with $<$ 1000 examples the procedure of cross-validation was well suited, as it made maximum use of the
 data that it could use.
-A Problem arose when the size of the data keept increasing, as this practicly created a time limit for procedures that keept
+A Problem arose when the size of the data kept increasing, as this practically created a time limit for procedures that kept
 repeating the training process to many times.
-For this reason it is commen practise to try to reduce the number of folds and repetitions for big data sets to allow experiments
+For this reason it is common practise to try to reduce the number of folds and repetitions for big data sets to allow experiments
 to conclude in reasonable time. 
-One way to achieve this is to take several hundreds of thousend samples in a single batch and take them for a single holdout run,
+One way to achieve this is to take several hundreds of thousand samples in a single batch and take them for a single holdout run,
 as this requires the least computational effort. The rationalization for this, beside the practical time issues, is that the 
 reliability we may lose by not having repeated runs is compensated by the reliability gained by the sheer number of samples that are used. 
 There are two main approaches that we have to consider for the evaluation process, the first one being Holdout and the second being 
@@ -588,34 +588,34 @@ These two approaches will be now be described in more detail:
 \begin{itemize}
   \item \textbf{Holdout}:
         It is often acceptable to measure the performance with a single holdout set when the batch learning learning 
-        would otherwise reache a scale where cross-validation would be too time consuming.
+        would otherwise reach a scale where cross-validation would be too time consuming.
         This can get very helpful, as the results of different studies can be directly compared to each other. 
         To do this, the division between the train and test set have to be predefined.
         To track model performance over time, the model can be evaluated periodically, for example, after every 
         one million training examples. Testing the model too often has potential to significantly slow the evaluation 
         process, depending on the size of the test set.
-        A source for holdout dat sets are for example sets of data of the stream that have not yet been used to train 
+        A source for holdout data sets are for example sets of data of the stream that have not yet been used to train 
         the learning algorithm.
         These sets could be taken from "further ahead" in the stream to be used as test sets and could then later be 
         used again to train the learning algorithm again after the testing is complete.
-        This procedure would be recommandable in scenarios with concept-drift, as it would measure a model’s ability
+        This procedure would be recommendable in scenarios with concept-drift, as it would measure a model’s ability
         to adapt to the latest trends in the data.
-        In scenarios without drift, a single static holdout set should be sufficent, as this would avoid varying estimates 
+        In scenarios without drift, a single static holdout set should be sufficient, as this would avoid varying estimates 
         between test sets.
-        If it is assumed that the test set is independent and sufficently large in relation to the complexity of the 
+        If it is assumed that the test set is independent and sufficiently large in relation to the complexity of the 
         target concept, it can be concluded that it then will provide an accurate measurement of generalization accuracy.
         \cite{Bifet_datastream}
   \item \textbf{Prequential}:
         An alternative approach to evaluate data stream algorithm is to interleave testing with training. Each individual
-        set can be used to test the model before it is used for training and then the accuracy can be incremantally updated
+        set can be used to test the model before it is used for training and then the accuracy can be incrementally updated
         from this. When it is performed in this order the model will always be tested by sets that it has not seen yet.
         This has the advantage that no holdout set is needed to perform testing. This also results in a smooth plot of 
         the accuracy over time, as each individual set will become increasingly more insignificant to the overall average.
-        This approach also has its disadvantages, as it make it diffcult to accuratly seperate and measure
-        training and testing times. It also obscures the true accuracy that the algorithm can achieve at agiven point, as the 
+        This approach also has its disadvantages, as it make it difficult to accurately separate and measure
+        training and testing times. It also obscures the true accuracy that the algorithm can achieve at a given point, as the 
         algorithm gets punished for mistakes that it made earlier regardless of the level of accuracy they are eventually
         capable of. It also has to be said that this effect will diminish over time.
-        With this approach the statistcs are updated with every set from the stream and can be recorded at this level od detail
+        With this approach the statistics are updated with every set from the stream and can be recorded at this level odd detail
         if desired. To increase the efficiency a sampling parameter can be used to reduce the required storage for the results,
         by recording only at periodic intervals like the holdout method.
         \cite{Bifet_datastream}
@@ -627,7 +627,7 @@ prequential accuracy measure is only appropriate when all classes are balanced a
 of examples. The Kappa statistic is a more sensitive measure for quantifying the predictive performance of streaming 
 classifiers. \cite{MLonDataStreams}
 There are 3 different versions of the Kappa statistic that are relevant for the analysis of streaming data.
-The first Kappa statistc, Kappa $\kappa$, was introduced by Cohen in his work \cite{kappak} and was defined as follows:
+The first Kappa statistic, Kappa $\kappa$, was introduced by Cohen in his work \cite{kappak} and was defined as follows:
 
 \begin{equation}
   \kappa = \frac{p_0-p_c}{1-p_c}
@@ -681,28 +681,28 @@ For a binary classification, accuracy can also be calculated in terms of positiv
 
 with TP = True Positives, TN = True Negatives, FP = False Positives and FN = False Negatives.
 The accuracy is often used to get an measurement of how good the classifier is at returning correct predictions. 
-It should be noted that the accuracy can give a misleading result for  cases were ther is a high class imbalance.
+It should be noted that the accuracy can give a misleading result for  cases were there is a high class imbalance.
 In this case the classifier may achieve a high accuracy, but because the model is to simple the result is to crude to be of use.
 A example would be, if the Label for A would occur in $99\%$ of the cases, then the prediction that every case would be A 
-would have a accuracy of 99\%. This is called th Accuracy Paradox.
+would have a accuracy of 99\%. This is called the Accuracy Paradox.
 For this reason measurements like Kappa, $Kappa_m$ and $Kappa_temp$ are also required to get useful result of the
-performeance and accuracy of a classifier \cite{MLonDataStreams}.
+performance and accuracy of a classifier \cite{MLonDataStreams}.
 
 \section{Framework}
 
-The following section will shortly introduce the python based scikit-multiflow framework, with which the the comperison 
+The following section will shortly introduce the python based Scikit-multiflow framework, with which the the comparison 
 of the different implementations of the RSLVQ algorithm where done.
 
 Scikit-multiflow is a framework that is inspired by the \ac{moa}, the most popular open source framework for machine learning on data streams,
-and MEKA, an open source implementation of methods for multi labeling. Scikit-multiflow is also inpired by scikit-learn, the most 
-popular framework for machine learning in Python. Following the Scikit philosophy, scikit-multiflow is an open source machine-
+and MEKA, an open source implementation of methods for multi labelling. Scikit-multiflow is also inspired by Scikit-learn, the most 
+popular framework for machine learning in Python. Following the Scikit philosophy, Scikit-multiflow is an open source machine-
 learning framework for multi-output/multi-label and stream data. 
 
 The Scikit-multiflow does not provide a graphical user interface like the MOA framework that it was inspired by. 
 On the other hand can it be used within Jupyter notebooks, a popular interface in the data scientist community that is based 
 on python. 
 It is mainly a library that contains stream generators, learning methods, change detectors and evaluation methods for 
-Machien learning algorithms on streaming data. 
+Machine learning algorithms on streaming data. 
 Scilit-multiflow lays a special focus on its design, so that it is more user friendly to new user and familiar for more 
 experienced ones.\cite{skmultiflow}
 
@@ -712,24 +712,24 @@ It achieves this by having a simple workflow that can be describe in 4 steps:
   \item Create a stream: \\
         A stream can be generate by use of either one of the predefined Stream generators or by importing a Stream from a file.
   \item Instantiate a classifier: \\
-        In this step the user has to choose by which type of algorithm the classifikation process should be accomplished.
+        In this step the user has to choose by which type of algorithm the classification process should be accomplished.
   \item Setup the evaluator: \\
-        Next up the user has to choose if the evaluation process should be done presequential or by Hold-out method.
-        Prequential-evaluation or interleaved-testthen-train evaluation, is a popular performance 
+        Next up the user has to choose if the evaluation process should be done prequential or by Hold-out method.
+        Prequential-evaluation or interleaved-test-then-train evaluation, is a popular performance 
         evaluation method for the stream setting only, where tests are performed on new data before using it to train the model.
         Hold-out evaluation is a popular performance evaluation method for batch and stream settings, where tests are performed 
         in a separate test set. \cite{skmultiflow}
   \item Run the evaluation: \\
         The evaluator will perform the following subtask in this final step,
         first, it will check if there are still samples in the stream and then it will pass the next sample to the classifier,
-        which will either test the sample with the \verb|predict()| method or it willl update the classefier with the \verb|partial_fit()|
-        method of the clasifier.
+        which will either test the sample with the \verb|predict()| method or it will update the classifier with the \verb|partial_fit()|
+        method of the classifier.
 \end{enumerate}
   
 To give better understanding how this exactly works, \ref{lst:scikit} will provide a small example where a synthetic waveform gets 
 generated with the WaveformGenerator. This generator will create a synthetic stream that generates default samples with
 21 numeric attributes and 3 target values, based on a random differentiation of some base waveforms.
-For the classifier is the Hoeffding Tree choosen with default parameters.
+For the classifier is the Hoeffding Tree chosen with default parameters.
 After this we chose a prequential evaluator with the following parameters: 
 \begin{itemize}
   \item \verb|show_plot| = true, this will generate a dynamic plot that will update as the classifier is trained.
@@ -781,18 +781,18 @@ These are used in the different optimization implementation of the RSLVQ that wi
 \subsection{Learning Vector Quantization}
 The first part of the theoretical work will give an introduction to the \ac{lvq}, from that later 
 the RSLVQ was derived from.
-The LVQ is a class of learning algorithms for \ac{npc}.It stores a set of appropriatly chosen
+The LVQ is a class of learning algorithms for \ac{npc}.It stores a set of appropriately chosen
 prototype vectors instead of storing all the data points of a training set. This change makes the method computationally more
-efficent, as it does not have to store a high number of items to which new data must be compared to for classifcation anymore.
+efficient, as it does not have to store a high number of items to which new data must be compared to for classification anymore.
 Instead, the current data point only has to be compared to the prototypes to achieve classification.
 This lead to a high popularity of the LVQ for real time applications, like i.e. speech recognition \cite{lvqEx1,lvqEx2}, 
 were it was used with good success.
 
-A NPC consists of a set $\tau = (\theta_j, c_j)^M_\textit{j=1}$ of labeled prototype vectors. The parameter $\theta_j \in \chi \equiv \R^D$
+A NPC consists of a set $\tau = (\theta_j, c_j)^M_\textit{j=1}$ of labelled prototype vectors. The parameter $\theta_j \in \chi \equiv \R^D$
 are vectors in the data space and $c_j \in \iota$, $i = 1,\dots,N_y$ are their corresponding labels. Typically, 
 the number of prototypes is larger than the number of classes, such that every classification boundary is determined by 
 more than one prototype.
-The class $y$ of a new datapoint $x$ is determined 
+The class $y$ of a new data point $x$ is determined 
 
 \begin{itemize}
   \item by selecting the prototype $\theta_i$ which is closest to $x$,
@@ -801,7 +801,7 @@ The class $y$ of a new datapoint $x$ is determined
     \label{equ:LVQ1}
   \end{equation}
   where d(.,.) is the distance between data point and prototype, and
-  \item by assigning the label $y$ of this prototype to the datapoint $x$.
+  \item by assigning the label $y$ of this prototype to the data point $x$.
 \end{itemize}
 
 A popular choice for $d$ is the Euclidian distance 
@@ -827,12 +827,12 @@ prototypes are adjusted according to:
 
 \begin{figure}[H]
   \includegraphics[width=0.75\linewidth]{LVQ}
-  \caption{Graphic depiction of the LVQ classifcation task.}
+  \caption{Graphic depiction of the LVQ classification task.}
   \label{fig:LVQ}
 \end{figure}
 
 If the labels $c_l$ and $c_m$ are equal or both labels differ from the label $y$ of the data point, no parameter update is being performed.
-The prototype, however, is changed only if the data point $x$ is close to the classification boundry, i.e.
+The prototype, however, is changed only if the data point $x$ is close to the classification boundary, i.e.
 if it falls into a \textit{window}
 
 \begin{equation}
@@ -844,12 +844,12 @@ of relative width $0<\omega\leq1$. This "window rule" had to be introduced, as o
 \subsection{Robust Soft Learning Vector Quantization}
 
 The LVQ algorithm may be a popular adaptive nearest prototype classifier for multiclass classification, 
-but the algorithms from this familiy had only been propsed on heuristic grounds. Seo and Obermayer then derived the 
-Robust Soft Learning Vector Quantization (RSLVQ varient) in their work \cite{RSLVQOrig}. It is a LVQ that is based on 
-a Gausian Mixture. It proposes an objective function which is based on a likelihood ratio and derives the
+but the algorithms from this family had only been proposed on heuristic grounds. Seo and Obermayer then derived the 
+Robust Soft Learning Vector Quantization (RSLVQ variant) in their work \cite{RSLVQOrig}. It is a LVQ that is based on 
+a Gaussian Mixture. It proposes an objective function which is based on a likelihood ratio and derives the
 learning rule from gradient descent.
 
-They asume that the following objective function is maximized:
+They assume that the following objective function is maximized:
 
 \begin{equation}
   \begin{split}
@@ -889,7 +889,7 @@ the learning rule becomes
   \end{split}
 \end{equation}
 
-where $P_y(l\mid x)$ and $P(l\mid x)$ are assigment probabilities,
+where $P_y(l\mid x)$ and $P(l\mid x)$ are assignment probabilities,
 
 \begin{equation}
   \begin{split}
@@ -915,7 +915,7 @@ Using the gradient given by the equation \ref{equ:RSLVQ_1}, following learning r
 It has to be noted that the factor $P_y(l\mid x) - P(l\mid x)$ is always positive. \cite{RSLVQOrig}
 
 The Cost-function and the learning rule described until now were for training the RSLVQ for the general case, but 
-Seo and Obermayer provided also a varient that uses a Gaussian mixture ansatz.
+Seo and Obermayer provided also a variant that uses a Gaussian mixture ansatz.
 In that version they choose a Gaussian mixture model whose components have similar width and strengths, i.e.
 $\sigma_l = \sigma, \forall l, and$ $p(l) = \frac{1}{M}, l = 1, ..., M$. They obtain 
 
@@ -948,7 +948,7 @@ The equations \ref{equ:RSLVQ_3} and \ref{equ:RSLVQ_4} implement the RSLVQ algori
 the label of the data point are attracted, while prototypes with different labels are repelled. Using deterministic annealing
 of $\sigma^2$, which is a hyperparameter of the learning rule described in \ref{equ:RSLVQ_3}, the RSLVQ can be optimized.
 If the width $\sigma$ of the Gaussian components goes to zero, both assignment probabilities (equation \ref{equ:RSLVQ_4}),
-become hard assignments. If th label $c_q$ of the nearest prototype \textit{q} is equal to the label \textit{y} of the data
+become hard assignments. If the label $c_q$ of the nearest prototype \textit{q} is equal to the label \textit{y} of the data
 point \textit{x} then no update is being performed, because 
 
 \begin{equation}
@@ -965,19 +965,19 @@ Only if the label of the data point \textit{x} differs from the label of the nea
 \end{equation}
 
 where \textit{q'} is the nearest prototype vector with the correct class label, and the nearest prototype vector and the 
-nearest correct prototypevector are changed. In the "hard" version of the RSLVQ, prototypes are modified only by the data 
+nearest correct prototype vector are changed. In the "hard" version of the RSLVQ, prototypes are modified only by the data 
 points that are not correctly classified. \cite{RSLVQOrig}
 
 Seo and Obermayer then showed in their work \cite{RSLVQOrig} for LVQ 2.1 data points which are near the current 
 class boundary and which are classified correctly have the strongest effect on the update of the prototypes. In contrast to that
 relies the RSLVQ on data points which are further away from the classification boundary and which are incorrectly classified,
-i.e. RSLVQ learns from mistakes. Additionaly, the RSLVQ does not require a "window rule" like the LVQ 2.1, as the prototypes 
+i.e. RSLVQ learns from mistakes. Additionally, the RSLVQ does not require a "window rule" like the LVQ 2.1, as the prototypes 
 do not diverge. \cite{RSLVQOrig}
 
 \section{Momentum Based Gradient Descent}
 
 The following section will outline three algorithms that are widely used in the Deep Learning Community and that will later
-be used to optimize the RSLVQ Algorithm in hopes to improve its performence and accuracy.
+be used to optimize the RSLVQ Algorithm in hopes to improve its performance and accuracy.
 
 \subsection{Momentum}
 
@@ -1003,9 +1003,9 @@ current update vector
 \end{split}
 \end{equation}
 
-The momentum term $\gamma $ is usualy set to 0.9 or a similar value.
+The momentum term $\gamma $ is usually set to 0.9 or a similar value.
 
-In his Article, Ruder \cite{overvieDiffRSLVQ} describs it like if we would push a ball down a hill. 
+In his Article, Ruder \cite{overvieDiffRSLVQ} describes it like if we would push a ball down a hill. 
 The ball accumulates momentum as long as it rolls downhill, becoming faster and faster on the way 
 (until it reaches its terminal velocity, if there is air resistance, i.e. $\gamma $ < 1). 
 The same thing happens to our parameter updates: The momentum term increases for dimensions whose gradients
@@ -1015,8 +1015,8 @@ As a result, we gain faster convergence and reduced oscillation.
 
 \subsection{Adagrad}
 The first algorithm that will be described is the Adagrad \cite{Zeiler2012ADADELTAAA}. It has to be noted that this 
-algorithm will not be part of the comparision, but as this algorithm is the base from wich the Adadelta and later the 
-RMSprop were developed from, it will be shortly explained nontheless.
+algorithm will not be part of the comparison, but as this algorithm is the base from which the Adadelta and later the 
+RMSprop were developed from, it will be shortly explained nonetheless.
 The Adagrad is an algorithm for gradient-based optimization that adapts to updates for each individual parameter to 
 perform larger or smaller updates depending on their importance. The learning rate gets adapted to the parameters, were
 it performs larger updates if the parameters are more infrequent and smaller updates if they are frequent.
@@ -1071,7 +1071,7 @@ One of the more often used momentum-based algorithm is the Adadelta approach. It
 seeks to reduce its aggressive, monotonically decreasing learning rate. Instead of accumulating all past squared gradients, 
 Adadelta restricts the window of accumulated past gradients to the fixed size $\omega$.  
 
-Rather than inefficently storing $\omega$ previous squared gradients, the sum of gradients is recursively defined as a 
+Rather than inefficiently storing $\omega$ previous squared gradients, the sum of gradients is recursively defined as a 
 decaying average of all past squared gradients. The running average $\textit{E}[\textit{g}^2]_t$  at time step \textit{t} 
 then depends (as a fraction $\gamma $ similarly to the Momentum term) only on the previous average and the 
 current gradient:
@@ -1081,7 +1081,7 @@ current gradient:
 \label{equ:adadelta_1}
 \end{equation}
 
-We then set $\gamma$ to a simliar value as the momentum, around 0.9. The SGD update will then be rewriten in terms of the 
+We then set $\gamma$ to a similar value as the momentum, around 0.9. The SGD update will then be rewritten in terms of the 
 parameter update vector $\Delta\theta_\textit{t}$:
 
 \begin{equation}
@@ -1098,7 +1098,7 @@ takes the form of:
   \Delta\theta_\textit{t} = -\frac{\eta}{\sqrt{\textit{G}_\textit{t} + \epsilon}} \odot \textit{g}_\textit{t}
 \end{equation}
 
-In the next step the diagnoal Matrix $\textit{G}_t$ gets replaced with the decaying average over past squared gradients 
+In the next step the diagonal Matrix $\textit{G}_t$ gets replaced with the decaying average over past squared gradients 
 $\textit{E}[\textit{g}^2]_\textit{t}$:
 
 \begin{equation}
@@ -1144,7 +1144,7 @@ In the Adadelta we do not need to set a learning rate $\eta$, as it was eliminat
 \subsection{RMSprop}
 RMSprop is an adaptive learning rate method proposed by Geoff Hinton in Lecture 6e of his Coursera Class. \cite{RMSprop_Hinton}
 As a result of the need to resolve the Adagrad's radically diminishing learning rates, both the Adadelta and 
-the RMSprop had been developed independetly from each other at the same time. RMSprop in fact is identical
+the RMSprop had been developed independently from each other at the same time. RMSprop in fact is identical
 to the first update vector of Adadelta that we derived above:
 
 \begin{equation}
@@ -1162,9 +1162,9 @@ Hinton suggests $\gamma$ to be set to 0.9, while a good default value for the le
 
 \subsection{Adam}
 As described in \cite{Kingma2014AdamAM}, the \ac{adam} is another way to compute the adaptive 
-learning rate for each parameter. Additionly to storing an exponentially decaying average of past squared gradients
+learning rate for each parameter. Additionally to storing an exponentially decaying average of past squared gradients
 $\textit{v}_t$ like Adadelta or RMSprop, Adam also keeps an exponentially decaying average of past gradients $\textit{m}_t$,
-simliar to momentum:
+similar to momentum:
 
 \begin{equation}
   \begin{split}
@@ -1197,14 +1197,14 @@ These are then used to update the parameters just as we have seen in Adadelta an
 \end{equation}
 
 The authors recommend in their work to use as default values of 0.9 for $\beta_1$, 0.999 for $\beta_2$ and $10^\textit{-8}$ for $\epsilon$.
-They show empirically that Adam works well in practice and compares favorably to other adaptive learning-method algorithms.
+They show empirically that Adam works well in practice and compares favourably to other adaptive learning-method algorithms.
 \cite{overvieDiffRSLVQ, Kingma2014AdamAM}
 
 \begin{algorithm}
   \caption{Adam algorithm, as proposed in \cite{Kingma2014AdamAM}. The authors recommend for default settings the value
-          0.9 for $\beta_1$, 0.999 for $\beta_2$ and $10^\textit{-8}$ for $\epsilon$ as well as a stepsize $\alpha$ of 0.001.}\label{euclid}
+          0.9 for $\beta_1$, 0.999 for $\beta_2$ and $10^\textit{-8}$ for $\epsilon$ as well as a step size $\alpha$ of 0.001.}\label{euclid}
   \begin{algorithmic}[1]
-    \Require $\alpha$: Stepsize
+    \Require $\alpha$: Step size
     \Require $\beta_1$, $\beta_2$ $\in$ $[0,1)$: Exponential decay rates for the moment estimates
     \Require \textit{f}$(\theta)$: Stochastic objective function with parameters $\theta$
     \Require $\theta_0$: Initial parameter vector \\
@@ -1225,23 +1225,23 @@ They show empirically that Adam works well in practice and compares favorably to
 \end{algorithm}
 
 \section{Implementation of the RSLVQ variants}
-This chapter will show how the different RSLVQ varients where implemented, so that they can work with Streaming data.
-The implementation is based on the version that was used in the scikit-multiflow framework \cite{skmultiflow} and was then further 
-modiefied by Moritz Heusinger in \cite{PassiveDriftonRSLVQ}.
+This chapter will show how the different RSLVQ variants where implemented, so that they can work with Streaming data.
+The implementation is based on the version that was used in the Scikit-multiflow framework \cite{skmultiflow} and was then further 
+modified by Moritz Heusinger in \cite{PassiveDriftonRSLVQ}.
 It has to be said that the implementation is nearly the same as in the previously mentioned work \cite{PassiveDriftonRSLVQ}.
 
 \subsection{RSLVQ SGD}
 The main differences between the different implementations of the algorithms appear in the training phase, when the prototypes
 gets updated in the \texttt{\_update\_prototype} method. As the rest stays nearly the same, it will only be explained once during the explanation of how the $RSLVQ_\textit{SGD}$
-varient was implemented.
-In the scikit-multiflow framework the \textbf{\texttt{partial\_fit}} method, shown in listing \ref{lst:partialfit}, gets executet everytime when an algorithm initiates the
-learning process or when it continous training process. It will check if the algorithm has already completed the intial 
+variant was implemented.
+In the Scikit-multiflow framework the \textbf{\texttt{partial\_fit}} method, shown in listing \ref{lst:partialfit}, gets executet every time when an algorithm initiates the
+learning process or when it continuous training process. It will check if the algorithm has already completed the initial 
 learning process or if it is the first time that the method gets executed. If one of those 2 cases is true, the method will
 continue by calling the internal \textbf{\texttt{\_validate\_train\_parms}} method, that will then carry out further checks.
-If none of the 2 options is true, the method will raise an error that the algorithm has to intial the learning/training process.
+If none of the 2 options is true, the method will raise an error that the algorithm has to initial the learning/training process.
 After this check, the method will call the \textbf{\texttt{\_optimize}} method, that is shown in listing \ref{lst:optimize}.
 It has to be noted that neither the \textbf{\texttt{partial\_fit}}, the \textbf{\texttt{\_validate\_train\_parms}} and the \textbf{\texttt{\_optimize}} methods
-have been altered from how they have been implemented in the scikit-multiflow framework \cite{skmultiflow}.
+have been altered from how they have been implemented in the Scikit-multiflow framework \cite{skmultiflow}.
 
 \begin{lstlisting}[label=lst:partialfit,
   language=python,
@@ -1278,7 +1278,7 @@ have been altered from how they have been implemented in the scikit-multiflow fr
 \end{lstlisting}
 
 The \textbf{\texttt{\_optimize}} method will search for the the nearest correct and the nearest wrong prototype, based on 
-their euclidiean distance towards the data point that has to be classified, as describe in \ref{equ:LVQ3} and visualized in \ref{fig:LVQ}.
+their Euclidean distance towards the data point that has to be classified, as describe in \ref{equ:LVQ3} and visualized in \ref{fig:LVQ}.
 If the correct prototype(prototype with the right label) is not the nearest to the data point, then each the model of the nearest wrong
 prototype as well as the model of the nearest correct prototype should be updated by calling the \textbf{\texttt{\_update\_prototype}} method
 
@@ -1370,7 +1370,7 @@ This gives us:
 \end{equation}
 
 Next we store the squared parameter updates $ $ according to equation \ref{equ:adadelta_4}.
-Finally we apply the update prototype accoring to the second equation from \ref{equ:adadelta_2}:
+Finally we apply the update prototype according to the second equation from \ref{equ:adadelta_2}:
 
 \begin{equation}
   \theta_\textit{t+1} = \theta_t + \Delta\theta_t.
@@ -1410,7 +1410,7 @@ The implementation of the RMSprop is nearly the same as for the Adadelta, the di
 rate $\eta$, that was eliminated in the Adadelta and replaced by the root mean squared error of the parameter updates $\textit{RMS}[\Delta\theta]_\textit{t-1}$.
 
 The steps until after the posterior and prior calculation are the exact same as in the SGD implementation.
-When the gradient is calculated, it will be added to the averge past squared gradients like in equation \ref{equ:rmsprop_1} described.
+When the gradient is calculated, it will be added to the average past squared gradients like in equation \ref{equ:rmsprop_1} described.
 If we take the value $0.9$ for $\gamma$ like Hinton suggested in \cite{RMSprop_Hinton}, we get the following equation:
 
 \begin{equation}
@@ -1420,7 +1420,7 @@ If we take the value $0.9$ for $\gamma$ like Hinton suggested in \cite{RMSprop_H
 The prototype update can be calculated by equation \ref{equ:rmsprop_2}, were the $-\frac{\eta}{RMS[\textit{g}]_t} g_t$ 
 part, that calculates the gradient update, can be substituted with $\Delta\theta$.
 Because the RMSprop is identical to the first update vector of the Adadelta, we will then get for $\Delta\theta$ the following 
-eqaution:
+equation:
 
 \begin{equation}
   \Delta\theta = - \frac{\eta}{G_t-\epsilon} \textit{g}_\textit{t}.
@@ -1453,7 +1453,7 @@ final implementation \cite{PassiveDriftonRSLVQ}.
 
 \subsection{RSLVQ Adam}
 
-As describe in chapter 3.2.5, the Adam implementation is simliar to the Adadelta and RMSprop implementation.
+As describe in chapter 3.2.5, the Adam implementation is similar to the Adadelta and RMSprop implementation.
 This means for the implementation, at the start it repeats again the same steps of the SGD algorithm by computing the gradient.
 When the gradient is computed will it continue by computing the average of past  gradients $m_t$ and the average  of  past  squared  gradients $v_t$
 like in equation \ref{equ:adam_1}. It has to be noted the parameters $m_t$ and $v_t$ needs to be initialized as vectors of 0's before
@@ -1509,13 +1509,13 @@ The values $\beta_1$ and $\beta_2$ are set to 0.9 and 0.999 and $\epsilon$ is se
 \end{lstlisting}
 
 \chapter{Test realisation}
-This section contains a short description of the synthetic and real datasets that were used to carry out the comparisions.
-It will also shortly describe the settings that were used and the reason for why these parameters were choosen.
+This section contains a short description of the synthetic and real datasets that were used to carry out the comparisons.
+It will also shortly describe the settings that were used and the reason for why these parameters were chosen.
 The Tests were carried out on a Microsoft Surface Pro(2017) with an Intel Core i5-7300U with 2 x 2,6 GHz and 8GB of RAM.
 
 \section{Used Datasets}
 
-This section will contain a short describtion of the data streams, synthetic and real world data, that where used to 
+This section will contain a short description of the data streams, synthetic and real world data, that where used to 
 perform the experiments.
 
 \subsection{Synthetic data}
@@ -1531,7 +1531,7 @@ perform the experiments.
         Generates a problem of prediction class of a rotation hyperplane. It was used as testbed for CVFDT and VFDT in \cite{hyperplane}.
         A hyperplane in d-dimensional space is the set of points $x$ that satisfy $\sum^d_\textit{i=1} w_ix_i=w_0 = \sum^d_\textit{i=1} w_i$,
         where $x_i$ is the i-th coordinate of $x$.  Examples for which $\sum^d_\textit{i=1} w_ix_i>w_0$, are 
-        labeled positive, and examples for which $\sum^d_\textit{i=1}w_ix_i\leq w_0$, are labeled negative.
+        labelled positive, and examples for which $\sum^d_\textit{i=1}w_ix_i\leq w_0$, are labelled negative.
 
         Hyperplanes are useful for simulating time-changing concepts, because the change of the orientation and position
         of the hyperplane can be done in a smooth manner by changing the relative size of the weights.
@@ -1552,7 +1552,7 @@ perform the experiments.
         \end{enumerate}
 
         Concept drift can be introduced by changing the classification function. This can be done manually or using the ConceptdriftStream method
-        from the scikit-multiflow framework.
+        from the Scikit-multiflow framework.
         Two important features are the possibility to balance classes, which means the class distribution will tend to a uniform one, and the 
         possibility to add noise, which will, add two non relevant attributes \cite{skmultiflow}.
     
@@ -1577,7 +1577,7 @@ perform the experiments.
         The two class decision boundary is given by f1 + f2 = b, where f1, f2 are the two relevant features and b a
         predefined threshold. Abrupt drift is simulated with four different concepts, by changing the value of b every 
         12500 samples. Also included are 10\verb|%| of noise. 
-        This exact Datas was also used in \cite{SEADataset}.
+        This exact Data was also used in \cite{SEADataset}.
 
         \begin{table}[H]
           \label{tab:synthdata}
@@ -1606,7 +1606,7 @@ perform the experiments.
             \hline
           \end{tabular} 
           \caption{Overview over the synthetic generated Datasets, the streams with "Drift" in name generate the drift
-          with the $ConceptDrifStream()$ method from scikit-multiflow. (Y: yes, with Drift, N: no Drift) }
+          with the $ConceptDrifStream()$ method from Scikit-multiflow. (Y: yes, with Drift, N: no Drift) }
         \end{table}
   
 \end{itemize}
@@ -1617,9 +1617,9 @@ publications.
 
 \begin{itemize}
   \item Weather Dataset: \\
-        This dataset contains eight different features like the minimum and maximum tempreature, visibility, wind speed, 
-        air pressure, etc. that were measured at the Offutt Air Force Base in Bellevue, Nebraska. These measurments were
-        taken in the period of 1949-1999. The goal of this dataset is to predict if it is going to rain on certains day or not.
+        This dataset contains eight different features like the minimum and maximum temperature, visibility, wind speed, 
+        air pressure, etc. that were measured at the Offutt Air Force Base in Bellevue, Nebraska. These measurements were
+        taken in the period of 1949-1999. The goal of this dataset is to predict if it is going to rain on certain day or not.
         It contains 18159 instances with an imbalance towards no rain (69\verb|%|) and was introduced by Elwell in \cite{weather}.
 
   \item Electricity Market Dataset:\\
@@ -1636,15 +1636,15 @@ publications.
         in its original form no drift in it.
         As this is the version as it was introduced by \cite{bifet2013efficient}, virtual drift is present in this dataset. 
         This was achieved by sorting the instances of the dataset by rank and suit. Duplicate hands were also removed.
-        Additionly, this version was also normalized.
+        Additionally, this version was also normalized.
 
-  \item Rialto Bridge Timelapse Dataset: \\
-        Ten of the colorful buildings next to the famous Rialto bridge in Venice are encoded in a normalized 
+  \item Rialto Bridge Time lapse Dataset: \\
+        Ten of the colourful buildings next to the famous Rialto bridge in Venice are encoded in a normalized 
         27-dimensional RGB histogram. The images were obtained from time-lapsed videos captured by a webcam with a fixed
-        position. The recordings cover 20 consecutive days during may-june 2016. Continuously changing weather and 
+        position. The recordings cover 20 consecutive days during May-June 2016. Continuously changing weather and 
         lighting conditions affect the representation. The labels were generated by manually masking the corresponding 
         buildings and excluded overnight recordings since they were too dark for being useful. 
-        This Dataset was originaly used in \cite{movingsquaresChessboardRialtobridge}
+        This Dataset was originally used in \cite{movingsquaresChessboardRialtobridge}
 \end{itemize}
 
 \begin{table}[H]
@@ -1671,9 +1671,9 @@ publications.
 The test is run several times for each algorithm that is tested and also several times for each algorithm.
 The reason for this is that each algorithm is evaluated two times in different evaluation settings.
 Once it is evaluated with Holdout and once with Prequential (see section 2.3.1).
-In each of the evaluation processes each of the 4 algorithm performce a evaluation on the selected datastream.
-There are 13 different datastreams that will be used for the evaluation, which means that there will be $13*2*4=104$ 
-runs of the evalution.
+In each of the evaluation processes each of the 4 algorithm performance a evaluation on the selected data stream.
+There are 13 different data streams that will be used for the evaluation, which means that there will be $13*2*4=104$ 
+runs of the evaluation.
 For each run will be a .csv file created and saved that will then later be condensed into 10 overview files for each of the 
 evaluation metrics \ref{tab:metrics} for each of the evaluation settings.
 The metrics are represented in those list as percent, so a kappa score is then listed as 0.56, which means it has a value of 56 percent.
@@ -1695,18 +1695,18 @@ The metrics are represented in those list as percent, so a kappa score is then l
         Computation time  \\
       \hline
     \end{tabular} 
-  \caption{Overview of the metrics that are recorded during the evaluation and that are then used for the comparision.}
+  \caption{Overview of the metrics that are recorded during the evaluation and that are then used for the comparison.}
   \label{tab:metrics}
 \end{table}
 
 Each evaluation has a set maximum number of samples that it should use and after that it will stop and then start the next evaluation.
-This limit was set to 40 000, because nearly every datastream has at least 45 000 samples or more (there is 1 exception for this,
+This limit was set to 40 000, because nearly every data stream has at least 45 000 samples or more (there is 1 exception for this,
 and that is the weather dataset with only 18 000 samples) and the limitation should make it easier to directly compare the computation time 
-between  each of the algorithm even across different datastreams (with the exception for the weather dataset).
+between  each of the algorithm even across different data streams (with the exception for the weather dataset).
 
-For the Setting of the hyperparameters of the Algorithms where mainly the recommended values from the litrature chosen. 
+For the Setting of the hyperparameters of the Algorithms where mainly the recommended values from the literature chosen. 
 The parameters that exist or a shared between all/nearly all algorithms are set to the same start values.
-This was done so that each algorithm had the same starting conditions as the other ones for the comparision.
+This was done so that each algorithm had the same starting conditions as the other ones for the comparison.
 The values are listed in table \ref{tab:parameters}.
 
 \begin{table}[H]
@@ -1724,15 +1724,15 @@ The values are listed in table \ref{tab:parameters}.
       $RSLVQ_\textit{Adam}$ & 1 & $1e-8$ & - & 0.001 & 0.9 & 0.999 & 3.2.5\\
     \hline
   \end{tabular} 
-  \caption{Overview of the parameter settings for each of the algorithms. Parameters marked with a * only occured in some of the algorithms.
+  \caption{Overview of the parameter settings for each of the algorithms. Parameters marked with a * only occurred in some of the algorithms.
   ($\sigma$ = number of prototypes, $\gamma$ = decay rate, $\eta$ = learning rate)}
   \label{tab:parameters}
 \end{table}
 
-The evaluation was done in python with the scikit-multiflow framework described in section 2.4.
+The evaluation was done in python with the Scikit-multiflow framework described in section 2.4.
 
 \chapter{Result Evaluation}
-This chapter will list the results of the algorithm comparsions seperatly.
+This chapter will list the results of the algorithm comparisons separately.
 First will be the results for the Holdout setting will be described and after that the results that were produced with the 
 Prequential setting. The Result Tables on which these evaluations are based on can be found in the appendix of this work.
 (5 tables from the Holdout setting, 5 tables from the Prequential setting, 5 tables with ranks from the Holdout setting
@@ -1745,14 +1745,14 @@ and their computation time with Holdout evaluation setting
 \begin{itemize}
   \item \textbf{Accuracy}: \\
         Based on the Overall Accuracy score from Table \ref{tab:holdoutAcc} it can be seen that in the Holdout setting the
-        normal $RSLVQ_\textit{SGD}$ implementation performs the worst in comparision to the other three implementations.
+        normal $RSLVQ_\textit{SGD}$ implementation performs the worst in comparison to the other three implementations.
         The $RSLVQ_\textit{Adadelta}$ has the second best accuracy overall and the $RSLVQ_\textit{RMSprop}$ has the best 
         accuracy overall. The $RSLVQ_\textit{Adam}$ implementation has performed worse than the $RSLVQ_\textit{Adadelta}$
         and the $RSLVQ_\textit{RMSprop}$, but still performed better than the $RSLVQ_\textit{SGD}$.
-        Looking at the results of the synthetic and real Datastreams separetly, it can be seen that the the result are the same
-        for the synthetic Streams, but on the datastream based on real world Data the $RSLVQ_\textit{Adam}$ performed better then
+        Looking at the results of the synthetic and real Data streams separately, it can be seen that the the result are the same
+        for the synthetic Streams, but on the data stream based on real world Data the $RSLVQ_\textit{Adam}$ performed better then
         the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{RMSprop}$, as it was in fact the best performing implementation.
-        The $RSLVQ_\textit{Adadelta}$ was still the second best implementation, while the $RSLVQ_\textit{RMSprop}$ was only the thrid 
+        The $RSLVQ_\textit{Adadelta}$ was still the second best implementation, while the $RSLVQ_\textit{RMSprop}$ was only the third 
         best implementation. The $RSLVQ_\textit{SGD}$ stayed the worst performing implementation accuracy wise.
 
   \item \textbf{Kappa}: \\
@@ -1760,15 +1760,15 @@ and their computation time with Holdout evaluation setting
         Table \ref{tab:holdoutKappa} and on their rank in Table \ref{tab:holdoutKappaRanked}.
         In these table can be similar result observed as in the results from the Accuracy metric.
         Overall the $RSLVQ_\textit{SGD}$ again performed the worst out of all the implementations, while the $RSLVQ_\textit{Adam}$
-        performed the third best again. The $RSLVQ_\textit{Adadelta}$ and $RSLVQ_\textit{RMSprop}$ switched their respectiv rank this 
+        performed the third best again. The $RSLVQ_\textit{Adadelta}$ and $RSLVQ_\textit{RMSprop}$ switched their respective rank this 
         time, with the $RSLVQ_\textit{RMSprop}$ performing  the best.
         A closer look to the results of the Synthetic and real world Data streams shows something
         similar to what was already observed in the the Accuracy score.
         While the ranking of the four implementation stayed the same for the synthetic Data streams, the $RSLVQ_\textit{Adam}$ performed 
         the best again for the real Data streams. The $RSLVQ_\textit{RMSprop}$ performed the third best, while the $RSLVQ_\textit{SGD}$ and
-        the $RSLVQ_\textit{Adadelta}$ stayed on their respectiv ranks of four and two.
+        the $RSLVQ_\textit{Adadelta}$ stayed on their respective ranks of four and two.
         We can conclude from this that the $RSLVQ_\textit{Adam}$ performs the best for the Kappa score when used on real streams with the holdout
-        evalution.
+        evaluation.
 
   \item \textbf{$Kappa_m$}: \\
         In the Tables \ref{tab:holdoutKappaM} and \ref{tab:holdoutKappaMRanked} are the results based on their $Kappa_m$ score listed.
@@ -1792,9 +1792,9 @@ and their computation time with Holdout evaluation setting
   \item \textbf{Computation Time}: \\
         The values for the Computation Time are listed in Table \ref{tab:holdtime} and with ranks in Table \ref{tab:holdTimeRanked}.
         In it can be seen that the $RSLVQ_\textit{SGD}$ implementation still performs the worst out of all 4 algorithms overall,
-        but when used on real data streams it is the fastes computation wise.
-        The fastes implementatin overall is the $RSLVQ_\textit{Adadelta}$, followed $RSLVQ_\textit{RMSprop}$ and the $RSLVQ_\textit{Adam}$.
-        If we take again a seprate look at the result for the synthetic and real data streams, we can see that on the synthetic stream the 
+        but when used on real data streams it is the fastest computation wise.
+        The fastest implementation overall is the $RSLVQ_\textit{Adadelta}$, followed $RSLVQ_\textit{RMSprop}$ and the $RSLVQ_\textit{Adam}$.
+        If we take again a separate look at the result for the synthetic and real data streams, we can see that on the synthetic stream the 
         fastest algorithm was the $RSLVQ_\textit{RMSprop}$, followed by the $RSLVQ_\textit{Adam}$ and the $RSLVQ_\textit{RMSprop}$ 
         algorithms and with the $RSLVQ_\textit{SGD}$ being the slowest one.
         On the real data streams, as mentioned at the beginning, the $RSLVQ_\textit{SGD}$ was the fastest, followed by the $RSLVQ_\textit{RMSprop}$ and
@@ -1805,33 +1805,33 @@ and their computation time with Holdout evaluation setting
 
 \end{itemize}
 \section{Prequential settings}
-This section will provide the results of the algorithms based on their Accuracy, Preformance measures as described in section 2.3.2
+This section will provide the results of the algorithms based on their Accuracy, Performance measures as described in section 2.3.2
 and their Computation time with Prequential evaluation setting.
 
 \begin{itemize}
   \item \textbf{Accuracy}: \\
   The results and the rankings in respect to the Accuracy score for the algorithms are provided by the Tables \ref{tab:preqAcc} and \ref{tab:preqAccRanked}
   respectively.
-  With prequential evalution enabled the $RSLVQ_\textit{SGD}$ performed the best out off all four algorithms, followed by the 
+  With prequential evaluation enabled the $RSLVQ_\textit{SGD}$ performed the best out off all four algorithms, followed by the 
   $RSLVQ_\textit{RMSprop}$ and the $RSLVQ_\textit{Adadelta}$, with the $RSLVQ_\textit{Adam}$ performing the worst on the accuracy score.
   A separate look at the synthetic and real data stream shows that for the synthetic streams the $RSLVQ_\textit{RMSprop}$ performed the best,
-  followed by the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{SGD}$ as well as the $RSLVQ_\textit{Adam}$ performing the thrid best.
+  followed by the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{SGD}$ as well as the $RSLVQ_\textit{Adam}$ performing the third best.
   The real data streams showed the same results as the overall results, with the $RSLVQ_\textit{SGD}$ performing the best and the $RSLVQ_\textit{Adam}$ performing
   the worst out of the four streams.
 
   \item \textbf{Kappa}: \\
-  The Tables \ref{tab:preqKappa} and \ref{tab:preqKappaRanked} provide us with the values and the rankes for the Kappa score that were taken with the
-  prequentail evaluation.
+  The Tables \ref{tab:preqKappa} and \ref{tab:preqKappaRanked} provide us with the values and the ranks for the Kappa score that were taken with the
+  prequential evaluation.
   In the Overall result we can see that this time the $RSLVQ_\textit{RMSprop}$ performed the best, followed by the $RSLVQ_\textit{SGD}$ 
   and $RSLVQ_\textit{Adadelta}$ implementations. The $RSLVQ_\textit{Adam}$ performed again as the worst out of the four tested implementations.
   The synthetic streams results show on the other hand that the $RSLVQ_\textit{Adam}$ performed the best out of the four algorithms, followed by 
   the $RSLVQ_\textit{RMSprop}$ and the $RSLVQ_\textit{Adadelta}$, with the $RSLVQ_\textit{SGD}$ performing the worst on the Kappa score.
   From this we can conclude that the $RSLVQ_\textit{Adam}$ algorithm should not be taken to evaluate real world data streams when used with
-  prequentail evaluation settings. Instead of it the $RSLVQ_\textit{RMSprop}$ should be taken according to the Kappa score results.
+  prequential evaluation settings. Instead of it the $RSLVQ_\textit{RMSprop}$ should be taken according to the Kappa score results.
   
   \item \textbf{$Kappa_m$}: \\
   In the Tables \ref{tab:preqKappaM} and \ref{tab:preqKappaMRanked} are the results listed for the $Kappa_m$ score with prequential evaluation settings.
-  The results for the $Kappa_m$ score show a simliar ranking for the overall results as the Kappa score had shown, with the 
+  The results for the $Kappa_m$ score show a similar ranking for the overall results as the Kappa score had shown, with the 
   $RSLVQ_\textit{RMSprop}$ performing the best and the $RSLVQ_\textit{Adam}$ performing the worst again.
   For the synthetic streams the $RSLVQ_\textit{RMSprop}$ performed the best out of the four, followed by the $RSLVQ_\textit{Adadelta}$ and the
   $RSLVQ_\textit{Adam}$, with the $RSLVQ_\textit{SGD}$ performing the worst.
@@ -1845,7 +1845,7 @@ and their Computation time with Prequential evaluation setting.
   as the second best algorithm of the four, while still being the third best performing algorithm on the real data streams in regards to 
   the $Kappa_t$ score. The $RSLVQ_\textit{Adadelta}$ performed the worst on the synthetic streams, while still performing the third best on 
   the real data streams and third best on the overall results.
-  The $RSLVQ_\textit{Adam}$ performed the worst of the four algorithms on the overal and real data stream results, while only performing the third best
+  The $RSLVQ_\textit{Adam}$ performed the worst of the four algorithms on the overall and real data stream results, while only performing the third best
   on the synthetic streams according to the $Kappa_t$.
   According to the results of the $Kappa_t$ score as well as the results of the other Kappa scores and the Accuracy score, it can 
   be concluded that if the evaluation takes place with prequential settings, the algorithm that would return the best results would be the
@@ -1855,7 +1855,7 @@ and their Computation time with Prequential evaluation setting.
   The results for the Computation Time are stored in Table \ref{tab:preqTime} and with ranking in Table \ref{tab:preqtimeRanked}.
   The overall fastest algorithm with prequential evaluation settings was the $RSLVQ_\textit{Adam}$ algorithm, followed by the 
   $RSLVQ_\textit{SGD}$, the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{RMSprop}$ algorithm being the slowest of the four.
-  Looking at the synthetic streams seperatly, it can be seen that the $RSLVQ_\textit{SGD}$ was the fastest this time,
+  Looking at the synthetic streams separately, it can be seen that the $RSLVQ_\textit{SGD}$ was the fastest this time,
   followed by the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{Adam}$, with the $RSLVQ_\textit{RMSprop}$ being the slowest again.
   On the real data streams it can be seen that the $RSLVQ_\textit{Adam}$ was again the fastest implementation, while the $RSLVQ_\textit{SGD}$
   was the second fastest and the $RSLVQ_\textit{RMSprop}$ being the third fastest.
@@ -1879,12 +1879,12 @@ Holdout settings.
 It should be noted that on synthetic streams the $RSLVQ_\textit{Adam}$ performed worse than the $RSLVQ_\textit{Adadelta}$ and the $RSLVQ_\textit{RMSprop}$
 implementations, so for the evaluation under holdout settings the other ones should be preferred for use rather than the $RSLVQ_\textit{Adam}$.
 
-If the evluation is done with prequential settings, the $RSLVQ_\textit{Adam}$ performed worse than either the
+If the evaluation is done with prequential settings, the $RSLVQ_\textit{Adam}$ performed worse than either the
 $RSLVQ_\textit{Adadelta}$, $RSLVQ_\textit{RMSprop}$ and the $RSLVQ_\textit{SGD}$, while the $RSLVQ_\textit{RMSprop}$ 
 returned the best results under this setting.
 It should also be noted that if the evaluation is only done on a synthetic stream, the $RSLVQ_\textit{Adam}$ could be taken as a 
 possible alternative to the $RSLVQ_\textit{RMSprop}$ or the $RSLVQ_\textit{Adadelta}$, as it only performs a little bit worse than the other two in this case,
-but is faster in regards to the computation time in comparision to the other two.
+but is faster in regards to the computation time in comparison to the other two.
 
 \backmatter
 %%%%%%%%%%%%%%%%%%%
@@ -1942,7 +1942,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutAccuracy.csv}%
+            {results/HoldoutAccuracy.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -1956,7 +1956,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutKappa.csv}%
+            {results/HoldoutKappa.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -1970,7 +1970,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutKappaM.csv}%
+            {results/HoldoutKappaM.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -1984,7 +1984,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutKappaT.csv}%
+            {results/HoldoutKappaT.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -1998,7 +1998,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutCompTime.csv}%
+            {results/HoldoutCompTime.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2015,7 +2015,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialAccuracy.csv}%
+            {results/PrequentialAccuracy.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2029,7 +2029,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialKappa.csv}%
+            {results/PrequentialKappa.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2043,7 +2043,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialKappaM.csv}%
+            {results/PrequentialKappaM.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2057,7 +2057,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialKappaT.csv}%
+            {results/PrequentialKappaT.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2071,7 +2071,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialCompTime.csv}%
+            {results/PrequentialCompTime.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2090,7 +2090,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutAccuracyRanked.csv}%
+            {results/HoldoutAccuracyRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2104,7 +2104,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutKappaRanked.csv}%
+            {results/HoldoutKappaRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2118,7 +2118,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutKappaMRanked.csv}%
+            {results/HoldoutKappaMRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2132,7 +2132,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutKappaTRanked.csv}%
+            {results/HoldoutKappaTRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2146,7 +2146,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/HoldoutCompTimeRanked.csv}%
+            {results/HoldoutCompTimeRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2163,7 +2163,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialAccuracyRanked.csv}%
+            {results/PrequentialAccuracyRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2177,7 +2177,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialKappaRanked.csv}%
+            {results/PrequentialKappaRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2191,7 +2191,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialKappaMRanked.csv}%
+            {results/PrequentialKappaMRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2205,7 +2205,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialKappaTRanked.csv}%
+            {results/PrequentialKappaTRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2219,7 +2219,7 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
           \begin{tabular}{|c|c|c|c|c|}\hline%
             \bfseries{Data Stream} & \bfseries{$RSLVQ_\textit{SGD}$} & \bfseries $RSLVQ_\textit{Adadelta}$ & \bfseries $RSLVQ_\textit{RMSprop}$ & \bfseries $RSLVQ_\textit{Adam}$ \\\hline\hline
             \csvreader[late after line=\\\hline]%
-            {results/processedResults/PrequentialCompTimeRanked.csv}%
+            {results/PrequentialCompTimeRanked.csv}%
             {DataStream = \DataStream, RSLVQSGD = \RSLVQSGD, RSLVQAdadelta = \RSLVQAdadelta, RSLVQRMSprop = \RSLVQRMSprop, RSLVQAdam = \RSLVQAdam}%
             {\DataStream & \RSLVQSGD & \RSLVQAdadelta & \RSLVQRMSprop & \RSLVQAdam}%
           \end{tabular}
@@ -2231,7 +2231,38 @@ $\overline{~~~~~~~~~~~~~~~~~\mbox{\BaAuthor, am \today}~~~~~~~~~~~~~~~~~}$
 
       \subsection{List of contents on USB stick}
       \begin{itemize}
-        \item 
+        \item Ba\_thesis\_code\_and\_latex $\rightarrow$ contains the code as well as the latex template files.
+        \begin{itemize}
+          \item BA\_thesis\_code $\rightarrow$ folder of the python code.
+          \begin{itemize}
+            \item Algorithms $\rightarrow$ folder that contains the implementation of the algorithms on basis of implementation that were done by Moritz Heusinger.
+            \begin{itemize}
+              \item base\_lvq.py $\rightarrow$
+              \item rslvq\_sgd.py $\rightarrow$ contains code for the seperate implementation of the $RSLVQ_\textit{SGD}$
+               on basis of a implementation done by Moritz Heusinger.
+              \item rslvq\_adadelta.py $\rightarrow$ contains code for the seperate implementation of the $RSLVQ_\textit{Adadelta}$
+               on basis of a implementation done by Moritz Heusinger.
+              \item rslvq\_rmsprop.py $\rightarrow$ contains code for the seperate implementation of the $RSLVQ_\textit{RMSprop}$ 
+              on basis of a implementation done by Moritz Heusinger.
+              \item rslvq\_adam.py $\rightarrow$ contains code for the seperate implementation of the $RSLVQ_\textit{Adam}$
+               that was created with the help of a implementation done by Moritz Heusinger.
+              \item rslvq\_all.py $\rightarrow$ contains code for a version that includes all varients. Was not used as it still contains somewhere a bug that
+              causes it to sometimes crash during execution. For this reason the seperate implementations where used.
+            \end{itemize}
+            \item realData $\rightarrow$ folder that contains the .csv files of the real data streams.
+            \item synthData $\rightarrow$ folder that contains the .csv files of the synthetic data streams that were already used in other papers.
+            \item results $\rightarrow$ folder that contains the raw result files from the evaluations, that are then used by the 
+            process\_eval\_tables.py file to create the final result files.
+            \item custom\_evaluation.py $\rightarrow$ contains code for the evaluation process.
+            \item main\_evaluation.py $\rightarrow$ contains the setup code for the evaluation.
+            \item process\_eval\_tables.py $\rightarrow$ creates the endresult .csv files and saves them in the result file in the latex folder.
+          \end{itemize}
+          \item BA\_thesis\_code.sln $\rightarrow$ visual studio solution file for the code.
+          \item bachelor\_template $\rightarrow$ contains all the files from the latex files as well as folders for 
+          the images and the folder for the endresult from the evaluation in the results folder. 
+          
+        \end{itemize}
+        \item thesis.pdf $\rightarrow$ Pdf file of the thesis
       \end{itemize}
 
 \end{appendices}

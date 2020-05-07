@@ -424,26 +424,26 @@ INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx8
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbxti10.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx6.tfm
 INPUT C:\Users\flori\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbxti10.tfm
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutAccuracy.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutKappa.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutKappaM.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutKappaT.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutCompTime.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialAccuracy.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialKappa.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialKappaM.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialKappaT.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialCompTime.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutAccuracyRanked.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutKappaRanked.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutKappaMRanked.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutKappaTRanked.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\HoldoutCompTimeRanked.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialAccuracyRanked.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialKappaRanked.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialKappaMRanked.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialKappaTRanked.csv
-INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\processedResults\PrequentialCompTimeRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutAccuracy.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutKappa.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutKappaM.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutKappaT.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutCompTime.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialAccuracy.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialKappa.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialKappaM.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialKappaT.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialCompTime.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutAccuracyRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutKappaRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutKappaMRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutKappaTRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\HoldoutCompTimeRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialAccuracyRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialKappaRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialKappaMRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialKappaTRanked.csv
+INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\results\PrequentialCompTimeRanked.csv
 INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.aux
 INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out
 INPUT c:\informatik\7.Semester\BachlorArbeit\BA_repo\BA_thesis_code\bachelor_template\bachelor_template\template\thesis.out

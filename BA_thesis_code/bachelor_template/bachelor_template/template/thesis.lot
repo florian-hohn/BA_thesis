@@ -9,13 +9,13 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.1}{\ignorespaces Overview over the synthetic generated Datasets, the streams with "Drift" in name generate the drift with the $ConceptDrifStream()$ method from scikit-multiflow. (Y: yes, with Drift, N: no Drift) \relax }}{39}{table.caption.14}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Overview over the synthetic generated Datasets, the streams with "Drift" in name generate the drift with the $ConceptDrifStream()$ method from Scikit-multiflow. (Y: yes, with Drift, N: no Drift) \relax }}{39}{table.caption.14}%
 \defcounter {refsection}{0}\relax 
 \contentsline {table}{\numberline {4.2}{\ignorespaces Overview over the real Datasets\relax }}{40}{table.caption.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.3}{\ignorespaces Overview of the metrics that are recorded during the evaluation and that are then used for the comparision.\relax }}{41}{table.caption.16}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Overview of the metrics that are recorded during the evaluation and that are then used for the comparison.\relax }}{41}{table.caption.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.4}{\ignorespaces Overview of the parameter settings for each of the algorithms. Parameters marked with a * only occured in some of the algorithms. ($\sigma $ = number of prototypes, $\gamma $ = decay rate, $\eta $ = learning rate)\relax }}{41}{table.caption.17}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Overview of the parameter settings for each of the algorithms. Parameters marked with a * only occurred in some of the algorithms. ($\sigma $ = number of prototypes, $\gamma $ = decay rate, $\eta $ = learning rate)\relax }}{41}{table.caption.17}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
